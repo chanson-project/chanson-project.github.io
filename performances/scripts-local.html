@@ -1,0 +1,136 @@
+{% include_relative scripts-listeners.html %}
+
+<script>
+
+const YT_ICON_SVG = `<svg class="yt-icon-svg" width="18" height="13" viewBox="0 0 90 63" xmlns="http://www.w3.org/2000/svg"><rect width="90" height="63" rx="13" fill="#FF0000"/><polygon points="37,15 37,48 64,31" fill="white"/></svg>`;
+
+let PERF_SORT = { column: null, dir: 1 };
+let PERF_DATA = [];
+
+
+//////////////////////////////
+//
+// getPerfCollection -- Derive collection name from sources lookup.
+//
+
+function getPerfCollection(entry) {
+    let prefix = (entry[FIELD.id] || "").substring(0, 2);
+    let source = SOURCES_LOOKUP[prefix];
+    if (!source) return prefix;
+    return source[SOURCE_FIELD.title] || prefix;
+}
+
+
+//////////////////////////////
+//
+// getPerfTitle -- Merge title and subtitle.
+//
+
+function getPerfTitle(entry) {
+    const title    = (entry[FIELD.title]     || "").trim();
+    const subtitle = (entry[FIELD.title_sub] || "").trim();
+    if (subtitle) return title ? `${title}, <i>${subtitle}</i>` : subtitle;
+    return title;
+}
+
+
+//////////////////////////////
+//
+// buildPerformancesTable -- Filter metadata to YouTube entries and render.
+//
+
+function buildPerformancesTable() {
+    PERF_DATA = METADATA.filter(e => e[FIELD.url_youtube]);
+    renderPerformancesTable(PERF_DATA);
+}
+
+
+//////////////////////////////
+//
+// renderPerformancesTable -- Build the sortable table of performances.
+//
+
+function renderPerformancesTable(data) {
+    const container = document.getElementById("performances-list");
+    if (!container) return;
+
+    const cols = [
+        { key: "composer",   label: t("perf.col_composer") },
+        { key: "title",      label: t("perf.col_title") },
+        { key: "collection", label: t("perf.col_collection") },
+        { key: "youtube",    label: "" },
+    ];
+
+    let html = "<table class='general'><thead><tr>";
+    for (const col of cols) {
+        if (col.key === "youtube") {
+            html += `<th></th>`;
+        } else {
+            let arrow = PERF_SORT.column === col.key
+                ? (PERF_SORT.dir === 1 ? " &#9650;" : " &#9660;")
+                : "";
+            html += `<th class="sortable" onclick="sortPerformancesBy('${col.key}')">${col.label}${arrow}</th>`;
+        }
+    }
+    html += "</tr></thead><tbody>\n";
+
+    for (const e of data) {
+        const id    = e[FIELD.id] || "";
+        const comp  = e[FIELD.composer] || "";
+        const title = getPerfTitle(e);
+        const coll  = getPerfCollection(e);
+        const ytURL = e[FIELD.url_youtube] || "";
+        const workURL = `/work/?id=${id}`;
+        html += `<tr>
+            <td>${comp}</td>
+            <td><a href="${workURL}" target="_blank" rel="noopener noreferrer">${title}</a></td>
+            <td>${coll}</td>
+            <td class="yt-cell"><a href="${ytURL}" target="_blank" rel="noopener noreferrer" class="yt-link" title="Watch on YouTube">${YT_ICON_SVG}</a></td>
+        </tr>\n`;
+    }
+
+    html += "</tbody></table>";
+    container.innerHTML = html;
+
+    const countEl = document.getElementById("performances-count");
+    if (countEl) {
+        const n = data.length;
+        countEl.textContent = n === 1
+            ? t("perf.one_result")
+            : n + " " + t("perf.results");
+    }
+}
+
+
+//////////////////////////////
+//
+// sortPerformancesBy -- Sort the performances table by a column.
+//
+
+function sortPerformancesBy(column) {
+    if (PERF_SORT.column === column) {
+        PERF_SORT.dir *= -1;
+    } else {
+        PERF_SORT.column = column;
+        PERF_SORT.dir = 1;
+    }
+
+    const sorted = PERF_DATA.slice().sort(function(a, b) {
+        let av = "", bv = "";
+        if (column === "composer") {
+            av = a[FIELD.composer] || "";
+            bv = b[FIELD.composer] || "";
+        } else if (column === "title") {
+            av = getPerfTitle(a);
+            bv = getPerfTitle(b);
+        } else if (column === "collection") {
+            av = getPerfCollection(a);
+            bv = getPerfCollection(b);
+        }
+        return av.localeCompare(bv) * PERF_SORT.dir;
+    });
+
+    renderPerformancesTable(sorted);
+}
+
+</script>

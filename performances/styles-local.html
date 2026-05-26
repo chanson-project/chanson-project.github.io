@@ -1,0 +1,58 @@
+<style>
+
+.wrapper {
+  max-width: 900px;
+}
+
+table.general thead th {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,122,255,0.14),
+    rgba(0,122,255,0.08)
+  );
+  color: #003a8f;
+  border-bottom: 1px solid rgba(0,122,255,0.25);
+}
+
+table.general thead th.sortable {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+table.general thead th.sortable:hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,122,255,0.22),
+    rgba(0,122,255,0.14)
+  );
+}
+
+/* YouTube icon column: narrow and centered */
+table.general th:last-child,
+table.general td.yt-cell {
+  width: 40px;
+  text-align: center;
+  padding: 6px 8px;
+}
+
+.yt-link {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+}
+.yt-link:hover {
+  opacity: 1;
+}
+.yt-icon-svg {
+  display: block;
+}
+
+#performances-count {
+  color: #6A6156;
+  font-size: 13px;
+  margin: 4px 0 12px;
+}
+
+</style>

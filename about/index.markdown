@@ -50,6 +50,14 @@ order: 1
         </div>
     </div>
     <div class="team-member">
+        <img src="/images/headshots/Ayan.png" alt="Irem Ayan">
+        <div class="bio">
+            <h3>Irem Ayan</h3>
+            <p class="role" data-i18n="about.role_researcher">Researcher</p>
+            <p data-i18n-html="about.bio_irem"></p>
+        </div>
+    </div>
+    <div class="team-member">
         <img src="/images/headshots/Boone.jpg" alt="Samuel Boone">
         <div class="bio">
             <h3>Samuel Boone</h3>

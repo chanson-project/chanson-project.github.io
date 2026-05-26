@@ -54,6 +54,7 @@ fields:
     topic:     "!!!AGN-topic"
     laforte:   "Laforte"
     chamberland: "Chamberland"
+    url_youtube: "!!!URL-youtube"
   sources:
     id:        "!!!id"
     title:     "!!!PTL"

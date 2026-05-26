@@ -57,6 +57,8 @@ function buildSearchInterface(data) {
 // displayBrowseTable --
 //
 
+const YT_ICON_SVG = `<svg class="yt-icon-svg" width="18" height="13" viewBox="0 0 90 63" xmlns="http://www.w3.org/2000/svg"><rect width="90" height="63" rx="13" fill="#FF0000"/><polygon points="37,15 37,48 64,31" fill="white"/></svg>`;
+
 let CURRENT_DATA = [];
 let SORT_STATE = { column: null, dir: 1 };
 
@@ -202,7 +204,11 @@ function makeTableBody(headings, data) {
 			output += `<td class="${tdClass}">`;
 			if (h === INDEX_title) {
 				let scoreURL = getScoreURL(entry);
-				output += `<a href=${scoreURL} target="_blank" rel="noopener noreferrer">${getTitle(entry)}</a>`;
+				let ytURL = entry[FIELD.url_youtube] || "";
+				let ytLink = ytURL
+					? ` <a href="${ytURL}" target="_blank" rel="noopener noreferrer" class="yt-link" title="Watch on YouTube">${YT_ICON_SVG}</a>`
+					: "";
+				output += `<a href=${scoreURL} target="_blank" rel="noopener noreferrer">${getTitle(entry)}</a>${ytLink}`;
 			} else if (h === INDEX_collection) {
 				output += getCollection(entry);
 			} else if (h === INDEX_editor) {
