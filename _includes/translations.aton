@@ -14,10 +14,19 @@
 @nav.performances: Performances
 @nav.sources: Sources
 @nav.documentation: Documentation
+@nav.feedback: Feedback
+
+@ feedback modal
+@feedback.title: Send Feedback
+@feedback.description: Do you see a mistake in a score? Disagree with an editorial choice? Let us know.
+@feedback.placeholder: Your message…
+@feedback.send: Send
+@feedback.cancel: Cancel
 
 @ home page
 @home.browse: Browse
 @home.search_placeholder: Search composers, works, genres…
+@home.melodic_placeholder: Melody: G A F# E …
 @home.project_data: Project Data
 @home.works: Works
 @home.encoders: Encoders
@@ -33,7 +42,9 @@
 @rep.heading: Chansons
 @rep.search_placeholder: Enter title, composer, etc.
 @rep.melodic_placeholder: Melody: G Bb G F# E …
-@rep.show_variants: Show variants
+@rep.variants_hide: Do not show variants
+@rep.variants_show: Show variants
+@rep.variants_only: Show only variants
 @rep.col_id: ID
 @rep.col_title: Title
 @rep.col_composer: Composer
@@ -236,10 +247,19 @@
 @nav.performances: Interprétations
 @nav.sources: Sources
 @nav.documentation: Documentation
+@nav.feedback: Commentaires
+
+@ modal de commentaires
+@feedback.title: Envoyer des commentaires
+@feedback.description: Vous voyez une erreur dans une partition ? Vous n'êtes pas d'accord avec un choix éditorial ? Faites-le nous savoir.
+@feedback.placeholder: Votre message…
+@feedback.send: Envoyer
+@feedback.cancel: Annuler
 
 @ page d'accueil
 @home.browse: Parcourir
 @home.search_placeholder: Chercher compositeurs, œuvres, genres…
+@home.melodic_placeholder: Mélodie : G A F# E …
 @home.project_data: Données du projet
 @home.works: Œuvres
 @home.encoders: Encodeurs
@@ -255,7 +275,9 @@
 @rep.heading: Chansons
 @rep.search_placeholder: Entrer titre, compositeur, etc.
 @rep.melodic_placeholder: Mélodie : G Bb G F# E …
-@rep.show_variants: Afficher les variantes
+@rep.variants_hide: Ne pas afficher les variantes
+@rep.variants_show: Afficher les variantes
+@rep.variants_only: Afficher uniquement les variantes
 @rep.col_id: ID
 @rep.col_title: Titre
 @rep.col_composer: Compositeur

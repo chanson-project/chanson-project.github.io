@@ -27,16 +27,27 @@ layout: page
   <!-- LEFT COLUMN -->
   <div class="left-column">
     <div class="section-header"><h4 data-i18n="home.browse">Browse</h4></div>
-    <div class="browse-box apple-search">
-      <input
-        type="search"
-        id="input"
-        placeholder="Search composers, works, genres…"
-        data-i18n-placeholder="home.search_placeholder"
-        autocomplete="off"
-      >
-      <div id="search-suggestions"
-           class="search-suggestions hidden"></div>
+    <div class="browse-box">
+      <div class="apple-search">
+        <input
+          type="search"
+          id="input"
+          placeholder="Search composers, works, genres…"
+          data-i18n-placeholder="home.search_placeholder"
+          autocomplete="off"
+        >
+        <div id="search-suggestions"
+             class="search-suggestions hidden"></div>
+      </div>
+      <div class="apple-search home-melodic-search">
+        <input
+          type="text"
+          id="melodic-input"
+          placeholder="Melody: G A F# E …"
+          data-i18n-placeholder="home.melodic_placeholder"
+          autocomplete="off"
+        >
+      </div>
     </div>
     <div class="section-header"><h4 data-i18n="home.project_data">Project Data</h4></div>
     <div class="data-box apple-data">

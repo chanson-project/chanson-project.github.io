@@ -31,22 +31,34 @@ function buildSearchInterface(data) {
   document.getElementById("collection-container").appendChild(createElementFromHTML(buildCollectionSelect(data)));
   document.getElementById("editor-container").appendChild(createElementFromHTML(buildEditorSelect(data)));
 
-  const label = document.createElement("label");
-  label.className = "text-checkbox-label";
+  const variantsSelect = document.createElement("select");
+  variantsSelect.id = "variants-select";
+  variantsSelect.onchange = doSearch;
 
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.id = "variants-checkbox";
-  checkbox.onchange = doSearch;
+  const optHide = document.createElement("option");
+  optHide.value = "hide";
+  optHide.setAttribute("data-i18n", "rep.variants_hide");
+  optHide.textContent = t("rep.variants_hide");
 
-  label.appendChild(checkbox);
-  label.appendChild(document.createTextNode(t('rep.show_variants')));
+  const optShow = document.createElement("option");
+  optShow.value = "show";
+  optShow.setAttribute("data-i18n", "rep.variants_show");
+  optShow.textContent = t("rep.variants_show");
+
+  const optOnly = document.createElement("option");
+  optOnly.value = "only";
+  optOnly.setAttribute("data-i18n", "rep.variants_only");
+  optOnly.textContent = t("rep.variants_only");
+
+  variantsSelect.appendChild(optHide);
+  variantsSelect.appendChild(optShow);
+  variantsSelect.appendChild(optOnly);
 
   const textedContainer = document.getElementById("texted-container");
   if (textedContainer) {
     const wrapper = document.createElement("div");
     wrapper.className = "text-checkbox-wrapper";
-    wrapper.appendChild(label);
+    wrapper.appendChild(variantsSelect);
     textedContainer.appendChild(wrapper);
   }
 }
@@ -714,7 +726,8 @@ function doSearch(data) {
 	let editorField = searchInterface.querySelector("select.editor");
 	let editorQuery = editorField ? editorField.value : "";
 
-	let variantsCheckbox = document.querySelector("#variants-checkbox");
+	let variantsSelect = document.querySelector("#variants-select");
+	let variantsValue  = variantsSelect ? variantsSelect.value : "hide";
 
 	if (composerQuery) {
 		data = data.filter(entry => entry[INDEX_composer] === composerQuery);
@@ -744,8 +757,10 @@ function doSearch(data) {
 		data = data.filter(entry => getEditor(entry) === editorQuery);
 	}
 
-	if (!variantsCheckbox || !variantsCheckbox.checked) {
+	if (variantsValue === "hide") {
 		data = data.filter(entry => !/[c-z]$/i.test(entry[FIELD.id] || ""));
+	} else if (variantsValue === "only") {
+		data = data.filter(entry => /[c-z]$/i.test(entry[FIELD.id] || ""));
 	}
 
 	displayBrowseTable(data);
@@ -1098,7 +1113,8 @@ function updateBrowseUrlDisplay() {
 	let originEl      = document.querySelector("select.origin");
 	let collectionEl  = document.querySelector("select.collection");
 	let editorEl      = document.querySelector("select.editor");
-	let variantsChecked = document.querySelector("#variants-checkbox") && document.querySelector("#variants-checkbox").checked;
+	let variantsEl    = document.querySelector("#variants-select");
+	let variantsValue = variantsEl ? variantsEl.value : "hide";
 
 	let composer   = composerEl   ? composerEl.value.trim()   : "";
 	let origin     = originEl     ? originEl.value.trim()     : "";
@@ -1126,9 +1142,9 @@ function updateBrowseUrlDisplay() {
 		if (cgi) cgi += "&";
 		cgi += "ed=" + encodeURIComponent(editor);
 	}
-	if (variantsChecked) {
+	if (variantsValue === "show" || variantsValue === "only") {
 		if (cgi) cgi += "&";
-		cgi += "v=yes";
+		cgi += "v=" + variantsValue;
 	}
 
 	if (cgi) {
@@ -1159,7 +1175,7 @@ function clearSearchFields() {
 	let originElement      = document.querySelector("select.origin");
 	let collectionElement  = document.querySelector("select.collection");
 	let editorElement      = document.querySelector("select.editor");
-	let variantsCheckbox   = document.querySelector("#variants-checkbox");
+	let variantsSelect     = document.querySelector("#variants-select");
 
 	const melodicElement = document.getElementById("melodic-input");
 
@@ -1171,7 +1187,7 @@ function clearSearchFields() {
 	if (originElement)     originElement.value     = "";
 	if (collectionElement) collectionElement.value = "";
 	if (editorElement)     editorElement.value     = "";
-	if (variantsCheckbox)  variantsCheckbox.checked = false;
+	if (variantsSelect)    variantsSelect.value = "hide";
 	if (melodicElement)    melodicElement.value    = "";
 	MELODIC_MATCH_IDS = null;
 	MELODIC_QUERY     = null;

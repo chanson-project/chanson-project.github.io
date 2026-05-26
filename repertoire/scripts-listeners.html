@@ -71,10 +71,13 @@ document.addEventListener("DOMContentLoaded", function () {
 		runSearch = true;
 	}
 
-	// Show all variants if requested:
-	if (cgi.v === "yes") {
-		let variantsEl = document.querySelector("#variants-checkbox");
-		if (variantsEl) variantsEl.checked = true;
+	// Set variants dropdown from URL:
+	if (cgi.v) {
+		let variantsEl = document.querySelector("#variants-select");
+		if (variantsEl) {
+			if (cgi.v === "only") variantsEl.value = "only";
+			else variantsEl.value = "show"; // handles "show" and legacy "yes"
+		}
 		runSearch = true;
 	}
 
@@ -92,10 +95,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		FreeTextSearch(cgi.search);
 	}
 
-	// Move the cursor to the search box when the page is loaded:
-	let searchElement = document.querySelector("#input");
-	if (searchElement) {
-		searchElement.focus();
+	// Pre-populate and run melodic search if passed via URL:
+	if (cgi.melody) {
+		let melodicInput = document.getElementById('melodic-input');
+		if (melodicInput) {
+			melodicInput.value = cgi.melody;
+			_runMelodicSearch();
+		}
+	} else {
+		// Move the cursor to the search box when the page is loaded:
+		let searchElement = document.querySelector("#input");
+		if (searchElement) {
+			searchElement.focus();
+		}
 	}
 
 });

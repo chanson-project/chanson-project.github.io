@@ -6,7 +6,7 @@
 		"!!!PPR": "La Bonne Chanson, inc.",
 		"!!!PPP": "Saint-Hyacinthe",
 		"!!!PED": "Gadbois, Charles-Émile",
-		"!!!YEM": "On ne peut reproduire, enregistrer ou diffuser en tout ou en partie le présent ouvrage, sous quelque procédé que ce soit, électronique, mécanique, photographique, sonore, magnétique ou autre, sans avoir obtenu au préalable l'autorisation écrite de l'éditrice."
+		"!!!YEM": "2012 Bibliothèque nationale du Québec; Biblothèque nationale du Canada"
 	},
 	{
 		"!!!id": "EG104",
@@ -16,5 +16,15 @@
 		"!!!PPR": "G. E. Desbarats, Foyer Canadien",
 		"!!!PPP": "Bureau du \"Foyer Canadien\" | Coin des rues Sainte-Anne et des Jardins, Québec",
 		"!!!PED": "Gagnon,Ernest"
+	},
+	{
+		"!!!id": "MB1962",
+		"!!!PTL": "Le rossignol y chante",
+		"!!!PTL-sub": "Première partie du Répertoire de la chanson folklorique française au Canada, Bulletin no 175, No 52 de la série anthropologique",
+		"!!!PDT": "1962",
+		"!!!PPR": "Ministère du Nord Canadien et des Ressources Nationales, Musée National du Canada",
+		"!!!PPP": "Roger Duhamel, M.S.R.C., Imprimeur de la Reine et Contrôleur de la Papetrie, Ottawa",
+		"!!!PED": "Barbeau, Maurice",
+		"Other": "Publié avec l'authorisation de l'honorable Walter Dinsdale, C. P., ministre du Nord canadien et des Ressources nationales; N° de catalogue R93-175"
 	}
 ]
