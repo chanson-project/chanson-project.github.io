@@ -202,7 +202,7 @@ function makeTableBody(headings, data) {
 			output += `<td class="${tdClass}">`;
 			if (h === INDEX_title) {
 				let scoreURL = getScoreURL(entry);
-				output += `<a href=${scoreURL}>${getTitle(entry)}</a>`;
+				output += `<a href=${scoreURL} target="_blank" rel="noopener noreferrer">${getTitle(entry)}</a>`;
 			} else if (h === INDEX_collection) {
 				output += getCollection(entry);
 			} else if (h === INDEX_editor) {
