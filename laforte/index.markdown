@@ -16,9 +16,9 @@ nav_exclude: true
 {% include_relative styles-local.html %}
 {% include styles/styles-common.css.html %}
 
-<div class="section-header"><h4 data-i18n="laforte.heading">About the Laforte Catalogue</h4></div>
-
 <div class="main-content">
+
+<div class="section-header"><h4 data-i18n="laforte.heading">About the Laforte Catalogue</h4></div>
 
 <h2 data-i18n="laforte.h_person">Conrad Laforte</h2>
 

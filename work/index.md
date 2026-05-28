@@ -3,6 +3,7 @@ layout: work
 ---
 
 {% include_relative styles-local.html %}
+{% include styles/styles-common.css.html %}
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-38882FHV3H"></script>
 <script>
