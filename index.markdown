@@ -80,8 +80,8 @@ layout: page
 
   <!-- RIGHT COLUMN -->
   <div class="right-column">
-    <div class="section-header"><h4 data-i18n="home.top_composers">Best-Represented Composers</h4></div>
-    <div id="composer-plot"></div>
+    <div class="section-header"><h4 data-i18n="home.top_topics">Most Common Topics</h4></div>
+    <div id="topic-plot"></div>
   </div>
 
 </div>

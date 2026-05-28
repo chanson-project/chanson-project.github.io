@@ -498,9 +498,13 @@ function buildGenreSelect(data) {
 function buildTopicSelect(data) {
 	let counter = {};
 	for (let i = 0; i < data.length; i++) {
-		let tp = (data[i][FIELD.topic] || "").trim();
-		if (!tp) continue;
-		counter[tp] = (counter[tp] === undefined) ? 1 : counter[tp] + 1;
+		let raw = (data[i][FIELD.topic] || "").trim();
+		if (!raw) continue;
+		let parts = raw.split(";").map(s => s.trim()).filter(Boolean);
+		for (let j = 0; j < parts.length; j++) {
+			let tp = parts[j];
+			counter[tp] = (counter[tp] === undefined) ? 1 : counter[tp] + 1;
+		}
 	}
 	let tlist = Object.keys(counter).sort((a, b) => a.localeCompare(b));
 	let output = "<select class='topic' onchange='doSearch()'>\n";
@@ -750,7 +754,11 @@ function doSearch(data) {
 	}
 
 	if (topicQuery) {
-		data = data.filter(entry => (entry[FIELD.topic] || "").trim() === topicQuery);
+		data = data.filter(entry => {
+			const raw = (entry[FIELD.topic] || "").trim();
+			if (!raw) return false;
+			return raw.split(";").map(s => s.trim()).some(t => t === topicQuery);
+		});
 	}
 
 	if (editorQuery) {

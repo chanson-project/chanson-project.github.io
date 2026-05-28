@@ -45,6 +45,9 @@ layout: work
     </div>
 </div>
 
+<div class="PREHTML" style="display:none"></div>
+<div class="POSTHTML" style="display:none"></div>
+
 <script type="text/x-humdrum" id="my-score"></script>
 
 <div id="work-footer"></div>
