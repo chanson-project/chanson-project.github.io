@@ -2,6 +2,7 @@
 layout: page
 title: documentation
 order: 2
+nav_exclude: true
 ---
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-38882FHV3H"></script>

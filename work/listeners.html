@@ -46,6 +46,7 @@ DATA1520.workid = DATA1520.cgi.id || "BC001";
 document.addEventListener("DOMContentLoaded", function (event) {
 	initializeAccidentalStateButton();
 	TEXT_FILTER_ACTIVE = window.localStorage.TextFilterState === "show";
+	DEG_FILTER_ACTIVE  = window.localStorage.DegFilterState  === "show";
 
 	// Create lookup tables for metadata:
 	DATA1520.lookup.works           = createLookup(DATA1520.metadata.works);

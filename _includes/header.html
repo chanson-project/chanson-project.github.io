@@ -337,25 +337,23 @@
         </label>
 
         <div class="trigger">
-          {%- assign pages_list = site.pages | where_exp: "item", "page_paths contains item.path" | sort: 'order' -%}
-          {%- assign pages_list = site.pages | where_exp: "item", "page_paths contains item.path" | sort: 'order' -%}
-          {%- assign counter = 0 -%}   <!-- Initialize a counter -->
+          <a class="page-link" href="/about/" data-i18n="nav.about">about</a>
 
-          {%- for my_page in pages_list -%}
-            {%- if my_page.title and my_page.nav_exclude != true -%}
-              <a class="page-link" href="{{ my_page.url | relative_url }}" data-i18n="nav.{{ my_page.title }}">{{ my_page.title | escape }}</a>
+          <div class="dropdown">
+            <span class="page-link" data-i18n="nav.documentation" style="cursor:pointer">documentation ▾</span>
+            <div class="dropdown-content">
+              <a href="/laforte/" data-i18n="nav.laforte">About Laforte</a>
+              <a href="/documentation/" data-i18n="nav.encoding_practices">Encoding Practices</a>
+            </div>
+          </div>
 
-              {%- assign counter = counter | plus: 1 -%}
-
-            {%- endif -%}
-          {%- endfor -%}
+          <a class="page-link" href="/repertoire/" data-i18n="nav.chansons">chansons</a>
 
           <div class="dropdown">
             <span class="page-link" data-i18n="nav.sources" style="cursor:pointer">sources ▾</span>
             <div class="dropdown-content">
               <a href="/performances/" data-i18n="nav.performances">Performances</a>
-              <a href="/repertoire/?col=Les%20cent%20plus%20belles%20chansons">Les cent plus belles chansons</a>
-              <a href="/repertoire/?col=Chansons%20populaires%20du%20Canada">Chansons populaires du Canada</a>
+              <a href="https://kern.humdrum.org/cgi-bin/browse?l=/vivant" target="_blank" rel="noopener">KernScores</a>
             </div>
           </div>
 

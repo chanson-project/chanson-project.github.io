@@ -98,6 +98,9 @@ function displayWork(id) {
 			injectHtmlBlock("POSTHTML", html);
 		};
 	}
+	if (DEG_FILTER_ACTIVE) {
+		hnpOptions.filter.push("deg");
+	}
 	let prefix = id.substring(0, 2);
 	if (prefix === "BC" || prefix === "EG") {
 		let dir = prefix === "BC" ? "bc100" : "eg104";
@@ -566,6 +569,22 @@ function displayText() {
 	if (btn) {
 		btn.setAttribute("data-i18n", TEXT_FILTER_ACTIVE ? "work.hide_text" : "work.show_text");
 		btn.textContent = TEXT_FILTER_ACTIVE ? t("work.hide_text") : t("work.show_text");
+	}
+}
+
+
+let DEG_FILTER_ACTIVE = false;
+
+function displayScaleDegrees() {
+	DEG_FILTER_ACTIVE = !DEG_FILTER_ACTIVE;
+	window.localStorage.DegFilterState = DEG_FILTER_ACTIVE ? "show" : "hide";
+
+	displayWork(DATA1520.workid);
+
+	const btn = document.querySelector(".show-deg");
+	if (btn) {
+		btn.setAttribute("data-i18n", DEG_FILTER_ACTIVE ? "work.hide_deg" : "work.show_deg");
+		btn.textContent = DEG_FILTER_ACTIVE ? t("work.hide_deg") : t("work.show_deg");
 	}
 }
 

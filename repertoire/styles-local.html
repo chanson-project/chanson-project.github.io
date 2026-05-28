@@ -464,4 +464,89 @@ button[onclick="clearSearchFields()"]:hover {
   text-decoration: none;
 }
 
+/* ── Responsive breakpoints ─────────────────────────────────────────────── */
+
+@media screen and (max-width: 800px) {
+  .wrapper {
+    max-width: 100%;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .left-group {
+    width: 100%;
+  }
+
+  #input,
+  #melodic-input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .right-group {
+    margin-left: 0;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  #dropdowns {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .top-line {
+    width: 100%;
+  }
+
+  select {
+    max-width: 100%;
+    flex: 1 1 140px;
+  }
+
+  #source-container select,
+  #composer-container select,
+  #year-container select,
+  #voice-container select,
+  #genre-container select {
+    max-width: 100%;
+  }
+
+  .dropdown-toggle {
+    max-width: 100%;
+  }
+
+  #texted-container {
+    justify-content: flex-start;
+  }
+
+  .bottom-controls {
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #input,
+  #melodic-input {
+    font-size: 15px;
+    padding: 10px 14px 10px 38px;
+  }
+
+  select {
+    font-size: 14px;
+    padding: 8px 32px 8px 10px;
+  }
+
+  #list {
+    overflow-x: auto;
+  }
+
+  table.general {
+    min-width: 480px;
+  }
+}
+
 </style>
