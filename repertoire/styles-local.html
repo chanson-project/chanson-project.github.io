@@ -4,29 +4,36 @@
   max-width: 1000px;
 }
 
+/* ── YouTube icon ───────────────────────────────────────────────────────── */
+
 .yt-link {
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
-  margin-left: 5px;
-  opacity: 0.75;
-  transition: opacity 0.15s ease;
+  margin-left: 6px;
+  opacity: 0.8;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 .yt-link:hover {
   opacity: 1;
+  transform: scale(1.15);
 }
 .yt-icon-svg {
   display: block;
 }
 
+/* ── Table header ───────────────────────────────────────────────────────── */
+
 table.general thead th {
   background: linear-gradient(
     to bottom,
-    rgba(0,122,255,0.14),
-    rgba(0,122,255,0.08)
+    rgba(42,157,143,0.18),
+    rgba(42,157,143,0.08)
   );
-  color: #003a8f;
-  border-bottom: 1px solid rgba(0,122,255,0.25);
+  color: #1d756d;
+  border-bottom: 2px solid rgba(42,157,143,0.25);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 table.general thead th.sortable {
@@ -38,12 +45,12 @@ table.general thead th.sortable {
 table.general thead th.sortable:hover {
   background: linear-gradient(
     to bottom,
-    rgba(0,122,255,0.22),
-    rgba(0,122,255,0.14)
+    rgba(42,157,143,0.28),
+    rgba(42,157,143,0.16)
   );
 }
 
-/* Truncate long text in 5th column with ellipsis */
+/* Truncate long text in 5th column */
 table.general td:nth-child(5) {
   max-width: 220px;
   white-space: nowrap;
@@ -51,127 +58,171 @@ table.general td:nth-child(5) {
   text-overflow: ellipsis;
 }
 
+/* ── Search interface ───────────────────────────────────────────────────── */
+
 #search-interface {
-	margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 #input {
-  width: 250px;
-
-  font-size: 15px;
+  width: 270px;
+  font-size: 17px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
   line-height: 1.4;
-
-  padding: 10px 12px 10px 38px;
-
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.18);
-
-  background-color: rgba(255,255,255,0.9);
-
+  padding: 13px 16px 13px 44px;
+  border-radius: 14px;
+  border: 2px solid rgba(0,0,0,0.12);
+  background-color: rgba(255,255,255,0.95);
   background-image: url('/images/searchicon.png');
-  background-position: 12px center;
+  background-position: 14px center;
   background-repeat: no-repeat;
-
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.04),
-    0 4px 12px rgba(0,0,0,0.06);
-
+  background-size: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 6px 20px rgba(0,0,0,0.04);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 #input:focus,
 #melodic-input:focus {
   outline: none;
-  border-color: #007aff;
+  border-color: #2A9D8F;
   box-shadow:
-    0 0 0 1px rgba(0,122,255,0.5),
-    0 6px 16px rgba(0,122,255,0.15);
+    0 0 0 3px rgba(42,157,143,0.2),
+    0 6px 20px rgba(42,157,143,0.1);
 }
 
 #melodic-input {
-  width: 250px;
-  font-size: 15px;
+  width: 270px;
+  font-size: 17px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
   line-height: 1.4;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.18);
-  background-color: rgba(255,255,255,0.9);
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.04),
-    0 4px 12px rgba(0,0,0,0.06);
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 2px solid rgba(0,0,0,0.12);
+  background-color: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 6px 20px rgba(0,0,0,0.04);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
+/* ── Dropdowns ──────────────────────────────────────────────────────────── */
+
 select {
-  font-size: 14px;
-  padding: 8px 12px;
+  font-size: 15px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  padding: 10px 36px 10px 14px;
   max-width: 200px;
-
-  border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.18);
-
-  background-color: rgba(255,255,255,0.9);
-
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.04),
-    0 4px 12px rgba(0,0,0,0.06);
-
+  border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.10);
+  background-color: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   appearance: none;
   -webkit-appearance: none;
-  -moz-appearance: none;
-
   background-image: url('data:image/svg+xml;utf8,\
-  <svg fill="%236e6e73" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">\
+  <svg fill="%232A9D8F" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
   <path d="M7 10l5 5 5-5z"/></svg>');
   background-repeat: no-repeat;
   background-position: right 10px center;
-  padding-right: 30px;
-
   cursor: pointer;
-}
-
-#source-container select {
-  max-width: 175px;
-}
-
-#composer-container select {
-  max-width: 150px;
-}
-
-#year-container select {
-  max-width: 110px;
-}
-
-#voice-container select, 
-#genre-container select {
-  max-width: 90px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 select:hover {
-  border-color: rgba(0,0,0,0.3);
+  border-color: rgba(42,157,143,0.4);
 }
 
 select:focus {
   outline: none;
-  border-color: #007aff;
-  box-shadow:
-    0 0 0 1px rgba(0,122,255,0.5),
-    0 6px 16px rgba(0,122,255,0.15);
+  border-color: #2A9D8F;
+  box-shadow: 0 0 0 3px rgba(42,157,143,0.18);
 }
 
-.mensuration-wrapper {
-  display: flex;
+#source-container select  { max-width: 175px; }
+#composer-container select { max-width: 160px; }
+#year-container select    { max-width: 110px; }
+#voice-container select,
+#genre-container select   { max-width: 110px; }
+
+/* ── Variants dropdown ──────────────────────────────────────────────────── */
+
+#variants-select {
+  font-size: 15px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  padding: 10px 36px 10px 14px;
+  border-radius: 12px;
+  border: 2px solid rgba(231,111,81,0.3);
+  background-color: rgba(255,255,255,0.95);
+  color: #c05030;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,\
+  <svg fill="%23E76F51" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
+  <path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
 }
+
+#variants-select:focus {
+  outline: none;
+  border-color: #E76F51;
+  box-shadow: 0 0 0 3px rgba(231,111,81,0.18);
+}
+
+/* ── Dropdowns layout ───────────────────────────────────────────────────── */
+
+#dropdowns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+#dropdowns select {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.top-line, .bottom-line {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.left-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+#search-count {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2A9D8F;
+  margin-top: 6px;
+}
+
+/* ── Custom mensuration dropdown ────────────────────────────────────────── */
+
+.mensuration-wrapper { display: flex; }
 
 .mensuration-options img {
-  height: 28px;
+  height: 30px;
   cursor: pointer;
   transition: transform 0.1s ease;
 }
-
-.mensuration-options img:hover {
-  transform: scale(1.2);
-}
+.mensuration-options img:hover { transform: scale(1.2); }
 
 .selected-mensurations {
   display: flex;
@@ -181,69 +232,42 @@ select:focus {
   margin-bottom: 10px;
 }
 
-/* Apple-style pill */
 .selected-mensuration {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-
-  padding: 5px 12px;
-
-  font-size: 13px;
-  font-weight: 500;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
   color: #1c1c1e;
-
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255,255,255,0.8);
+  border: 2px solid rgba(0,0,0,0.10);
   border-radius: 999px;
-
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 2px 6px rgba(0, 0, 0, 0.06);
-
-  transition:
-    background-color 0.15s ease,
-    box-shadow 0.15s ease,
-    transform 0.1s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
 }
-
 .selected-mensuration:hover {
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.8) inset,
-    0 4px 10px rgba(0, 0, 0, 0.08);
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* Subtle Apple-style remove button */
 .selected-mensuration .remove-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  width: 16px;
-  height: 16px;
-
-  font-size: 12px;
-  line-height: 1;
-  font-weight: 600;
-
+  width: 18px;
+  height: 18px;
+  font-size: 13px;
+  font-weight: 700;
   border-radius: 50%;
   color: #6e6e73;
-  background: rgba(0, 0, 0, 0.06);
-
+  background: rgba(0,0,0,0.06);
   cursor: pointer;
-
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
+  transition: background 0.15s, color 0.15s;
 }
-
 .selected-mensuration .remove-btn:hover {
-  background: rgba(255, 59, 48, 0.15);
-  color: #ff3b30;
+  background: rgba(231,111,81,0.18);
+  color: #E76F51;
 }
 
 .mensuration-menu {
@@ -256,275 +280,187 @@ select:focus {
 
 .custom-dropdown {
   position: relative;
-  display: inline-block; /* or block, depending on your layout */
-  vertical-align: top;   /* aligns nicely if inline */
+  display: inline-block;
+  vertical-align: top;
 }
 
 .dropdown-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   max-width: 275px;
-  height: 40px;
-
-  font-size: 14px;
-  line-height: 1.2;
-
-  padding: 8px 36px 8px 12px;
-
-  border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.18);
-
-  background-color: rgba(255,255,255,0.9);
-
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.04),
-    0 4px 12px rgba(0,0,0,0.06);
-
+  height: 44px;
+  font-size: 15px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  padding: 8px 36px 8px 14px;
+  border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.10);
+  background-color: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   appearance: none;
   -webkit-appearance: none;
-
   background-image: url('data:image/svg+xml;utf8,\
-<svg fill="%236e6e73" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">\
+<svg fill="%232A9D8F" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
 <path d="M7 10l5 5 5-5z"/>\
 </svg>');
   background-repeat: no-repeat;
   background-position: right 12px center;
-  background-size: 18px;
-
+  background-size: 20px;
   cursor: pointer;
-
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
-
-.dropdown-toggle:hover {
-  border-color: rgba(0,0,0,0.3);
-}
-
+.dropdown-toggle:hover { border-color: rgba(42,157,143,0.4); }
 .custom-dropdown.open .dropdown-toggle,
 .dropdown-toggle:focus {
   outline: none;
-  border-color: #007aff;
-  box-shadow:
-    0 0 0 1px rgba(0,122,255,0.5),
-    0 6px 16px rgba(0,122,255,0.15);
+  border-color: #2A9D8F;
+  box-shadow: 0 0 0 3px rgba(42,157,143,0.18);
 }
-
-
-.dropdown-toggle .toggle-text {
-  text-align: left;
-}
+.dropdown-toggle .toggle-text { text-align: left; }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  top: calc(100% + 4px); /* directly below the button */
+  top: calc(100% + 6px);
   left: 0;
   z-index: 99;
-
-  background-color: #fff;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  padding: 10px;
+  background: #fff;
+  border: 2px solid rgba(42,157,143,0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  padding: 12px;
   max-width: 300px;
   min-width: 200px;
-
   flex-wrap: wrap;
   gap: 10px;
 }
-
 .custom-dropdown.open .dropdown-content {
   display: flex;
   flex-wrap: wrap;
 }
 
 .mensuration-item {
-  padding: 4px;
-  border-radius: 6px;
+  padding: 5px;
+  border-radius: 8px;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: transform 0.1s ease, border-color 0.2s ease;
+  transition: transform 0.1s, border-color 0.2s;
 }
-
-.mensuration-item:hover {
-  transform: scale(1.1);
-  border-color: #bbb;
-}
-
-.mensuration-item.selected {
-  border-color: steelblue;
-  background-color: #eef;
-}
-
-.mensuration-img {
-  height: 28px;
-  width: auto;
-}
-
-.mensuration-item.selected {
-  border-color: steelblue;
-  background-color: #eef;
-}
-
-.mensuration-img {
-  height: 28px;
-  width: auto;
-}
-
-#dropdowns {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: flex-end;
-}
-
-#dropdowns select {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 14px;
-}
-
-.top-line, .bottom-line {
-  display: flex;
-  gap: 12px;
-}
-
-.left-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-
-#search-count {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-top: 6px;
-}
-
-/* Standard size for all four top dropdowns */
-.select {
-  padding: 6px 10px;
-  font-size: 14px;
-
-  height: 32px;
-  max-width: 250px;
-
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.18);
-
-  background-color: rgba(255,255,255,0.75);
-  /*backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);*/
-
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.6) inset,
-    0 2px 6px rgba(0,0,0,0.06);
-
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  background-image: url('data:image/svg+xml;utf8,\
-<svg fill="%236e6e73" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
-<path d="M7 10l5 5 5-5z"/>\
-</svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 18px;
-  padding-right: 34px;
-
-  cursor: pointer;
-
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease,
-    background-color 0.15s ease;
-}
-
-.text-checkbox-wrapper.full-width {
-  flex-basis: 100%;
-  margin-top: 6px;        /* adds space between rows */
-}
-
-.text-checkbox-wrapper {
-  margin: 0;
-  padding-left: 2px;   /* adjust if you want to nudge horizontally */
-}
-
-.text-checkbox-label {
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+.mensuration-item:hover { transform: scale(1.12); border-color: #bbb; }
+.mensuration-item.selected { border-color: #2A9D8F; background-color: rgba(42,157,143,0.08); }
+.mensuration-img { height: 30px; width: auto; }
 
 .dropdown-row {
   overflow: visible !important;
-  position: relative; /* ensures absolute children are positioned correctly */
+  position: relative;
 }
 
 .right-group {
   display: flex;
   flex-direction: column;
-  align-items: flex-end; 
-  gap: 6px;
+  align-items: flex-end;
+  gap: 8px;
   margin-left: auto;
 }
 
-/* stack dropdowns + checkbox vertically */
 #texted-container {
   display: flex;
   justify-content: flex-end;
   margin-top: 6px;
 }
 
-/* Apple-ish checkbox styling */
 .text-checkbox-wrapper {
-  font-size: 13px;
+  margin: 0;
+  padding-left: 2px;
+  font-size: 15px;
+  font-weight: 600;
   color: #6e6e73;
 }
+
+.text-checkbox-label {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.text-checkbox-wrapper.full-width {
+  flex-basis: 100%;
+  margin-top: 6px;
+}
+
+.select {
+  padding: 8px 34px 8px 14px;
+  font-size: 15px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  height: 44px;
+  max-width: 250px;
+  border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.10);
+  background-color: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,\
+<svg fill="%232A9D8F" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
+<path d="M7 10l5 5 5-5z"/>\
+</svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 18px;
+  padding-right: 34px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+/* ── Bottom controls ────────────────────────────────────────────────────── */
 
 .bottom-controls {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+
+button[onclick="clearSearchFields()"] {
+  padding: 10px 20px;
+  font-size: 15px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  border-radius: 12px;
+  border: 2px solid rgba(231,111,81,0.35);
+  background: rgba(255,255,255,0.9);
+  color: #E76F51;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+button[onclick="clearSearchFields()"]:hover {
+  background: #E76F51;
+  color: #fff;
+  border-color: #E76F51;
 }
 
 .help-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: 1.5px solid #999;
-  color: #555;
-  font-size: 14px;
-  font-weight: 700;
+  border: 2px solid rgba(42,157,143,0.4);
+  color: #2A9D8F;
+  font-size: 15px;
+  font-weight: 800;
   text-decoration: none;
   line-height: 1;
   flex-shrink: 0;
   transition: background 0.15s, color 0.15s;
 }
-
 .help-btn:hover {
-  background: #1d1d1f;
+  background: #2A9D8F;
   color: #fff;
-  border-color: #1d1d1f;
+  border-color: #2A9D8F;
   text-decoration: none;
 }
 
