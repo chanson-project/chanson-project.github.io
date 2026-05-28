@@ -1025,6 +1025,29 @@ function setOriginSelectMenu(input) {
 
 //////////////////////////////
 //
+// setTopicSelectMenu -- Set the topic dropdown from the "topic" CGI parameter.
+//
+
+function setTopicSelectMenu(input) {
+	if (!input) return;
+	let topicSelect = document.querySelector("select.topic");
+	if (!topicSelect) return;
+	let options = topicSelect.querySelectorAll("option");
+	for (let i = 0; i < options.length; i++) {
+		if (options[i].value === input) {
+			options[i].selected = true;
+			return;
+		}
+	}
+	let regex = new RegExp(input, "i");
+	for (let i = 0; i < options.length; i++) {
+		if (options[i].value.match(regex)) {
+			options[i].selected = true;
+			return;
+		}
+	}
+}
+
 // setCollectionSelectMenu -- Set the collection dropdown from the "col" CGI parameter.
 //
 

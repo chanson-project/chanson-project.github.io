@@ -36,7 +36,7 @@
 @home.motets: Motets
 @home.secular_works: Secular works
 @home.top_composers: Best-Represented Composers
-@home.top_topics: Most Common Topics
+@home.top_topics: Browse by Topic
 @home.sources: Sources
 @home.composers: Composers
 @home.pages: Pages
@@ -308,7 +308,7 @@
 @home.motets: Motets
 @home.secular_works: Œuvres profanes
 @home.top_composers: Compositeurs les mieux représentés
-@home.top_topics: Thèmes les plus fréquents
+@home.top_topics: Parcourir par thème
 @home.sources: Sources
 @home.composers: Compositeurs
 @home.pages: Pages

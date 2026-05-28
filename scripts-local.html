@@ -251,8 +251,7 @@ function compareByDateAdded(a, b) {
 
 //////////////////////////////
 //
-// displayTopTopics -- Build topic counts by splitting semicolon-delimited
-//    topic fields, then render a Vega-Lite bar chart.
+// displayTopTopics -- Build a color-coded button grid, one button per topic.
 //
 
 function displayTopTopics() {
@@ -275,91 +274,66 @@ function displayTopTopics() {
 		}
 	}
 
-	const topicData = Object.keys(counter)
+	const topics = Object.keys(counter)
 		.filter(function(tp) { return counter[tp] > 1; })
-		.map(function(tp) { return { Topic: tp, Count: counter[tp] }; })
-		.sort(function(a, b) { return b.Count - a.Count; });
+		.sort(function(a, b) { return counter[b] - counter[a]; });
 
-	const isMobile = window.innerWidth < 768;
-	const fontSize = isMobile ? 11 : 14;
-	const labelOffset = isMobile ? -110 : -140;
-
-	const plotInfo = {
-		"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-		"background": "transparent",
-		"config": {
-			"font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
-			"axis": {
-				"labelFontSize": fontSize,
-				"labelColor": "#6A6156",
-				"titleFontSize": fontSize,
-				"titleColor": "#6A6156",
-				"titleFontWeight": 500,
-				"tickColor": "rgba(0,0,0,0.15)",
-				"domainColor": "rgba(0,0,0,0.15)",
-				"grid": false
-			},
-			"text": {
-				"fontSize": fontSize,
-				"fontWeight": 500,
-				"color": "#6A6156"
-			}
-		},
-		"width": isMobile ? 240 : 280,
-		"data": { "values": topicData },
-		"layer": [
-			{
-				"mark": { "type": "bar" },
-				"encoding": {
-					"x": {
-						"field": "Count",
-						"type": "quantitative",
-						"title": "Number of Works",
-						"axis": { "tickMinStep": 1, "labelFontSize": fontSize, "titleFontSize": fontSize }
-					},
-					"y": {
-						"field": "Topic",
-						"type": "nominal",
-						"title": "",
-						"sort": { "field": "Count", "order": "descending" },
-						"axis": { "labels": false, "ticks": false }
-					},
-					"color": {
-						"field": "Count",
-						"type": "quantitative",
-						"scale": { "scheme": "goldorange" },
-						"legend": null
-					}
-				}
-			},
-			{
-				"mark": {
-					"type": "text",
-					"align": "left",
-					"baseline": "middle",
-					"fontSize": fontSize,
-					"fontWeight": 500,
-					"color": "#6A6156"
-				},
-				"encoding": {
-					"x": { "value": labelOffset },
-					"y": {
-						"field": "Topic",
-						"type": "nominal",
-						"title": "",
-						"sort": { "field": "Count", "order": "descending" },
-						"axis": { "labels": false, "ticks": false }
-					},
-					"text": { "field": "Topic", "type": "nominal" }
-				}
-			}
-		],
-		"height": { "step": 25 }
+	const icons = {
+		"amour":              "💕",
+		"paysans":            "🌾",
+		"mariage":            "💍",
+		"marins":             "⚓",
+		"religion":           "🕊️",
+		"patrie":             "🏡",
+		"oiseaux":            "🐦",
+		"courtisage":         "💌",
+		"berceuse":           "🌙",
+		"mère":               "👩",
+		"métiers":            "🔨",
+		"adieux":             "👋",
+		"route":              "🛤️",
+		"enfants":            "👶",
+		"fontaine":           "⛲",
+		"amitié":             "🤝",
+		"nature":             "🌿",
+		"pastorale":          "🌻",
+		"viellesse":          "👴",
+		"oiseaux (alouette)": "🎵",
+		"chasse (canard)":    "🦆",
+		"Noël":               "⛄",
+		"guerre":             "⚔️",
+		"comique":            "😄"
 	};
 
-	requestAnimationFrame(function() {
-		vegaEmbed('#topic-plot', plotInfo, { actions: false });
+	// Orange, blue, yellow, green, coral — site palette
+	const palette = [
+		[255, 140, 66],
+		[59,  191, 206],
+		[249, 200, 70],
+		[84,  176, 108],
+		[231, 111, 81]
+	];
+
+	const grid = document.createElement("div");
+	grid.className = "topic-grid";
+
+	topics.forEach(function(tp, i) {
+		const c = palette[i % palette.length];
+		const btn = document.createElement("a");
+		btn.className = "topic-btn";
+		btn.href = "/repertoire/?topic=" + encodeURIComponent(tp);
+		btn.style.setProperty("--cr", c[0]);
+		btn.style.setProperty("--cg", c[1]);
+		btn.style.setProperty("--cb", c[2]);
+		btn.innerHTML =
+			'<span class="topic-icon">' + (icons[tp] || "🎵") + '</span>' +
+			'<span class="topic-name">' + tp + '</span>' +
+			'<span class="topic-count">' + counter[tp] + '</span>';
+		grid.appendChild(btn);
 	});
+
+	element.innerHTML = "";
+	element.appendChild(grid);
 
 }
 function renderSuggestion(entry) {

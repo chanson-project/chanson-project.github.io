@@ -146,8 +146,64 @@ main.page-content .wrapper {
 
 #topic-plot {
   background: transparent;
-  border-radius: 16px;
-  padding: 0;
+}
+
+/* === Topic button grid === */
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.topic-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(var(--cr), var(--cg), var(--cb), 0.13);
+  border: 2px solid rgba(var(--cr), var(--cg), var(--cb), 0.3);
+  text-decoration: none !important;
+  color: #2A2320;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.15s ease, background 0.15s;
+}
+
+.topic-btn:hover {
+  background: rgba(var(--cr), var(--cg), var(--cb), 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--cr), var(--cg), var(--cb), 0.28);
+  text-decoration: none !important;
+}
+
+.topic-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.topic-name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2A2320;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topic-count {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgb(var(--cr), var(--cg), var(--cb));
+  background: rgba(var(--cr), var(--cg), var(--cb), 0.15);
+  padding: 2px 7px;
+  border-radius: 999px;
+  flex-shrink: 0;
 }
 
 /* === Apple-style Search === */
