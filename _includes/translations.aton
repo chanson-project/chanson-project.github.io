@@ -258,6 +258,17 @@
 @laforte.number_roman: The Roman numeral identifies the <strong>category</strong> (I–VI above)
 @laforte.number_letter: The letter identifies the <strong>sub-category</strong> (A, B, C…)
 @laforte.number_digit: The final number is the <strong>sequential entry number</strong> within that sub-category
+@laforte.h_metre: Metre Notation
+@laforte.metre_intro: Each song in the catalogue is assigned a metre code describing the syllabic structure of its verse. The code takes the form <code>type:subtype(syllabic_pattern)</code>, where the type and subtype are numbers indicating the broad metrical class, and the parenthetical describes how many syllables appear in each line of a strophe.
+@laforte.metre_col_symbol: Symbol
+@laforte.metre_col_meaning: Meaning
+@laforte.metre_col_example: Example
+@laforte.metre_plain: A plain number gives the syllable count of a line
+@laforte.metre_plus: A plus sign marks a hemistich — an internal rhythmic break within a line
+@laforte.metre_star: An asterisk followed by a number means that line type is repeated N times
+@laforte.metre_slash: A slash indicates alternating line lengths
+@laforte.metre_comma: A comma separates different line types within the same strophe
+@laforte.metre_refrain: R: introduces the metre of the refrain, separated from the verse by a semicolon
 @laforte.h_database: In This Database
 @laforte.database: Songs in this database include their Laforte catalogue number where it has been identified, allowing researchers to cross-reference individual songs with the broader corpus of Francophone folk music.
 
@@ -519,6 +530,17 @@
 @laforte.number_roman: Le chiffre romain désigne la <strong>catégorie</strong> (I–VI ci-dessus)
 @laforte.number_letter: La lettre désigne la <strong>sous-catégorie</strong> (A, B, C…)
 @laforte.number_digit: Le chiffre final est le <strong>numéro d'entrée séquentiel</strong> au sein de cette sous-catégorie
+@laforte.h_metre: Notation métrique
+@laforte.metre_intro: Chaque chanson du catalogue se voit attribuer un code de mètre décrivant la structure syllabique de ses vers. Le code prend la forme <code>type:sous-type(structure_syllabique)</code>, où le type et le sous-type sont des chiffres indiquant la classe métrique générale, et la parenthèse décrit le nombre de syllabes dans chaque vers de la strophe.
+@laforte.metre_col_symbol: Symbole
+@laforte.metre_col_meaning: Signification
+@laforte.metre_col_example: Exemple
+@laforte.metre_plain: Un nombre simple indique le compte syllabique d'un vers
+@laforte.metre_plus: Un signe plus marque une hémistiche — une césure rythmique interne dans un vers
+@laforte.metre_star: Un astérisque suivi d'un nombre signifie que ce type de vers est répété N fois
+@laforte.metre_slash: Une barre oblique indique des longueurs de vers alternées
+@laforte.metre_comma: Une virgule sépare les différents types de vers au sein de la même strophe
+@laforte.metre_refrain: R: introduit le mètre du refrain, séparé des couplets par un point-virgule
 @laforte.h_database: Dans cette base de données
 @laforte.database: Les chansons de cette base de données incluent leur numéro du Catalogue Laforte lorsqu'il a été identifié, permettant aux chercheurs de croiser chaque chanson avec le corpus plus large de la musique folklorique francophone.
 
