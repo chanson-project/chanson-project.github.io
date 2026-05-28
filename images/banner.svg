@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" width="560" height="230">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3E0"/>
+      <stop offset="55%" stop-color="#FFE0B2"/>
+      <stop offset="100%" stop-color="#FFF7E6"/>
+    </linearGradient>
+    <linearGradient id="hill1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A5D6A7"/>
+      <stop offset="100%" stop-color="#66BB6A"/>
+    </linearGradient>
+    <linearGradient id="hill2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C8E6C9"/>
+      <stop offset="100%" stop-color="#81C784"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background sky -->
+  <rect width="560" height="230" fill="url(#sky)"/>
+
+  <!-- Far hill -->
+  <ellipse cx="280" cy="260" rx="340" ry="110" fill="url(#hill2)" opacity="0.6"/>
+  <!-- Near hill -->
+  <ellipse cx="180" cy="280" rx="280" ry="120" fill="url(#hill1)"/>
+  <!-- Ground right -->
+  <ellipse cx="480" cy="290" rx="220" ry="100" fill="#81C784" opacity="0.7"/>
+
+  <!-- Sun -->
+  <circle cx="480" cy="55" r="38" fill="#F9C846" opacity="0.85"/>
+  <circle cx="480" cy="55" r="28" fill="#FFD54F"/>
+  <!-- Sun rays -->
+  <g stroke="#F9C846" stroke-width="3" stroke-linecap="round" opacity="0.7">
+    <line x1="480" y1="7"  x2="480" y2="1"/>
+    <line x1="510" y1="16" x2="514" y2="12"/>
+    <line x1="523" y1="45" x2="529" y2="43"/>
+    <line x1="519" y1="77" x2="524" y2="80"/>
+    <line x1="494" y1="96" x2="496" y2="101"/>
+    <line x1="460" y1="96" x2="458" y2="101"/>
+    <line x1="439" y1="78" x2="434" y2="81"/>
+    <line x1="436" y1="46" x2="430" y2="44"/>
+    <line x1="449" y1="16" x2="444" y2="12"/>
+  </g>
+
+  <!-- Stars/sparkles scattered -->
+  <g fill="#F9C846" opacity="0.8">
+    <polygon points="60,30 62,36 68,36 63,40 65,46 60,42 55,46 57,40 52,36 58,36" transform="scale(0.7) translate(30,20)"/>
+    <polygon points="200,15 201.5,20 207,20 202.5,23 204,28 200,25 196,28 197.5,23 193,20 198.5,20" transform="scale(0.55)"/>
+    <polygon points="380,60 381.5,65 387,65 382.5,68 384,73 380,70 376,73 377.5,68 373,65 378.5,65" transform="scale(0.5)"/>
+    <circle cx="95" cy="25" r="3"/>
+    <circle cx="310" cy="18" r="2.5"/>
+    <circle cx="430" cy="105" r="2"/>
+  </g>
+
+  <!-- Large bird (Alouette) -->
+  <g transform="translate(85,55)">
+    <!-- Body -->
+    <ellipse cx="0" cy="0" rx="42" ry="28" fill="#FF8C42" transform="rotate(-12)"/>
+    <!-- Head -->
+    <circle cx="48" cy="-18" r="26" fill="#FF8C42"/>
+    <!-- Beak -->
+    <path d="M72 -16 L88 -14 L74 -10 Z" fill="#F9C846"/>
+    <!-- Eye -->
+    <circle cx="55" cy="-22" r="6" fill="white"/>
+    <circle cx="56" cy="-22" r="3.5" fill="#2A2320"/>
+    <circle cx="57.5" cy="-23.5" r="1.2" fill="white"/>
+    <!-- Breast feathers (lighter) -->
+    <ellipse cx="5" cy="5" rx="20" ry="14" fill="#FFB74D" opacity="0.6"/>
+    <!-- Wing -->
+    <path d="M-30 -5 Q-15 -30 10 -20 Q5 -5 -30 -5Z" fill="#E07038" opacity="0.85"/>
+    <!-- Wing stripes -->
+    <path d="M-20 -20 Q-5 -28 8 -22" fill="none" stroke="#F9C846" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <path d="M-15 -14 Q0 -22 12 -16" fill="none" stroke="#F9C846" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <!-- Tail -->
+    <path d="M-42 5 Q-58 0 -62 8 Q-56 15 -42 8Z" fill="#FF8C42"/>
+    <path d="M-42 12 Q-60 10 -65 18 Q-57 23 -42 16Z" fill="#E07038" opacity="0.8"/>
+    <!-- Crest (top of head) -->
+    <path d="M42 -40 Q50 -55 52 -46 Q48 -42 44 -44Z" fill="#F9C846"/>
+    <path d="M50 -44 Q55 -60 58 -50 Q54 -45 52 -46Z" fill="#F9C846" opacity="0.8"/>
+    <!-- Leg -->
+    <line x1="10" y1="20" x2="8" y2="40" stroke="#E07038" stroke-width="3" stroke-linecap="round"/>
+    <path d="M5 40 L8 40 L12 40" fill="none" stroke="#E07038" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Musical notes floating -->
+  <!-- Quarter note 1 -->
+  <g transform="translate(280,50) rotate(-10)" fill="#3BBFCE" opacity="0.9">
+    <ellipse cx="0" cy="14" rx="8" ry="6" transform="rotate(-20 0 14)"/>
+    <rect x="-1" y="-12" width="3.5" height="26" rx="1.5"/>
+    <path d="M2.5 -12 Q16 -17 16 -9 Q16 -4 5 -2" fill="#3BBFCE"/>
+  </g>
+  <!-- Eighth note pair -->
+  <g transform="translate(360,80) rotate(8)" fill="#E76F51" opacity="0.85">
+    <ellipse cx="0" cy="14" rx="7" ry="5" transform="rotate(-20 0 14)"/>
+    <rect x="-1" y="-8" width="3" height="22" rx="1"/>
+    <ellipse cx="18" cy="12" rx="7" ry="5" transform="rotate(-20 18 12)"/>
+    <rect x="17" y="-10" width="3" height="22" rx="1"/>
+    <path d="M2 -8 L20 -10" fill="none" stroke="#E76F51" stroke-width="3" stroke-linecap="round"/>
+    <path d="M2 -3 L20 -5" fill="none" stroke="#E76F51" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  </g>
+  <!-- Treble clef hint -->
+  <g transform="translate(440,45)" fill="#FF8C42" opacity="0.7">
+    <path d="M10 0 C4 -5 0 -10 2 -18 C5 -28 16 -28 18 -18 C20 -8 14 0 8 6 C2 12 0 20 4 26 C8 32 18 32 20 24 C22 16 16 12 10 14 C4 16 2 22 6 26"
+          fill="none" stroke="#FF8C42" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M2 8 Q16 6 18 10 Q16 14 2 12Z" fill="#FF8C42" opacity="0.5"/>
+  </g>
+  <!-- Small quarter note -->
+  <g transform="translate(500,140) rotate(5)" fill="#F9C846" opacity="0.8">
+    <ellipse cx="0" cy="10" rx="6" ry="4.5" transform="rotate(-20 0 10)"/>
+    <rect x="-0.8" y="-8" width="2.5" height="18" rx="1"/>
+  </g>
+
+  <!-- Musical staff lines at bottom -->
+  <g opacity="0.2" stroke="#FF8C42" stroke-width="1.5">
+    <line x1="0" y1="175" x2="560" y2="175"/>
+    <line x1="0" y1="182" x2="560" y2="182"/>
+    <line x1="0" y1="189" x2="560" y2="189"/>
+    <line x1="0" y1="196" x2="560" y2="196"/>
+    <line x1="0" y1="203" x2="560" y2="203"/>
+  </g>
+
+  <!-- Small flowers in grass -->
+  <g>
+    <circle cx="60" cy="192" r="5" fill="#F9C846"/>
+    <circle cx="60" cy="192" r="2.5" fill="#FF8C42"/>
+    <circle cx="130" cy="196" r="4" fill="white"/>
+    <circle cx="130" cy="196" r="2" fill="#F9C846"/>
+    <circle cx="220" cy="190" r="5" fill="#3BBFCE"/>
+    <circle cx="220" cy="190" r="2.5" fill="white"/>
+  </g>
+</svg>

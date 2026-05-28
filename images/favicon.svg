@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#FF8C42"/>
+  <!-- Simplified bird silhouette -->
+  <ellipse cx="29" cy="37" rx="11" ry="7.5" fill="white" transform="rotate(-15 29 37)"/>
+  <circle cx="42" cy="28" r="7.5" fill="white"/>
+  <path d="M49 27 L55 26 L50 30 Z" fill="#F9C846"/>
+  <circle cx="44" cy="27" r="1.6" fill="#FF8C42"/>
+  <path d="M17 37 Q14 32 10 35 Q14 40 17 37Z" fill="white"/>
+  <path d="M18 41 Q14 39 11 43 Q15 45 18 41Z" fill="white" opacity="0.8"/>
+  <!-- Small note -->
+  <g transform="translate(16,13)">
+    <ellipse cx="0" cy="5.5" rx="3" ry="2.2" fill="#F9C846" transform="rotate(-20 0 5.5)"/>
+    <rect x="-0.5" y="-5" width="1.8" height="10.5" rx="0.9" fill="#F9C846"/>
+    <path d="M1.3 -5 Q7 -7.5 7 -3 Q7 0 2.5 1" fill="#F9C846"/>
+  </g>
+</svg>

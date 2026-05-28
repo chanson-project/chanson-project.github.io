@@ -25,15 +25,12 @@
 /* ── Table header ───────────────────────────────────────────────────────── */
 
 table.general thead th {
-  background: linear-gradient(
-    to bottom,
-    rgba(42,157,143,0.18),
-    rgba(42,157,143,0.08)
-  );
-  color: #1d756d;
-  border-bottom: 2px solid rgba(42,157,143,0.25);
-  font-size: 13px;
-  font-weight: 800;
+  background: linear-gradient(135deg, #FF8C42, #ffaa5e);
+  color: #fff;
+  border-bottom: none;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 table.general thead th.sortable {
@@ -43,11 +40,7 @@ table.general thead th.sortable {
 }
 
 table.general thead th.sortable:hover {
-  background: linear-gradient(
-    to bottom,
-    rgba(42,157,143,0.28),
-    rgba(42,157,143,0.16)
-  );
+  background: linear-gradient(135deg, #e87a30, #ff9f50);
 }
 
 /* Truncate long text in 5th column */
@@ -65,110 +58,90 @@ table.general td:nth-child(5) {
 }
 
 #input {
-  width: 270px;
+  width: 290px;
+  box-sizing: border-box;
   font-size: 17px;
   font-family: "Nunito", sans-serif;
   font-weight: 600;
   line-height: 1.4;
-  padding: 13px 16px 13px 44px;
-  border-radius: 14px;
-  border: 2px solid rgba(0,0,0,0.12);
+  padding: 14px 18px 14px 48px;
+  border-radius: 18px;
+  border: 2.5px solid rgba(0,0,0,0.10);
   background-color: rgba(255,255,255,0.95);
-  background-image: url('/images/searchicon.png');
+  background-image: url('/images/searchicon.svg');
   background-position: 14px center;
   background-repeat: no-repeat;
-  background-size: 18px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 6px 20px rgba(0,0,0,0.04);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  background-size: 20px;
+  box-shadow: 0 3px 0 rgba(255,140,66,0.18), 0 4px 16px rgba(0,0,0,0.05);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
 }
 
 #input:focus,
 #melodic-input:focus {
   outline: none;
-  border-color: #2A9D8F;
+  border-color: #FF8C42;
   box-shadow:
-    0 0 0 3px rgba(42,157,143,0.2),
-    0 6px 20px rgba(42,157,143,0.1);
+    0 0 0 4px rgba(255,140,66,0.2),
+    0 4px 16px rgba(255,140,66,0.1);
+  transform: translateY(-1px);
 }
 
 #melodic-input {
-  width: 270px;
+  width: 290px;
+  box-sizing: border-box;
   font-size: 17px;
   font-family: "Nunito", sans-serif;
   font-weight: 600;
   line-height: 1.4;
-  padding: 13px 16px;
-  border-radius: 14px;
-  border: 2px solid rgba(0,0,0,0.12);
+  padding: 14px 18px;
+  border-radius: 18px;
+  border: 2.5px solid rgba(0,0,0,0.10);
   background-color: rgba(255,255,255,0.95);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 6px 20px rgba(0,0,0,0.04);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 3px 0 rgba(59,191,206,0.18), 0 4px 16px rgba(0,0,0,0.05);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
 }
 
 /* ── Dropdowns ──────────────────────────────────────────────────────────── */
 
 select {
   font-size: 15px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fredoka", "Nunito", sans-serif;
   font-weight: 600;
-  padding: 10px 36px 10px 14px;
-  max-width: 200px;
-  border-radius: 12px;
+  padding: 10px 38px 10px 16px;
+  flex: 1 1 120px;
+  min-width: 100px;
+  max-width: 220px;
+  border-radius: 14px;
   border: 2px solid rgba(0,0,0,0.10);
   background-color: rgba(255,255,255,0.95);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 0 rgba(249,200,70,0.25), 0 2px 8px rgba(0,0,0,0.04);
   appearance: none;
   -webkit-appearance: none;
   background-image: url('data:image/svg+xml;utf8,\
-  <svg fill="%232A9D8F" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
+  <svg fill="%23FF8C42" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
   <path d="M7 10l5 5 5-5z"/></svg>');
   background-repeat: no-repeat;
   background-position: right 10px center;
   cursor: pointer;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
 }
 
 select:hover {
-  border-color: rgba(42,157,143,0.4);
+  border-color: rgba(255,140,66,0.45);
+  transform: translateY(-1px);
 }
 
 select:focus {
   outline: none;
-  border-color: #2A9D8F;
-  box-shadow: 0 0 0 3px rgba(42,157,143,0.18);
+  border-color: #FF8C42;
+  box-shadow: 0 0 0 3px rgba(255,140,66,0.2);
 }
-
-#source-container select  { max-width: 175px; }
-#composer-container select { max-width: 160px; }
-#year-container select    { max-width: 110px; }
-#voice-container select,
-#genre-container select   { max-width: 110px; }
 
 /* ── Variants dropdown ──────────────────────────────────────────────────── */
 
 #variants-select {
-  font-size: 15px;
-  font-family: "Nunito", sans-serif;
-  font-weight: 600;
-  padding: 10px 36px 10px 14px;
-  border-radius: 12px;
-  border: 2px solid rgba(231,111,81,0.3);
-  background-color: rgba(255,255,255,0.95);
-  color: #c05030;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url('data:image/svg+xml;utf8,\
-  <svg fill="%23E76F51" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
-  <path d="M7 10l5 5 5-5z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  cursor: pointer;
-}
-
-#variants-select:focus {
-  outline: none;
-  border-color: #E76F51;
-  box-shadow: 0 0 0 3px rgba(231,111,81,0.18);
+  flex: 1 1 160px;
+  max-width: 220px;
 }
 
 /* ── Dropdowns layout ───────────────────────────────────────────────────── */
@@ -178,6 +151,7 @@ select:focus {
   flex-direction: column;
   gap: 8px;
   align-items: flex-end;
+  width: 100%;
 }
 
 #dropdowns select {
@@ -189,13 +163,14 @@ select:focus {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .left-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
 }
 
 .row {
@@ -207,10 +182,12 @@ select:focus {
 }
 
 #search-count {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2A9D8F;
-  margin-top: 6px;
+  font-size: 21px;
+  font-weight: 800;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  color: #FF8C42;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
 }
 
 /* ── Custom mensuration dropdown ────────────────────────────────────────── */
@@ -238,17 +215,18 @@ select:focus {
   gap: 6px;
   padding: 6px 14px;
   font-size: 14px;
-  font-weight: 600;
-  color: #1c1c1e;
-  background: rgba(255,255,255,0.8);
-  border: 2px solid rgba(0,0,0,0.10);
+  font-weight: 700;
+  color: #2A2320;
+  background: rgba(255,255,255,0.9);
+  border: 2px solid rgba(249,200,70,0.4);
   border-radius: 999px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 0 rgba(249,200,70,0.2), 0 2px 6px rgba(0,0,0,0.06);
   transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
 }
 .selected-mensuration:hover {
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,1);
+  box-shadow: 0 4px 0 rgba(249,200,70,0.3), 0 4px 10px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
 }
 
 .selected-mensuration .remove-btn {
@@ -258,10 +236,10 @@ select:focus {
   width: 18px;
   height: 18px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   border-radius: 50%;
-  color: #6e6e73;
-  background: rgba(0,0,0,0.06);
+  color: #7A6E68;
+  background: rgba(0,0,0,0.07);
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
 }
@@ -289,33 +267,36 @@ select:focus {
   align-items: center;
   justify-content: space-between;
   max-width: 275px;
-  height: 44px;
+  height: 46px;
   font-size: 15px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fredoka", "Nunito", sans-serif;
   font-weight: 600;
-  padding: 8px 36px 8px 14px;
-  border-radius: 12px;
+  padding: 8px 36px 8px 16px;
+  border-radius: 14px;
   border: 2px solid rgba(0,0,0,0.10);
   background-color: rgba(255,255,255,0.95);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 0 rgba(249,200,70,0.25), 0 2px 8px rgba(0,0,0,0.04);
   appearance: none;
   -webkit-appearance: none;
   background-image: url('data:image/svg+xml;utf8,\
-<svg fill="%232A9D8F" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
+<svg fill="%23FF8C42" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
 <path d="M7 10l5 5 5-5z"/>\
 </svg>');
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 20px;
   cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
 }
-.dropdown-toggle:hover { border-color: rgba(42,157,143,0.4); }
+.dropdown-toggle:hover {
+  border-color: rgba(255,140,66,0.45);
+  transform: translateY(-1px);
+}
 .custom-dropdown.open .dropdown-toggle,
 .dropdown-toggle:focus {
   outline: none;
-  border-color: #2A9D8F;
-  box-shadow: 0 0 0 3px rgba(42,157,143,0.18);
+  border-color: #FF8C42;
+  box-shadow: 0 0 0 3px rgba(255,140,66,0.2);
 }
 .dropdown-toggle .toggle-text { text-align: left; }
 
@@ -326,9 +307,9 @@ select:focus {
   left: 0;
   z-index: 99;
   background: #fff;
-  border: 2px solid rgba(42,157,143,0.2);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  border: 2px solid rgba(255,140,66,0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 rgba(255,140,66,0.12), 0 10px 28px rgba(0,0,0,0.10);
   padding: 12px;
   max-width: 300px;
   min-width: 200px;
@@ -342,13 +323,13 @@ select:focus {
 
 .mensuration-item {
   padding: 5px;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   border: 2px solid transparent;
   transition: transform 0.1s, border-color 0.2s;
 }
-.mensuration-item:hover { transform: scale(1.12); border-color: #bbb; }
-.mensuration-item.selected { border-color: #2A9D8F; background-color: rgba(42,157,143,0.08); }
+.mensuration-item:hover { transform: scale(1.12); border-color: #F9C846; }
+.mensuration-item.selected { border-color: #FF8C42; background-color: rgba(255,140,66,0.1); }
 .mensuration-img { height: 30px; width: auto; }
 
 .dropdown-row {
@@ -361,21 +342,21 @@ select:focus {
   flex-direction: column;
   align-items: flex-end;
   gap: 8px;
-  margin-left: auto;
+  flex: 1;
+  min-width: 0;
 }
 
 #texted-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 6px;
+  display: contents;
 }
 
 .text-checkbox-wrapper {
   margin: 0;
   padding-left: 2px;
   font-size: 15px;
-  font-weight: 600;
-  color: #6e6e73;
+  font-weight: 700;
+  color: #7A6E68;
+  font-family: "Fredoka", "Nunito", sans-serif;
 }
 
 .text-checkbox-label {
@@ -391,26 +372,25 @@ select:focus {
 }
 
 .select {
-  padding: 8px 34px 8px 14px;
+  padding: 9px 36px 9px 16px;
   font-size: 15px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fredoka", "Nunito", sans-serif;
   font-weight: 600;
-  height: 44px;
+  height: 46px;
   max-width: 250px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 2px solid rgba(0,0,0,0.10);
   background-color: rgba(255,255,255,0.95);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 0 rgba(249,200,70,0.2), 0 2px 6px rgba(0,0,0,0.04);
   appearance: none;
   -webkit-appearance: none;
   background-image: url('data:image/svg+xml;utf8,\
-<svg fill="%232A9D8F" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
+<svg fill="%23FF8C42" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">\
 <path d="M7 10l5 5 5-5z"/>\
 </svg>');
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 18px;
-  padding-right: 34px;
   cursor: pointer;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
@@ -424,44 +404,46 @@ select:focus {
 }
 
 button[onclick="clearSearchFields()"] {
-  padding: 10px 20px;
+  padding: 11px 22px;
   font-size: 15px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fredoka", "Nunito", sans-serif;
   font-weight: 700;
-  border-radius: 12px;
-  border: 2px solid rgba(231,111,81,0.35);
+  border-radius: 14px;
+  border: 2.5px solid rgba(231,111,81,0.35);
   background: rgba(255,255,255,0.9);
   color: #E76F51;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.12s;
 }
 button[onclick="clearSearchFields()"]:hover {
   background: #E76F51;
   color: #fff;
   border-color: #E76F51;
+  transform: translateY(-2px) scale(1.03);
 }
 
 .help-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 2px solid rgba(42,157,143,0.4);
-  color: #2A9D8F;
-  font-size: 15px;
+  border: 2.5px solid rgba(59,191,206,0.4);
+  color: #3BBFCE;
+  font-size: 17px;
   font-weight: 800;
   text-decoration: none;
   line-height: 1;
   flex-shrink: 0;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.18s, color 0.18s, transform 0.12s;
 }
 .help-btn:hover {
-  background: #2A9D8F;
+  background: #3BBFCE;
   color: #fff;
-  border-color: #2A9D8F;
+  border-color: #3BBFCE;
   text-decoration: none;
+  transform: scale(1.1) rotate(10deg);
 }
 
 /* ── Responsive breakpoints ─────────────────────────────────────────────── */
@@ -519,10 +501,6 @@ button[onclick="clearSearchFields()"]:hover {
     max-width: 100%;
   }
 
-  #texted-container {
-    justify-content: flex-start;
-  }
-
   .bottom-controls {
     justify-content: flex-start;
   }
@@ -531,13 +509,13 @@ button[onclick="clearSearchFields()"]:hover {
 @media screen and (max-width: 500px) {
   #input,
   #melodic-input {
-    font-size: 15px;
-    padding: 10px 14px 10px 38px;
+    font-size: 16px;
+    padding: 12px 14px 12px 42px;
   }
 
   select {
     font-size: 14px;
-    padding: 8px 32px 8px 10px;
+    padding: 8px 32px 8px 12px;
   }
 
   #list {

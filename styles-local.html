@@ -73,7 +73,7 @@ article.post {
   font-size: 32px;
   font-weight: 800;
   line-height: 1;
-  color: #2A9D8F;
+  color: #FF8C42;
 }
 
 .metric-label {
@@ -144,9 +144,9 @@ article.post {
 }
 
 #composer-plot {
-  background: #FFFAF1;
-  border-radius: 12px;
-  padding: 12px;
+  background: transparent;
+  border-radius: 16px;
+  padding: 0;
 }
 
 /* === Apple-style Search === */
@@ -157,6 +157,7 @@ article.post {
 
 .apple-search input {
   width: 100%;
+  box-sizing: border-box;
   padding: 16px 20px;
   font-size: 18px;
   font-family: "Nunito", sans-serif;
@@ -171,8 +172,8 @@ article.post {
 
 .apple-search input:focus {
   outline: none;
-  border-color: #2A9D8F;
-  box-shadow: 0 0 0 3px rgba(42,157,143,0.18), 0 6px 20px rgba(42,157,143,0.08);
+  border-color: #FF8C42;
+  box-shadow: 0 0 0 3px rgba(255,140,66,0.2), 0 6px 20px rgba(255,140,66,0.08);
 }
 
 /* Suggestions panel */
@@ -381,17 +382,17 @@ table.general tr:last-child a {
 }
 
 .search-suggestion.composer-suggestion {
-  background: rgba(80, 120, 102, 0.3); /* #507866 */
-  border-left: 3px solid rgba(80, 120, 102, 0.45);
+  background: rgba(59,191,206,0.15);
+  border-left: 3px solid rgba(59,191,206,0.5);
 }
 
 .search-suggestion.composer-suggestion:hover {
-  background: rgba(80, 120, 102, 0.18);
+  background: rgba(59,191,206,0.22);
 }
 
 .search-suggestion.composer-suggestion .suggestion-meta {
-  color: #507866;
-  font-weight: 500;
+  color: #2AAFC0;
+  font-weight: 600;
   font-size: 12px;
 }
 

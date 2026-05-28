@@ -39,9 +39,9 @@ order: 3
         <div class="top-line">
           <div id="genre-container"></div>
           <div id="topic-container"></div>
+          <div id="texted-container"></div>
         </div>
       </div>
-      <div id="texted-container"></div>
       <div class="bottom-controls">
         <button onclick="clearSearchFields()" data-i18n="rep.clear_all">Clear All</button>
         <a href="/guide/" class="help-btn" data-i18n-title="rep.user_guide" title="User Guide">?</a>
