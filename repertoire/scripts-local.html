@@ -83,8 +83,9 @@ function displayBrowseTable(data, selector) {
 		console.error(`Error: cannot find ${selector} element to display work table`);
 		return;
 	}
+	data = data.slice().sort(function(a, b) { return (a[FIELD.id] || "").localeCompare(b[FIELD.id] || ""); });
 	CURRENT_DATA = data;
-	SORT_STATE = { column: null, dir: 1 };
+	SORT_STATE = { column: INDEX_id, dir: 1 };
 	let headings = [INDEX_id, INDEX_title, INDEX_composer, INDEX_pages, INDEX_genre, INDEX_laforte, INDEX_origin, INDEX_collection, INDEX_editor];
 	let contents = "";
 	contents += "<table class='general'>\n";
@@ -792,8 +793,8 @@ function saveSearchResultIds() {
       ids.push(rows[i].dataset.id);
     }
   }
-  sessionStorage.setItem("1520_search_ids", JSON.stringify(ids));
-  sessionStorage.setItem("1520_search_url", window.location.href);
+  localStorage.setItem("1520_search_ids", JSON.stringify(ids));
+  localStorage.setItem("1520_search_url", window.location.href);
 }
 
 

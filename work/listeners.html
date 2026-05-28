@@ -45,8 +45,6 @@ DATA1520.workid = DATA1520.cgi.id || "BC001";
 
 document.addEventListener("DOMContentLoaded", function (event) {
 	initializeAccidentalStateButton();
-	TEXT_FILTER_ACTIVE = window.localStorage.TextFilterState === "show";
-	DEG_FILTER_ACTIVE  = window.localStorage.DegFilterState  === "show";
 
 	// Create lookup tables for metadata:
 	DATA1520.lookup.works           = createLookup(DATA1520.metadata.works);
@@ -306,7 +304,7 @@ window.addEventListener("click", function(event) {
 function initializeSearchNav() {
 	let ids;
 	try {
-		ids = JSON.parse(sessionStorage.getItem("1520_search_ids") || "null");
+		ids = JSON.parse(localStorage.getItem("1520_search_ids") || "null");
 	} catch(e) { return; }
 	if (!Array.isArray(ids) || ids.length === 0) return;
 
@@ -326,7 +324,7 @@ function initializeSearchNav() {
 	if (nextBtn) nextBtn.disabled = (idx === ids.length - 1);
 
 	const backLink = document.getElementById("nav-back-link");
-	const searchUrl = sessionStorage.getItem("1520_search_url");
+	const searchUrl = localStorage.getItem("1520_search_url");
 	if (backLink && searchUrl) backLink.href = searchUrl;
 }
 
@@ -340,7 +338,7 @@ function initializeSearchNav() {
 function navigateSearchResult(direction) {
 	let ids;
 	try {
-		ids = JSON.parse(sessionStorage.getItem("1520_search_ids") || "null");
+		ids = JSON.parse(localStorage.getItem("1520_search_ids") || "null");
 	} catch(e) { return; }
 	if (!Array.isArray(ids)) return;
 
