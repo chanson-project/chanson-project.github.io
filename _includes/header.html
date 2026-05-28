@@ -323,6 +323,19 @@
   display: block;
 }
 
+/* Desktop: prevent logo+nav from wrapping, and nav items from wrapping internally */
+@media (min-width: 769px) {
+  .site-header .wrapper {
+    flex-wrap: nowrap;
+  }
+  .site-nav .trigger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+}
+
 /* Mobile view adjustments */
 @media (max-width: 768px) {
   .banner-wrap {
