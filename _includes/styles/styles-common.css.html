@@ -143,7 +143,7 @@ table.general {
   -webkit-backdrop-filter: blur(14px);
 
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  overflow: clip; /* clip preserves border-radius without trapping sticky */
 
   box-shadow:
     0 4px 0 rgba(255,140,66,0.15),
@@ -153,6 +153,9 @@ table.general {
 }
 
 table.general th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   text-align: left;
   font-size: 15px;
   font-weight: 800;
