@@ -15,7 +15,7 @@
 
 
 #SID for 1520s Project Metadata
-SID = AKfycbzoTAs3G3mzBlvpFzw5eXG7MkcBtgJV0nJbVoAETPDdaMdjBnf5GjANTJmQKKorldKa
+SID = AKfycbwGO6_cglQQ9cEbrk38h7U5ovmj_Se6v9IwQohdrvh8fvYSgiPYBJqoVRwUZ4JL53Kl
 
 all: download
 
