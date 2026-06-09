@@ -23,7 +23,7 @@ layout: page
 
   <!-- LEFT COLUMN -->
   <div class="left-column">
-    <div class="section-header"><h4 data-i18n="home.browse">Browse</h4></div>
+    <div class="section-header"><h4 data-i18n="home.browse">Search</h4></div>
     <div class="browse-box">
       <div class="apple-search">
         <input

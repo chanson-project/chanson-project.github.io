@@ -26,7 +26,7 @@
 @feedback.cancel: Cancel
 
 @ home page
-@home.browse: Browse
+@home.browse: Search
 @home.search_placeholder: Find a song or composer…
 @home.melodic_placeholder: Hum a melody: G A F# E …
 @home.project_data: Project Data
@@ -312,7 +312,7 @@
 @feedback.cancel: Annuler
 
 @ page d'accueil
-@home.browse: Parcourir
+@home.browse: Recherche
 @home.search_placeholder: Chercher une chanson ou un compositeur…
 @home.melodic_placeholder: Fredonner une mélodie : G A F# E …
 @home.project_data: Données du projet
