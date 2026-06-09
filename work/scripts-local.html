@@ -369,7 +369,9 @@ function displayWorkInfo(id) {
 	const genreoutput = genreVal ? `<div class="work-item"><b>${t('work.genre')}:</b> ${genreVal}</div>` : "";
 
 	const topicVal = workinfo[FIELD.topic] || "";
-	const topicoutput = topicVal ? `<div class="work-item"><b>${t('work.topic')}:</b> ${topicVal}</div>` : "";
+	const topicoutput = topicVal
+		? `<div class="work-item"><b>${t('work.topic')}:</b> ${topicVal.split(";").map(s => s.trim()).filter(Boolean).join(", ")}</div>`
+		: "";
 
 	const laforteVal = workinfo[FIELD.laforte] || "";
 	const laforteoutput = laforteVal ? `<div class="work-item"><b>${t('work.laforte')}:</b> ${laforteVal}</div>` : "";
