@@ -39,6 +39,8 @@ order: 3
         <div class="top-line">
           <div id="genre-container"></div>
           <div id="topic-container"></div>
+          <div id="key-container"></div>
+          <div id="time-container"></div>
           <div id="texted-container"></div>
         </div>
       </div>

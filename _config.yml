@@ -55,6 +55,8 @@ fields:
     laforte:   "Laforte"
     chamberland: "Chamberland"
     url_youtube: "!!!URL-youtube"
+    key:       "!!!AMD-key"
+    time:      "!!!AMT"
   sources:
     id:        "!!!id"
     title:     "!!!PTL"

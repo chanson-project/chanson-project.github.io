@@ -77,6 +77,20 @@ document.addEventListener("DOMContentLoaded", function () {
 		runSearch = true;
 	}
 
+	// Set key select menu from URL:
+	if (cgi.k) {
+		let keyEl = document.querySelector("select.key");
+		if (keyEl) keyEl.value = cgi.k;
+		runSearch = true;
+	}
+
+	// Set time select menu from URL:
+	if (cgi.tm) {
+		let timeEl = document.querySelector("select.time");
+		if (timeEl) timeEl.value = cgi.tm;
+		runSearch = true;
+	}
+
 	// Set variants dropdown from URL:
 	if (cgi.v) {
 		let variantsEl = document.querySelector("#variants-select");

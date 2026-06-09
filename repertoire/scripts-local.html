@@ -19,6 +19,8 @@ function buildSearchInterface(data) {
   document.getElementById("lyricist-container").innerHTML = "";
   document.getElementById("genre-container").innerHTML = "";
   document.getElementById("topic-container").innerHTML = "";
+  document.getElementById("key-container").innerHTML = "";
+  document.getElementById("time-container").innerHTML = "";
   document.getElementById("origin-container").innerHTML = "";
   document.getElementById("collection-container").innerHTML = "";
   document.getElementById("editor-container").innerHTML = "";
@@ -27,6 +29,8 @@ function buildSearchInterface(data) {
   document.getElementById("lyricist-container").appendChild(createElementFromHTML(buildLyricistSelect(data)));
   document.getElementById("genre-container").appendChild(createElementFromHTML(buildGenreSelect(data)));
   document.getElementById("topic-container").appendChild(createElementFromHTML(buildTopicSelect(data)));
+  document.getElementById("key-container").appendChild(createElementFromHTML(buildKeySelect(data)));
+  document.getElementById("time-container").appendChild(createElementFromHTML(buildTimeSelect(data)));
   document.getElementById("origin-container").appendChild(createElementFromHTML(buildOriginSelect(data)));
   document.getElementById("collection-container").appendChild(createElementFromHTML(buildCollectionSelect(data)));
   document.getElementById("editor-container").appendChild(createElementFromHTML(buildEditorSelect(data)));
@@ -547,6 +551,60 @@ function buildEditorSelect(data) {
 
 //////////////////////////////
 //
+// buildKeySelect -- Key-signature dropdown. Entries may have compound values
+//   like "C; G; e" so we split on ";" and count each individual key.
+//
+
+function buildKeySelect(data) {
+	let counter = {};
+	for (let i = 0; i < data.length; i++) {
+		let raw = (data[i][FIELD.key] || "").trim();
+		if (!raw) continue;
+		raw.split(";").forEach(k => {
+			k = k.trim();
+			if (k) counter[k] = (counter[k] || 0) + 1;
+		});
+	}
+	let keys = Object.keys(counter).sort((a, b) => a.localeCompare(b));
+	let output = "<select class='key' onchange='doSearch()'>\n";
+	output += `<option value="">${t('rep.key_label')} (${keys.length})</option>`;
+	for (let i = 0; i < keys.length; i++) {
+		let k = keys[i];
+		output += `<option value="${k}">${k} (${counter[k]})</option>`;
+	}
+	output += "</select>\n";
+	return output;
+}
+
+
+
+//////////////////////////////
+//
+// buildTimeSelect -- Time-signature (meter) dropdown using the !!!AMT field.
+//
+
+function buildTimeSelect(data) {
+	let counter = {};
+	for (let i = 0; i < data.length; i++) {
+		let tm = (data[i][FIELD.time] || "").trim();
+		if (!tm) continue;
+		counter[tm] = (counter[tm] || 0) + 1;
+	}
+	let times = Object.keys(counter).sort((a, b) => a.localeCompare(b));
+	let output = "<select class='time' onchange='doSearch()'>\n";
+	output += `<option value="">${t('rep.time_label')} (${times.length})</option>`;
+	for (let i = 0; i < times.length; i++) {
+		let tm = times[i];
+		output += `<option value="${tm}">${tm} (${counter[tm]})</option>`;
+	}
+	output += "</select>\n";
+	return output;
+}
+
+
+
+//////////////////////////////
+//
 // buildSourceSelect --
 //
 
@@ -750,6 +808,12 @@ function doSearch(data) {
 	let editorField = searchInterface.querySelector("select.editor");
 	let editorQuery = editorField ? editorField.value : "";
 
+	let keyField = searchInterface.querySelector("select.key");
+	let keyQuery = keyField ? keyField.value : "";
+
+	let timeField = searchInterface.querySelector("select.time");
+	let timeQuery = timeField ? timeField.value : "";
+
 	let variantsSelect = document.querySelector("#variants-select");
 	let variantsValue  = variantsSelect ? variantsSelect.value : "hide";
 
@@ -783,6 +847,17 @@ function doSearch(data) {
 
 	if (editorQuery) {
 		data = data.filter(entry => getEditor(entry) === editorQuery);
+	}
+
+	if (keyQuery) {
+		data = data.filter(entry => {
+			const raw = (entry[FIELD.key] || "").trim();
+			return raw.split(";").map(k => k.trim()).some(k => k === keyQuery);
+		});
+	}
+
+	if (timeQuery) {
+		data = data.filter(entry => (entry[FIELD.time] || "").trim() === timeQuery);
 	}
 
 	if (variantsValue === "hide") {
@@ -1165,6 +1240,8 @@ function updateBrowseUrlDisplay() {
 	let originEl      = document.querySelector("select.origin");
 	let collectionEl  = document.querySelector("select.collection");
 	let editorEl      = document.querySelector("select.editor");
+	let keyEl         = document.querySelector("select.key");
+	let timeEl        = document.querySelector("select.time");
 	let variantsEl    = document.querySelector("#variants-select");
 	let variantsValue = variantsEl ? variantsEl.value : "hide";
 
@@ -1172,6 +1249,8 @@ function updateBrowseUrlDisplay() {
 	let origin     = originEl     ? originEl.value.trim()     : "";
 	let collection = collectionEl ? collectionEl.value.trim() : "";
 	let editor     = editorEl     ? editorEl.value.trim()     : "";
+	let key        = keyEl        ? keyEl.value.trim()        : "";
+	let time       = timeEl       ? timeEl.value.trim()       : "";
 
 	let cgi = "";
 
@@ -1193,6 +1272,14 @@ function updateBrowseUrlDisplay() {
 	if (editor) {
 		if (cgi) cgi += "&";
 		cgi += "ed=" + encodeURIComponent(editor);
+	}
+	if (key) {
+		if (cgi) cgi += "&";
+		cgi += "k=" + encodeURIComponent(key);
+	}
+	if (time) {
+		if (cgi) cgi += "&";
+		cgi += "tm=" + encodeURIComponent(time);
 	}
 	if (variantsValue === "show" || variantsValue === "only") {
 		if (cgi) cgi += "&";
@@ -1224,6 +1311,8 @@ function clearSearchFields() {
 	let lyricistElement    = document.querySelector("select.lyricist");
 	let genreElement       = document.querySelector("select.genre");
 	let topicElement       = document.querySelector("select.topic");
+	let keyElement         = document.querySelector("select.key");
+	let timeElement        = document.querySelector("select.time");
 	let originElement      = document.querySelector("select.origin");
 	let collectionElement  = document.querySelector("select.collection");
 	let editorElement      = document.querySelector("select.editor");
@@ -1236,6 +1325,8 @@ function clearSearchFields() {
 	if (lyricistElement)   lyricistElement.value   = "";
 	if (genreElement)      genreElement.value      = "";
 	if (topicElement)      topicElement.value      = "";
+	if (keyElement)        keyElement.value        = "";
+	if (timeElement)       timeElement.value       = "";
 	if (originElement)     originElement.value     = "";
 	if (collectionElement) collectionElement.value = "";
 	if (editorElement)     editorElement.value     = "";

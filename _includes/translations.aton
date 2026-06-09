@@ -64,6 +64,8 @@
 @rep.lyricist_label: All Lyricists
 @rep.genre_label: All Genres
 @rep.topic_label: All Topics
+@rep.key_label: All Keys
+@rep.time_label: All Meters
 @rep.col_genre: Genre
 @rep.col_laforte: Laforte
 @rep.clear_all: Clear All
@@ -336,6 +338,8 @@
 @rep.lyricist_label: Tous les auteurs
 @rep.genre_label: Tous les genres
 @rep.topic_label: Tous les thèmes
+@rep.key_label: Toutes les tonalités
+@rep.time_label: Tous les mètres
 @rep.col_genre: Genre
 @rep.col_laforte: Laforte
 @rep.clear_all: Tout effacer
