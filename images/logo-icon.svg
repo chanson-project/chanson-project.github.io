@@ -6,6 +6,11 @@
   <!-- Stylized lark/bird (Alouette) in white -->
   <!-- Body -->
   <ellipse cx="30" cy="36" rx="12" ry="8" fill="white" transform="rotate(-15 30 36)"/>
+  <!-- Wing -->
+  <path d="M19 39 Q12 22 33 22 Q37 31 19 39Z" fill="white" opacity="0.92"/>
+  <!-- Wing stripes -->
+  <path d="M17 30 Q23 21 31 24" fill="none" stroke="#FF8C42" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+  <path d="M18 35 Q25 26 33 29" fill="none" stroke="#FF8C42" stroke-width="1.5" stroke-linecap="round" opacity="0.38"/>
   <!-- Head -->
   <circle cx="43" cy="28" r="8" fill="white"/>
   <!-- Beak -->
@@ -13,13 +18,9 @@
   <!-- Eye -->
   <circle cx="45" cy="27" r="1.8" fill="#FF8C42"/>
   <circle cx="45.6" cy="26.4" r="0.6" fill="white"/>
-  <!-- Wing detail -->
-  <path d="M20 33 Q25 25 36 30" fill="none" stroke="#FF8C42" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
   <!-- Tail feathers -->
   <path d="M18 37 Q14 32 10 35 Q14 40 18 37Z" fill="white"/>
   <path d="M19 40 Q15 38 12 42 Q16 44 19 40Z" fill="white" opacity="0.8"/>
-  <!-- Wing highlight -->
-  <path d="M36 30 Q40 24 48 26" fill="none" stroke="rgba(249,200,70,0.7)" stroke-width="2" stroke-linecap="round"/>
 
   <!-- Small music note top-right -->
   <g transform="translate(46,10) rotate(15)" opacity="0.85">
