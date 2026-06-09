@@ -6,30 +6,37 @@
 /* ── Language toggle ─────────────────────────────────────────────────────── */
 #lang-toggle {
   margin-left: 10px;
-  padding: 6px 13px;
-  font-size: 0.85em;
+  padding: 7px 16px;
+  font-size: 0.9em;
   font-weight: 700;
-  border: 2px solid rgba(42,157,143,0.4);
-  border-radius: 20px;
+  border: 2.5px solid rgba(59,191,206,0.45);
+  border-radius: 999px;
   background: transparent;
   cursor: pointer;
-  color: #2A9D8F;
+  color: #3BBFCE;
   letter-spacing: 0.05em;
-  font-family: "Nunito", sans-serif;
-  transition: background 0.15s, color 0.15s;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  transition: background 0.18s, color 0.18s, transform 0.12s;
 }
 #lang-toggle:hover {
-  background: #2A9D8F;
+  background: #3BBFCE;
   color: #fff;
-  border-color: #2A9D8F;
+  border-color: #3BBFCE;
+  transform: scale(1.06);
 }
 
 /* ── Banner ──────────────────────────────────────────────────────────────── */
+.banner {
+  flex-basis: 100%;
+  width: 100%;
+}
 .banner-wrap {
   display: flex;
   align-items: center;
-  width: 100%;
-  background: #fef7e7;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #FFF7E6;
 }
 .banner-wrap img.desktop-banner {
   display: block;
@@ -40,24 +47,26 @@
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 0 5%;
-  font-size: clamp(0.95em, 2vw, 1.25em);
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.3;
+  font-size: clamp(1.05em, 2.2vw, 1.4em);
+  font-weight: 600;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  color: #2A2320;
+  line-height: 1.35;
 }
 
 .site-header {
-  background: rgba(254, 247, 231, 0.92); /* #fef7e7 */
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 247, 230, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 3px solid rgba(249,200,70,0.45);
   position: sticky;
   top: 0;
   z-index: 1000;
   isolation: isolate;
-  min-height: 72px;
-
+  min-height: 76px;
 }
 
 @media (min-width: 769px) {
@@ -67,26 +76,45 @@
 }
 
 .site-header .wrapper {
-  padding-top: 8px;
-  padding-bottom: 4px;
+  padding-top: 10px;
+  padding-bottom: 6px;
 }
 
-.wrapper {
+.site-header .wrapper {
   display: flex;
-  align-items: center; /* vertical centering */
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.site-title img {
+.site-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none !important;
+}
+.site-logo-icon {
   display: block;
-  height: 64px;
-  margin: 0;
+  height: 52px;
+  width: auto;
+  flex-shrink: 0;
+}
+.site-name {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  color: #2A2320;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+.site-name em {
+  font-style: normal;
+  color: #FF8C42;
 }
 
-/* Nunito in nav */
+/* Fredoka + Nunito in nav */
 .site-nav, .site-header {
-  font-family: "Nunito", -apple-system, sans-serif;
+  font-family: "Fredoka", "Nunito", -apple-system, sans-serif;
 }
 
 /* Ensure nav sits inline and vertically centered */
@@ -98,20 +126,20 @@
 }
 
 .site-nav .page-link, .site-nav .dropdown-trigger {
-  font-size: 1em;
-  font-weight: 700;
+  font-size: 1.05em;
+  font-weight: 600;
+  font-family: "Fredoka", "Nunito", sans-serif;
 }
 
 .site-nav .page-link {
-  font-size: 15px;
-  font-weight: 400;
-  padding: 5px 9px;
-  color: #6A6156; /* keep your existing palette */
-  letter-spacing: 0.01em;
-  border-radius: 8px;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 7px 13px;
+  color: #5A4E47;
+  letter-spacing: 0.02em;
+  border-radius: 12px;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.12s ease;
 }
-
 
 /* Dropdown container */
 .site-nav .dropdown {
@@ -124,7 +152,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  height: 8px;
+  height: 10px;
   top: 100%;
 }
 
@@ -137,50 +165,54 @@
   margin-top: 8px;
   z-index: 200;
 
-  background: rgba(254, 247, 231, 0.98); /* #fef7e7 */
+  background: rgba(255, 250, 236, 0.98);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 
   will-change: transform;
   transform: translateZ(0);
 
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 12px;
-  padding: 4px;
-  min-width: 140px;
+  border: 2px solid rgba(249,200,70,0.35);
+  border-radius: 16px;
+  padding: 6px;
+  min-width: 160px;
 
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
 }
 
 /* Dropdown links */
 .site-nav .dropdown-content a {
-  color: black;
-  padding: 6px 10px;
-  border-radius: 8px;
+  color: #5A4E47;
+  padding: 8px 12px;
+  border-radius: 10px;
   text-decoration: none;
   display: block;
   white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Fredoka", "Nunito", sans-serif;
 }
 
 /* Feedback button */
 #feedback-btn {
   background: none;
-  border: 2px solid rgba(231,111,81,0.45);
-  border-radius: 20px;
-  padding: 6px 13px;
-  font-size: 0.85em;
+  border: 2.5px solid rgba(231,111,81,0.45);
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 0.9em;
   font-weight: 700;
   cursor: pointer;
   color: #E76F51;
   letter-spacing: 0.04em;
   margin-left: 6px;
-  font-family: "Nunito", sans-serif;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.12s;
 }
 #feedback-btn:hover {
   background: #E76F51;
   color: #fff;
   border-color: #E76F51;
+  transform: scale(1.06);
 }
 
 /* Feedback modal */
@@ -188,9 +220,9 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(42, 35, 32, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   z-index: 1000;
   align-items: center;
   justify-content: center;
@@ -199,44 +231,45 @@
   display: flex;
 }
 .feedback-modal {
-  background: rgba(255, 250, 241, 0.97);
-  border-radius: 18px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
-  padding: 28px 28px 22px;
+  background: rgba(255, 250, 236, 0.98);
+  border-radius: 24px;
+  box-shadow: 0 4px 0 rgba(249,200,70,0.4), 0 20px 56px rgba(0,0,0,0.16);
+  padding: 32px 32px 24px;
   width: min(480px, 92vw);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 .feedback-modal h3 {
   margin: 0;
-  font-size: 17px;
+  font-size: 22px;
   font-weight: 600;
-  color: #1c1c1e;
+  color: #2A2320;
+  font-family: "Fredoka", "Nunito", sans-serif;
 }
 .feedback-modal p {
   margin: 0;
-  font-size: 13px;
-  color: #6A6156;
-  line-height: 1.5;
+  font-size: 15px;
+  color: #7A6E68;
+  line-height: 1.55;
 }
 .feedback-modal textarea {
   width: 100%;
   min-height: 120px;
-  padding: 10px 12px;
-  font-size: 14px;
-  font-family: inherit;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.85);
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: "Nunito", inherit;
+  border: 2px solid rgba(0, 0, 0, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
   resize: vertical;
   box-sizing: border-box;
   outline: none;
   transition: border-color 0.15s;
 }
 .feedback-modal textarea:focus {
-  border-color: #007aff;
-  box-shadow: 0 0 0 1px rgba(0, 122, 255, 0.35);
+  border-color: #3BBFCE;
+  box-shadow: 0 0 0 3px rgba(59,191,206,0.2);
 }
 .feedback-modal-buttons {
   display: flex;
@@ -244,51 +277,53 @@
   gap: 10px;
 }
 .feedback-modal-buttons button {
-  padding: 8px 18px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Fredoka", "Nunito", sans-serif;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  background: rgba(255, 255, 255, 0.7);
-  color: #1c1c1e;
-  transition: background 0.15s;
+  border: 2px solid rgba(0, 0, 0, 0.14);
+  background: rgba(255, 255, 255, 0.8);
+  color: #2A2320;
+  transition: background 0.15s, transform 0.1s;
 }
 .feedback-modal-buttons button:hover {
   background: rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
 }
 .feedback-modal-buttons .feedback-send {
-  background: #007aff;
+  background: #3BBFCE;
   color: #fff;
-  border-color: #007aff;
+  border-color: #3BBFCE;
 }
 .feedback-modal-buttons .feedback-send:hover {
-  background: #0062cc;
-  border-color: #0062cc;
+  background: #2AAFC0;
+  border-color: #2AAFC0;
 }
 
-/* Change nav link colors */
+/* Nav link colours */
 .site-nav .page-link,
 .site-nav .dropdown-content a {
-  color: #6A6156;
+  color: #5A4E47;
 }
 
 .site-nav .dropdown-content a:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-  color: #1c1c1e;
+  background-color: rgba(249,200,70,0.18);
+  color: #2A2320;
 }
 
 .site-nav .page-link:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-  color: #1c1c1e;
+  background-color: rgba(249,200,70,0.18);
+  color: #2A2320;
   text-decoration: none;
+  transform: translateY(-1px);
 }
 
 .site-nav .dropdown-trigger:hover {
   background-color: transparent;
-  color: #6A6156;
+  color: #5A4E47;
 }
-
 
 /* Show dropdown on hover */
 .site-nav .dropdown:hover > .dropdown-content,
@@ -321,8 +356,8 @@
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
-      <img src="{{ '/images/1520s_logo.png' | relative_url }}"
-     alt="The 1520s Project Logo">
+      <img src="{{ '/images/logo-icon.svg' | relative_url }}" alt="" class="site-logo-icon">
+      <span class="site-name">folklore <em>vivant</em></span>
     </a>
 
     {%- if page_paths -%}
@@ -337,25 +372,23 @@
         </label>
 
         <div class="trigger">
-          {%- assign pages_list = site.pages | where_exp: "item", "page_paths contains item.path" | sort: 'order' -%}
-          {%- assign pages_list = site.pages | where_exp: "item", "page_paths contains item.path" | sort: 'order' -%}
-          {%- assign counter = 0 -%}   <!-- Initialize a counter -->
+          <a class="page-link" href="/about/" data-i18n="nav.about">about</a>
 
-          {%- for my_page in pages_list -%}
-            {%- if my_page.title and my_page.nav_exclude != true -%}
-              <a class="page-link" href="{{ my_page.url | relative_url }}" data-i18n="nav.{{ my_page.title }}">{{ my_page.title | escape }}</a>
+          <div class="dropdown">
+            <span class="page-link" data-i18n="nav.documentation" style="cursor:pointer">documentation ▾</span>
+            <div class="dropdown-content">
+              <a href="/laforte/" data-i18n="nav.laforte">About Laforte</a>
+              <a href="/documentation/" data-i18n="nav.encoding_practices">Encoding Practices</a>
+            </div>
+          </div>
 
-              {%- assign counter = counter | plus: 1 -%}
-
-            {%- endif -%}
-          {%- endfor -%}
+          <a class="page-link" href="/repertoire/" data-i18n="nav.chansons">chansons</a>
 
           <div class="dropdown">
             <span class="page-link" data-i18n="nav.sources" style="cursor:pointer">sources ▾</span>
             <div class="dropdown-content">
               <a href="/performances/" data-i18n="nav.performances">Performances</a>
-              <a href="/repertoire/?col=Les%20cent%20plus%20belles%20chansons">Les cent plus belles chansons</a>
-              <a href="/repertoire/?col=Chansons%20populaires%20du%20Canada">Chansons populaires du Canada</a>
+              <a href="https://kern.humdrum.org/cgi-bin/browse?l=/vivant" target="_blank" rel="noopener">KernScores</a>
             </div>
           </div>
 
@@ -367,7 +400,7 @@
     {% if page.url == "/" or page.url == "/index.html" %}
     <div class="banner">
       <div class="banner-wrap">
-        <img src="{{ '/images/1520s_banner.png' | relative_url }}" alt="Banner" class="desktop-banner">
+        <img src="{{ '/images/banner.svg' | relative_url }}" alt="A cheerful folk music scene with a singing lark and musical notes" class="desktop-banner">
         <div class="banner-tagline">
           <span data-i18n="banner.subtitle">Exploring French-Canadian folk music in digital format</span>
         </div>

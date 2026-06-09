@@ -83,8 +83,9 @@ function displayBrowseTable(data, selector) {
 		console.error(`Error: cannot find ${selector} element to display work table`);
 		return;
 	}
+	data = data.slice().sort(function(a, b) { return (a[FIELD.id] || "").localeCompare(b[FIELD.id] || ""); });
 	CURRENT_DATA = data;
-	SORT_STATE = { column: null, dir: 1 };
+	SORT_STATE = { column: INDEX_id, dir: 1 };
 	let headings = [INDEX_id, INDEX_title, INDEX_composer, INDEX_pages, INDEX_genre, INDEX_laforte, INDEX_origin, INDEX_collection, INDEX_editor];
 	let contents = "";
 	contents += "<table class='general'>\n";
@@ -498,9 +499,13 @@ function buildGenreSelect(data) {
 function buildTopicSelect(data) {
 	let counter = {};
 	for (let i = 0; i < data.length; i++) {
-		let tp = (data[i][FIELD.topic] || "").trim();
-		if (!tp) continue;
-		counter[tp] = (counter[tp] === undefined) ? 1 : counter[tp] + 1;
+		let raw = (data[i][FIELD.topic] || "").trim();
+		if (!raw) continue;
+		let parts = raw.split(";").map(s => s.trim()).filter(Boolean);
+		for (let j = 0; j < parts.length; j++) {
+			let tp = parts[j];
+			counter[tp] = (counter[tp] === undefined) ? 1 : counter[tp] + 1;
+		}
 	}
 	let tlist = Object.keys(counter).sort((a, b) => a.localeCompare(b));
 	let output = "<select class='topic' onchange='doSearch()'>\n";
@@ -769,7 +774,11 @@ function doSearch(data) {
 	}
 
 	if (topicQuery) {
-		data = data.filter(entry => (entry[FIELD.topic] || "").trim() === topicQuery);
+		data = data.filter(entry => {
+			const raw = (entry[FIELD.topic] || "").trim();
+			if (!raw) return false;
+			return raw.split(";").map(s => s.trim()).some(t => t === topicQuery);
+		});
 	}
 
 	if (editorQuery) {
@@ -804,8 +813,8 @@ function saveSearchResultIds() {
       ids.push(rows[i].dataset.id);
     }
   }
-  sessionStorage.setItem("1520_search_ids", JSON.stringify(ids));
-  sessionStorage.setItem("1520_search_url", window.location.href);
+  localStorage.setItem("1520_search_ids", JSON.stringify(ids));
+  localStorage.setItem("1520_search_url", window.location.href);
 }
 
 
@@ -1036,6 +1045,29 @@ function setOriginSelectMenu(input) {
 
 //////////////////////////////
 //
+// setTopicSelectMenu -- Set the topic dropdown from the "topic" CGI parameter.
+//
+
+function setTopicSelectMenu(input) {
+	if (!input) return;
+	let topicSelect = document.querySelector("select.topic");
+	if (!topicSelect) return;
+	let options = topicSelect.querySelectorAll("option");
+	for (let i = 0; i < options.length; i++) {
+		if (options[i].value === input) {
+			options[i].selected = true;
+			return;
+		}
+	}
+	let regex = new RegExp(input, "i");
+	for (let i = 0; i < options.length; i++) {
+		if (options[i].value.match(regex)) {
+			options[i].selected = true;
+			return;
+		}
+	}
+}
+
 // setCollectionSelectMenu -- Set the collection dropdown from the "col" CGI parameter.
 //
 

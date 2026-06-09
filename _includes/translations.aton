@@ -14,6 +14,8 @@
 @nav.performances: Performances
 @nav.sources: Sources
 @nav.documentation: Documentation
+@nav.laforte: About Laforte
+@nav.encoding_practices: Encoding Practices
 @nav.feedback: Feedback
 
 @ feedback modal
@@ -34,6 +36,7 @@
 @home.motets: Motets
 @home.secular_works: Secular works
 @home.top_composers: Best-Represented Composers
+@home.top_topics: Browse by Topic
 @home.sources: Sources
 @home.composers: Composers
 @home.pages: Pages
@@ -100,6 +103,8 @@
 @work.show_accidentals: Show Editorial Accidentals
 @work.show_text: Show Text
 @work.hide_text: Hide Text
+@work.show_deg: Show Scale Degrees
+@work.hide_deg: Hide Scale Degrees
 
 @ about page
 @about.heading: about
@@ -233,6 +238,40 @@
 <li>All metadata records (<code>!!!key: value</code>) should have a single space after the colon.</li>
 </ul>
 
+@ laforte page
+@laforte.heading: About the Laforte Catalogue
+@laforte.h_person: Conrad Laforte
+@laforte.intro: Conrad Laforte (1921–2014) was a Canadian folklorist at Université Laval in Quebec City who devoted his career to preserving and classifying the French-language folk song tradition. His monumental work, the <em>Catalogue de la chanson folklorique française</em> (6 volumes, 1977–1987, Presses de l'Université Laval), remains the definitive reference for Francophone folk music scholarship.
+@laforte.h_system: Classification System
+@laforte.system_intro: The catalogue organizes songs into six broad categories based on their poetic and musical structure, each divided into sub-categories and individually numbered entries.
+@laforte.col_category: Category
+@laforte.col_name: Name
+@laforte.col_desc: Description
+@laforte.cat1: Epic-style songs built on monorhyme verses
+@laforte.cat2: Strophic songs — the largest category
+@laforte.cat3: Songs structured as dialogues
+@laforte.cat4: Cumulative or enumerative songs
+@laforte.cat5: Short songs, refrains, and ditties
+@laforte.cat6: Contrafacta and dance songs
+@laforte.h_number: How to Read a Laforte Number
+@laforte.number_intro: Each entry in the catalogue is identified by a three-part code such as <strong>II-A-1</strong>:
+@laforte.number_roman: The Roman numeral identifies the <strong>category</strong> (I–VI above)
+@laforte.number_letter: The letter identifies the <strong>sub-category</strong> (A, B, C…)
+@laforte.number_digit: The final number is the <strong>sequential entry number</strong> within that sub-category
+@laforte.h_metre: Metre Notation
+@laforte.metre_intro: Each song in the catalogue is assigned a metre code describing the syllabic structure of its verse. The code takes the form <code>type:subtype(syllabic_pattern)</code>, where the type and subtype are numbers indicating the broad metrical class, and the parenthetical describes how many syllables appear in each line of a strophe.
+@laforte.metre_col_symbol: Symbol
+@laforte.metre_col_meaning: Meaning
+@laforte.metre_col_example: Example
+@laforte.metre_plain: A plain number gives the syllable count of a line
+@laforte.metre_plus: A plus sign marks a hemistich — an internal rhythmic break within a line
+@laforte.metre_star: An asterisk followed by a number means that line type is repeated N times
+@laforte.metre_slash: A slash indicates alternating line lengths
+@laforte.metre_comma: A comma separates different line types within the same strophe
+@laforte.metre_refrain: R: introduces the metre of the refrain, separated from the verse by a semicolon
+@laforte.h_database: In This Database
+@laforte.database: Songs in this database include their Laforte catalogue number where it has been identified, allowing researchers to cross-reference individual songs with the broader corpus of Francophone folk music.
+
 @@END:en
 
 
@@ -247,6 +286,8 @@
 @nav.performances: Interprétations
 @nav.sources: Sources
 @nav.documentation: Documentation
+@nav.laforte: À propos de Laforte
+@nav.encoding_practices: Pratiques d'encodage
 @nav.feedback: Commentaires
 
 @ modal de commentaires
@@ -267,6 +308,7 @@
 @home.motets: Motets
 @home.secular_works: Œuvres profanes
 @home.top_composers: Compositeurs les mieux représentés
+@home.top_topics: Parcourir par thème
 @home.sources: Sources
 @home.composers: Compositeurs
 @home.pages: Pages
@@ -333,6 +375,8 @@
 @work.show_accidentals: Afficher les accidents éditoriaux
 @work.show_text: Afficher le texte
 @work.hide_text: Masquer le texte
+@work.show_deg: Afficher les degrés
+@work.hide_deg: Masquer les degrés
 
 @ page à propos
 @about.heading: à propos
@@ -465,5 +509,39 @@
 <li>Éviter les espaces en fin de ligne sauf si intentionnels.</li>
 <li>Tous les commentaires de référence (<code>!!!clé : valeur</code>) doivent comporter un espace simple après le deux-points.</li>
 </ul>
+
+@ page laforte
+@laforte.heading: À propos du Catalogue Laforte
+@laforte.h_person: Conrad Laforte
+@laforte.intro: Conrad Laforte (1921–2014) était un folkloriste canadien de l'Université Laval à Québec qui a consacré sa carrière à la préservation et à la classification du patrimoine de la chanson folklorique de langue française. Son œuvre monumentale, le <em>Catalogue de la chanson folklorique française</em> (6 volumes, 1977–1987, Presses de l'Université Laval), demeure la référence incontournable de la musicologie folklorique francophone.
+@laforte.h_system: Système de classification
+@laforte.system_intro: Le catalogue organise les chansons en six grandes catégories selon leur structure poétique et musicale, chacune subdivisée en sous-catégories et numérotée individuellement.
+@laforte.col_category: Catégorie
+@laforte.col_name: Nom
+@laforte.col_desc: Description
+@laforte.cat1: Chansons à structure épique sur des vers monorimes
+@laforte.cat2: Chansons strophiques — la catégorie la plus vaste
+@laforte.cat3: Chansons structurées en forme de dialogue
+@laforte.cat4: Chansons cumulatives ou énumératives
+@laforte.cat5: Chansons courtes, refrains et couplets
+@laforte.cat6: Contrafacta et airs à danser
+@laforte.h_number: Comment lire un numéro Laforte
+@laforte.number_intro: Chaque entrée du catalogue est identifiée par un code en trois parties, par exemple <strong>II-A-1</strong> :
+@laforte.number_roman: Le chiffre romain désigne la <strong>catégorie</strong> (I–VI ci-dessus)
+@laforte.number_letter: La lettre désigne la <strong>sous-catégorie</strong> (A, B, C…)
+@laforte.number_digit: Le chiffre final est le <strong>numéro d'entrée séquentiel</strong> au sein de cette sous-catégorie
+@laforte.h_metre: Notation métrique
+@laforte.metre_intro: Chaque chanson du catalogue se voit attribuer un code de mètre décrivant la structure syllabique de ses vers. Le code prend la forme <code>type:sous-type(structure_syllabique)</code>, où le type et le sous-type sont des chiffres indiquant la classe métrique générale, et la parenthèse décrit le nombre de syllabes dans chaque vers de la strophe.
+@laforte.metre_col_symbol: Symbole
+@laforte.metre_col_meaning: Signification
+@laforte.metre_col_example: Exemple
+@laforte.metre_plain: Un nombre simple indique le compte syllabique d'un vers
+@laforte.metre_plus: Un signe plus marque une hémistiche — une césure rythmique interne dans un vers
+@laforte.metre_star: Un astérisque suivi d'un nombre signifie que ce type de vers est répété N fois
+@laforte.metre_slash: Une barre oblique indique des longueurs de vers alternées
+@laforte.metre_comma: Une virgule sépare les différents types de vers au sein de la même strophe
+@laforte.metre_refrain: R: introduit le mètre du refrain, séparé des couplets par un point-virgule
+@laforte.h_database: Dans cette base de données
+@laforte.database: Les chansons de cette base de données incluent leur numéro du Catalogue Laforte lorsqu'il a été identifié, permettant aux chercheurs de croiser chaque chanson avec le corpus plus large de la musique folklorique francophone.
 
 @@END:fr

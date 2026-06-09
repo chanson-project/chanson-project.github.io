@@ -71,6 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		runSearch = true;
 	}
 
+	// Set the topic select menu:
+	if (cgi.topic) {
+		setTopicSelectMenu(cgi.topic);
+		runSearch = true;
+	}
+
 	// Set variants dropdown from URL:
 	if (cgi.v) {
 		let variantsEl = document.querySelector("#variants-select");

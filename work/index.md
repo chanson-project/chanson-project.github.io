@@ -3,6 +3,7 @@ layout: work
 ---
 
 {% include_relative styles-local.html %}
+{% include styles/styles-common.css.html %}
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-38882FHV3H"></script>
 <script>
@@ -41,8 +42,12 @@ layout: work
     </div>
     <div id="textSelect">
        <div class="button show-text" onclick="displayText()" data-i18n="work.show_text">Show Text</div>
+       <div class="button show-deg" onclick="displayScaleDegrees()" data-i18n="work.show_deg">Show Scale Degrees</div>
     </div>
 </div>
+
+<div class="PREHTML" style="display:none"></div>
+<div class="POSTHTML" style="display:none"></div>
 
 <script type="text/x-humdrum" id="my-score"></script>
 

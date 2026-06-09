@@ -5,9 +5,6 @@
 layout: page
 ---
 
-<script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.1"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-38882FHV3H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -80,8 +77,8 @@ layout: page
 
   <!-- RIGHT COLUMN -->
   <div class="right-column">
-    <div class="section-header"><h4 data-i18n="home.top_composers">Best-Represented Composers</h4></div>
-    <div id="composer-plot"></div>
+    <div class="section-header"><h4 data-i18n="home.top_topics">Most Common Topics</h4></div>
+    <div id="topic-plot"></div>
   </div>
 
 </div>
