@@ -90,7 +90,7 @@ function displayBrowseTable(data, selector) {
 	data = data.slice().sort(function(a, b) { return (a[FIELD.id] || "").localeCompare(b[FIELD.id] || ""); });
 	CURRENT_DATA = data;
 	SORT_STATE = { column: INDEX_id, dir: 1 };
-	let headings = [INDEX_id, INDEX_title, INDEX_composer, INDEX_pages, INDEX_genre, INDEX_laforte, INDEX_origin, INDEX_collection, INDEX_editor];
+	let headings = [INDEX_id, INDEX_title, INDEX_composer, INDEX_pages, INDEX_genre, INDEX_laforte, INDEX_key, INDEX_time, INDEX_origin, INDEX_collection, INDEX_editor];
 	let contents = "";
 	contents += "<table class='general'>\n";
 	contents += "<thead>\n";
@@ -140,7 +140,7 @@ function sortBy(column) {
 		return av.localeCompare(bv) * SORT_STATE.dir;
 	});
 
-	let headings = [INDEX_id, INDEX_title, INDEX_composer, INDEX_pages, INDEX_genre, INDEX_laforte, INDEX_origin, INDEX_collection, INDEX_editor];
+	let headings = [INDEX_id, INDEX_title, INDEX_composer, INDEX_pages, INDEX_genre, INDEX_laforte, INDEX_key, INDEX_time, INDEX_origin, INDEX_collection, INDEX_editor];
 	let tbody = document.querySelector("#list tbody");
 	if (tbody) {
 		tbody.innerHTML = makeTableBody(headings, sorted);
@@ -170,6 +170,8 @@ const HEADING_LABELS = {
 	[INDEX_genre]:      "Genre",
 	[INDEX_topic]:      "Topic",
 	[INDEX_laforte]:    "Laforte",
+	[INDEX_key]:        "Key",
+	[INDEX_time]:       "Meter",
 };
 
 const HEADING_I18N = {
@@ -182,6 +184,8 @@ const HEADING_I18N = {
 	[INDEX_origin]:     "rep.col_origin",
 	[INDEX_genre]:      "rep.col_genre",
 	[INDEX_laforte]:    "rep.col_laforte",
+	[INDEX_key]:        "rep.col_key",
+	[INDEX_time]:       "rep.col_time",
 };
 
 function makeTableHeader(headings) {

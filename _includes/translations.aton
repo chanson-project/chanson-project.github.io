@@ -68,6 +68,8 @@
 @rep.time_label: All Meters
 @rep.col_genre: Genre
 @rep.col_laforte: Laforte
+@rep.col_key: Key
+@rep.col_time: Meter
 @rep.clear_all: Clear All
 @rep.user_guide: User Guide
 
@@ -342,6 +344,8 @@
 @rep.time_label: Tous les mètres
 @rep.col_genre: Genre
 @rep.col_laforte: Laforte
+@rep.col_key: Tonalité
+@rep.col_time: Mètre
 @rep.clear_all: Tout effacer
 @rep.user_guide: Guide d'utilisation
 

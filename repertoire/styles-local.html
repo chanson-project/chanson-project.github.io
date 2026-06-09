@@ -46,12 +46,19 @@ table.general thead th.sortable:hover {
   background: linear-gradient(135deg, #e87a30, #ff9f50);
 }
 
-/* Truncate long text in 5th column */
-table.general td:nth-child(5) {
+/* Truncate long text in title column */
+table.general td:nth-child(2) {
   max-width: 220px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Key and Meter columns: compact */
+table.general td.amd-key,
+table.general td.amt {
+  white-space: nowrap;
+  font-size: 13px;
 }
 
 /* ── Search interface ───────────────────────────────────────────────────── */

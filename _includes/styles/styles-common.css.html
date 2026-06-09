@@ -143,7 +143,6 @@ table.general {
   -webkit-backdrop-filter: blur(14px);
 
   border-radius: var(--radius-lg);
-  overflow: clip; /* clip preserves border-radius without trapping sticky */
 
   box-shadow:
     0 4px 0 rgba(255,140,66,0.15),
@@ -151,6 +150,9 @@ table.general {
 
   font: 600 18px/1.55 "Nunito", sans-serif;
 }
+
+table.general thead th:first-child { border-top-left-radius:  var(--radius-lg); }
+table.general thead th:last-child  { border-top-right-radius: var(--radius-lg); }
 
 table.general th {
   position: sticky;
