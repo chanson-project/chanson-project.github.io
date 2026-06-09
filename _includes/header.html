@@ -451,4 +451,13 @@ function sendFeedback() {
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") closeFeedbackModal();
 });
+
+(function() {
+  function syncNavHeight() {
+    const h = document.querySelector(".site-header");
+    if (h) document.documentElement.style.setProperty("--nav-height", h.getBoundingClientRect().height + "px");
+  }
+  document.addEventListener("DOMContentLoaded", syncNavHeight);
+  window.addEventListener("resize", syncNavHeight);
+})();
 </script>
