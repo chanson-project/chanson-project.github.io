@@ -2,7 +2,7 @@
 
 <script>
 
-const YT_ICON_SVG = `<svg class="yt-icon-svg" width="18" height="13" viewBox="0 0 90 63" xmlns="http://www.w3.org/2000/svg"><rect width="90" height="63" rx="13" fill="#FF0000"/><polygon points="37,15 37,48 64,31" fill="white"/></svg>`;
+const YT_ICON_SVG = `<svg class="yt-icon-svg" width="36" height="26" viewBox="0 0 90 63" xmlns="http://www.w3.org/2000/svg"><rect width="90" height="63" rx="13" fill="#FF0000"/><polygon points="37,15 37,48 64,31" fill="white"/></svg>`;
 
 let PERF_SORT = { column: null, dir: 1 };
 let PERF_DATA = [];
@@ -56,9 +56,9 @@ function renderPerformancesTable(data) {
 
     const cols = [
         { key: "composer",   label: t("perf.col_composer") },
+        { key: "youtube",    label: "" },
         { key: "title",      label: t("perf.col_title") },
         { key: "collection", label: t("perf.col_collection") },
-        { key: "youtube",    label: "" },
     ];
 
     let html = "<table class='general'><thead><tr>";
@@ -83,9 +83,9 @@ function renderPerformancesTable(data) {
         const workURL = `/work/?id=${id}`;
         html += `<tr>
             <td>${comp}</td>
+            <td class="yt-cell"><a href="${ytURL}" target="_blank" rel="noopener noreferrer" class="yt-link" title="Watch on YouTube">${YT_ICON_SVG}</a></td>
             <td><a href="${workURL}" target="_blank" rel="noopener noreferrer">${title}</a></td>
             <td>${coll}</td>
-            <td class="yt-cell"><a href="${ytURL}" target="_blank" rel="noopener noreferrer" class="yt-link" title="Watch on YouTube">${YT_ICON_SVG}</a></td>
         </tr>\n`;
     }
 
