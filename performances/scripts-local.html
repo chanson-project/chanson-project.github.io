@@ -58,6 +58,9 @@ function renderPerformancesTable(data) {
         { key: "composer",   label: t("perf.col_composer") },
         { key: "youtube",    label: "" },
         { key: "title",      label: t("perf.col_title") },
+        { key: "performers", label: t("perf.col_performers") },
+        { key: "date",       label: t("perf.col_date") },
+        { key: "place",      label: t("perf.col_place") },
         { key: "collection", label: t("perf.col_collection") },
     ];
 
@@ -75,16 +78,22 @@ function renderPerformancesTable(data) {
     html += "</tr></thead><tbody>\n";
 
     for (const e of data) {
-        const id    = e[FIELD.id] || "";
-        const comp  = e[FIELD.composer] || "";
-        const title = getPerfTitle(e);
-        const coll  = getPerfCollection(e);
-        const ytURL = e[FIELD.url_youtube] || "";
-        const workURL = `/work/?id=${id}`;
+        const id         = e[FIELD.id] || "";
+        const comp       = e[FIELD.composer] || "";
+        const title      = getPerfTitle(e);
+        const coll       = getPerfCollection(e);
+        const ytURL      = e[FIELD.url_youtube] || "";
+        const performers = e[FIELD.performers] || "";
+        const date       = e[FIELD.rec_date] || "";
+        const place      = e[FIELD.rec_place] || "";
+        const workURL    = `/work/?id=${id}`;
         html += `<tr>
             <td>${comp}</td>
             <td class="yt-cell"><a href="${ytURL}" target="_blank" rel="noopener noreferrer" class="yt-link" title="Watch on YouTube">${YT_ICON_SVG}</a></td>
             <td><a href="${workURL}" target="_blank" rel="noopener noreferrer">${title}</a></td>
+            <td>${performers}</td>
+            <td>${date}</td>
+            <td>${place}</td>
             <td>${coll}</td>
         </tr>\n`;
     }
@@ -126,6 +135,15 @@ function sortPerformancesBy(column) {
         } else if (column === "collection") {
             av = getPerfCollection(a);
             bv = getPerfCollection(b);
+        } else if (column === "performers") {
+            av = a[FIELD.performers] || "";
+            bv = b[FIELD.performers] || "";
+        } else if (column === "date") {
+            av = a[FIELD.rec_date] || "";
+            bv = b[FIELD.rec_date] || "";
+        } else if (column === "place") {
+            av = a[FIELD.rec_place] || "";
+            bv = b[FIELD.rec_place] || "";
         }
         return av.localeCompare(bv) * PERF_SORT.dir;
     });

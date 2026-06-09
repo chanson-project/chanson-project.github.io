@@ -391,6 +391,17 @@ function displayWorkInfo(id) {
 		? `<div class="work-item"><b>${t('work.notes')}:</b> ${workinfo.Notes}</div>`
 		: "";
 
+	const refRaw = workinfo[FIELD.url_reference] || "";
+	const refoutput = refRaw
+		? `<div class="work-item"><b>${t('work.references')}:</b> ` +
+		  refRaw.split(";").map(u => {
+		      u = u.trim();
+		      if (!u) return "";
+		      try { const label = new URL(u).hostname.replace(/^www\./, ""); return `<a href="${u}" target="_blank" rel="noopener noreferrer">${label}</a>`; }
+		      catch { return `<a href="${u}" target="_blank" rel="noopener noreferrer">${u}</a>`; }
+		  }).filter(Boolean).join(" · ") + `</div>`
+		: "";
+
 	// ── Right column: YouTube, encoders, and links ─────────────────────────────
 
 	const ytURL = workinfo[FIELD.url_youtube] || "";
@@ -429,7 +440,7 @@ function displayWorkInfo(id) {
 	row.appendChild(leftCell);
 
 	const middleCell = document.createElement("td");
-	middleCell.innerHTML = keyoutput + timeoutput + originoutput + notesoutput;
+	middleCell.innerHTML = keyoutput + timeoutput + originoutput + notesoutput + refoutput;
 	row.appendChild(middleCell);
 
 	const rightCell = document.createElement("td");

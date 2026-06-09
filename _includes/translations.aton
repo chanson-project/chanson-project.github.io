@@ -103,6 +103,7 @@
 @work.laforte: Laforte
 @work.key: Key
 @work.time: Time signature
+@work.references: References
 @work.watch_on_youtube: Watch on YouTube
 @work.encoder: Encoder
 @work.encoders: Encoders
@@ -141,6 +142,9 @@
 @perf.col_composer: Composer
 @perf.col_title: Title
 @perf.col_collection: Collection
+@perf.col_performers: Performers
+@perf.col_date: Date
+@perf.col_place: Place
 @perf.one_result: 1 performance
 @perf.results: performances
 
@@ -385,6 +389,7 @@
 @work.laforte: Laforte
 @work.key: Tonalité
 @work.time: Signature rythmique
+@work.references: Références
 @work.watch_on_youtube: Regarder sur YouTube
 @work.encoder: Encodeur
 @work.encoders: Encodeurs
@@ -423,6 +428,9 @@
 @perf.col_composer: Compositeur
 @perf.col_title: Titre
 @perf.col_collection: Collection
+@perf.col_performers: Interprètes
+@perf.col_date: Date
+@perf.col_place: Lieu
 @perf.one_result: 1 interprétation
 @perf.results: interprétations
 
