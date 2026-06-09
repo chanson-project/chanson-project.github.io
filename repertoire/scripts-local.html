@@ -236,6 +236,8 @@ function makeTableBody(headings, data) {
 				output += getEditor(entry);
 			} else if (h === INDEX_origin) {
 				output += getOrigin(entry);
+			} else if (h === INDEX_time) {
+				output += (value || "").split(";")[0].trim();
 			} else {
 				output += value;
 			}
@@ -590,9 +592,10 @@ function buildKeySelect(data) {
 function buildTimeSelect(data) {
 	let counter = {};
 	for (let i = 0; i < data.length; i++) {
-		let tm = (data[i][FIELD.time] || "").trim();
-		if (!tm) continue;
-		counter[tm] = (counter[tm] || 0) + 1;
+		let raw = (data[i][FIELD.time] || "").trim();
+		if (!raw) continue;
+		let primary = raw.split(";")[0].trim();
+		if (primary) counter[primary] = (counter[primary] || 0) + 1;
 	}
 	let times = Object.keys(counter).sort((a, b) => a.localeCompare(b));
 	let output = "<select class='time' onchange='doSearch()'>\n";
@@ -861,7 +864,10 @@ function doSearch(data) {
 	}
 
 	if (timeQuery) {
-		data = data.filter(entry => (entry[FIELD.time] || "").trim() === timeQuery);
+		data = data.filter(entry => {
+			const raw = (entry[FIELD.time] || "").trim();
+			return raw.split(";")[0].trim() === timeQuery;
+		});
 	}
 
 	if (variantsValue === "hide") {

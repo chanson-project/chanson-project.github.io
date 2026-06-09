@@ -56,7 +56,7 @@ fields:
     chamberland: "Chamberland"
     url_youtube: "!!!URL-youtube"
     key:       "!!!AMD-key"
-    time:      "!!!AMT"
+    time:      "!!!AMT-sig"
   sources:
     id:        "!!!id"
     title:     "!!!PTL"
