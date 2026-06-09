@@ -365,7 +365,22 @@ function displayWorkInfo(id) {
 	const collectionoutput = `<div class="work-item"><b>${t('work.collection')}:</b> <a href="${collectionLink}">${collectionName}</a></div>`;
 	const pagesoutput = workinfo[FIELD.pages] ? `<div class="work-item"><b>${t('work.pages')}:</b> ${workinfo[FIELD.pages]}</div>` : "";
 
-	// ── Middle column: origin and encoding status ──────────────────────────────
+	const genreVal = workinfo[FIELD.genre] || "";
+	const genreoutput = genreVal ? `<div class="work-item"><b>${t('work.genre')}:</b> ${genreVal}</div>` : "";
+
+	const topicVal = workinfo[FIELD.topic] || "";
+	const topicoutput = topicVal ? `<div class="work-item"><b>${t('work.topic')}:</b> ${topicVal}</div>` : "";
+
+	const laforteVal = workinfo[FIELD.laforte] || "";
+	const laforteoutput = laforteVal ? `<div class="work-item"><b>${t('work.laforte')}:</b> ${laforteVal}</div>` : "";
+
+	// ── Middle column: musical and contextual ──────────────────────────────────
+
+	const keyVal = workinfo[FIELD.key] || "";
+	const keyoutput = keyVal ? `<div class="work-item"><b>${t('work.key')}:</b> ${keyVal}</div>` : "";
+
+	const timeVal = (workinfo[FIELD.time] || "").split(";")[0].trim();
+	const timeoutput = timeVal ? `<div class="work-item"><b>${t('work.time')}:</b> ${timeVal}</div>` : "";
 
 	const originVal = workinfo[FIELD.origin] || "";
 	const originoutput = originVal
@@ -376,13 +391,18 @@ function displayWorkInfo(id) {
 		? `<div class="work-item"><b>${t('work.notes')}:</b> ${workinfo.Notes}</div>`
 		: "";
 
-// ── Right column: encoders and links ───────────────────────────────────────
+	// ── Right column: YouTube, encoders, and links ─────────────────────────────
+
+	const ytURL = workinfo[FIELD.url_youtube] || "";
+	const ytoutput = ytURL
+		? `<div class="work-item"><a href="${ytURL}" target="_blank" rel="noopener noreferrer" title="${t('work.watch_on_youtube')}"><svg width="36" height="26" viewBox="0 0 90 63" xmlns="http://www.w3.org/2000/svg"><rect width="90" height="63" rx="13" fill="#FF0000"/><polygon points="37,15 37,48 64,31" fill="white"/></svg></a></div>`
+		: "";
 
 	let encodersoutput = "";
 	const encoderList = [];
 	for (let n = 1; n <= 5; n++) {
-		const name = workinfo[`EED-${n}`];
-		const date = workinfo[`EEV-${n}`];
+		const name = workinfo[`!!!EED${n}`];
+		const date = workinfo[`!!!EEV${n}`];
 		if (name) encoderList.push(date ? `${name} (${date})` : name);
 	}
 	if (encoderList.length) {
@@ -405,15 +425,15 @@ function displayWorkInfo(id) {
 	const row = document.createElement("tr");
 
 	const leftCell = document.createElement("td");
-	leftCell.innerHTML = titleoutput + composeroutput + lyricistoutput + collectionoutput + pagesoutput;
+	leftCell.innerHTML = titleoutput + composeroutput + lyricistoutput + collectionoutput + pagesoutput + genreoutput + topicoutput + laforteoutput;
 	row.appendChild(leftCell);
 
 	const middleCell = document.createElement("td");
-	middleCell.innerHTML = originoutput + notesoutput;
+	middleCell.innerHTML = keyoutput + timeoutput + originoutput + notesoutput;
 	row.appendChild(middleCell);
 
 	const rightCell = document.createElement("td");
-	rightCell.innerHTML = encodersoutput + linksoutput + downloadoutput;
+	rightCell.innerHTML = ytoutput + encodersoutput + linksoutput + downloadoutput;
 	row.appendChild(rightCell);
 
 	tbody.appendChild(row);

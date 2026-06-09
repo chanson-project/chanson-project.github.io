@@ -98,6 +98,12 @@
 @work.pages: Pages
 @work.origin: Origin
 @work.notes: Notes
+@work.genre: Genre
+@work.topic: Topic
+@work.laforte: Laforte
+@work.key: Key
+@work.time: Time signature
+@work.watch_on_youtube: Watch on YouTube
 @work.encoder: Encoder
 @work.encoders: Encoders
 @work.view_on: View on
@@ -374,6 +380,12 @@
 @work.pages: Pages
 @work.origin: Origine
 @work.notes: Notes
+@work.genre: Genre
+@work.topic: Thème
+@work.laforte: Laforte
+@work.key: Tonalité
+@work.time: Signature rythmique
+@work.watch_on_youtube: Regarder sur YouTube
 @work.encoder: Encodeur
 @work.encoders: Encodeurs
 @work.view_on: Voir sur
