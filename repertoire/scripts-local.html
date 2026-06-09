@@ -686,6 +686,25 @@ function buildYearSelect(data) { return ""; }
 
 //////////////////////////////
 //
+// updateDropdownHighlights -- Add/remove .browse-highlight on each dropdown
+//    depending on whether it has a non-default value selected.
+//
+
+function updateDropdownHighlights() {
+	const searchInterface = document.querySelector("#search-interface");
+	if (!searchInterface) return;
+	searchInterface.querySelectorAll("select").forEach(sel => {
+		const active = sel.id === "variants-select"
+			? sel.value !== "hide"
+			: sel.value !== "";
+		sel.classList.toggle("browse-highlight", active);
+	});
+}
+
+
+
+//////////////////////////////
+//
 // doSearch --
 //
 
@@ -766,6 +785,7 @@ function doSearch(data) {
 	displayBrowseTable(data);
 	FreeTextSearch();
 	updateBrowseUrlDisplay();
+	updateDropdownHighlights();
 }
 
 
