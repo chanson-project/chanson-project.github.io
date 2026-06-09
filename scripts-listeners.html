@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const workMatches = METADATA.filter(entry => {
       const haystack = normalizeSearchString(
         [
+          entry[FIELD.id],
           entry.Composer,
           entry.Title,
           entry.Subtitle,

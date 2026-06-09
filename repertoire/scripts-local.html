@@ -207,7 +207,7 @@ function makeTableBody(headings, data) {
 	for (let i = 0; i < data.length; i++) {
 		let entry = data[i];
 		let searchText = [
-			entry[FIELD.composer], getTitle(entry), entry[FIELD.lyricist]
+			entry[FIELD.id], entry[FIELD.composer], getTitle(entry), entry[FIELD.lyricist]
 		].filter(Boolean).join(" ").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 		output += `<tr data-search="${searchText.replace(/"/g, "&quot;")}" data-id="${entry[FIELD.id]}">\n`;
 		for (let j = 0; j < headings.length; j++) {
