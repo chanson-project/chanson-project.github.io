@@ -149,7 +149,7 @@
 @perf.results: performances
 
 @ documentation page
-@doc.heading: documentation
+@doc.heading: Documentation
 @doc.h_procedure: Encoding Procedure
 @doc.h_general: General Encoding
 @doc.h_text: Text Encoding
@@ -404,7 +404,7 @@
 @work.hide_deg: Masquer les degrés
 
 @ page à propos
-@about.heading: à propos
+@about.heading: À propos
 @about.h_project: Projet
 @about.h_feedback: Vos commentaires
 @about.h_people: Équipe
@@ -435,7 +435,7 @@
 @perf.results: interprétations
 
 @ page documentation
-@doc.heading: documentation
+@doc.heading: Documentation
 @doc.h_procedure: Procédure d'encodage
 @doc.h_general: Encodage général
 @doc.h_text: Encodage du texte
