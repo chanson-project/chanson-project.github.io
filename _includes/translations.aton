@@ -13,6 +13,8 @@
 @nav.chansons: Chansons
 @nav.performances: Performances
 @nav.musicians: Musicians
+@nav.resources: Resources
+@nav.education: Educational Resources
 @nav.sources: Sources
 @nav.documentation: Documentation
 @nav.laforte: About Laforte
@@ -152,6 +154,23 @@
 @ musicians page
 @mus.heading: Musicians
 @mus.intro: Contemporary performers of French-Canadian traditional music.
+
+@ educational resources page
+@edu.heading: Educational Resources
+@edu.intro: Digital tools for Francophone music and language education in K–12 schools.
+@edu.filter_all: All
+@edu.filter_free: Free
+@edu.filter_sub: Subscription
+@edu.cat_all: All categories
+@edu.cat_music: Music creation
+@edu.cat_language: Language learning
+@edu.cat_curriculum: Curriculum
+@edu.free: Free
+@edu.subscription: Subscription
+@edu.ages: Ages
+@edu.visit: Visit
+@edu.one_result: 1 tool
+@edu.results: tools
 
 @ documentation page
 @doc.heading: Documentation
@@ -304,6 +323,8 @@
 @nav.repertoire: Répertoire
 @nav.performances: Interprétations
 @nav.musicians: Musiciens
+@nav.resources: Ressources
+@nav.education: Ressources pédagogiques
 @nav.sources: Sources
 @nav.documentation: Documentation
 @nav.laforte: À propos de Laforte
@@ -443,6 +464,23 @@
 @ page musiciens
 @mus.heading: Musiciens
 @mus.intro: Interprètes contemporains de musique traditionnelle franco-canadienne.
+
+@ page ressources pédagogiques
+@edu.heading: Ressources pédagogiques
+@edu.intro: Outils numériques pour l'éducation musicale et linguistique en milieu francophone, de la maternelle à la 12e année.
+@edu.filter_all: Tout
+@edu.filter_free: Gratuit
+@edu.filter_sub: Abonnement
+@edu.cat_all: Toutes les catégories
+@edu.cat_music: Création musicale
+@edu.cat_language: Apprentissage des langues
+@edu.cat_curriculum: Curriculum
+@edu.free: Gratuit
+@edu.subscription: Abonnement
+@edu.ages: Âges
+@edu.visit: Visiter
+@edu.one_result: 1 outil
+@edu.results: outils
 
 @ page documentation
 @doc.heading: Documentation

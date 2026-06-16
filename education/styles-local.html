@@ -1,0 +1,232 @@
+<style>
+
+.wrapper { max-width: 1100px; }
+
+.edu-intro {
+  font-size: 1em;
+  color: #7A6E68;
+  margin-bottom: 24px;
+}
+
+/* ── Filter bars ─────────────────────────────────────────────────────────── */
+
+#edu-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+#edu-access-tabs,
+#edu-category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.edu-tab,
+.edu-cat {
+  padding: 7px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  border-radius: 999px;
+  border: 2px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.9);
+  color: #7A6E68;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.edu-tab:hover,
+.edu-cat:hover {
+  border-color: rgba(255,140,66,0.4);
+  color: #2A2320;
+  transform: translateY(-1px);
+}
+
+.edu-tab.active {
+  background: linear-gradient(135deg, #FF8C42, #ffaa5e);
+  color: #fff;
+  border-color: transparent;
+}
+
+.edu-cat.active {
+  background: rgba(255,140,66,0.12);
+  color: #d06010;
+  border-color: rgba(255,140,66,0.4);
+}
+
+/* ── Count ───────────────────────────────────────────────────────────────── */
+
+#edu-count {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  color: #FF8C42;
+  margin-bottom: 16px;
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+
+#edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+
+.edu-card {
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.09);
+  background: rgba(255,255,255,0.9);
+  padding: 18px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.edu-card:hover {
+  box-shadow: 0 4px 18px rgba(255,140,66,0.12);
+  border-color: rgba(255,140,66,0.3);
+  transform: translateY(-2px);
+}
+
+/* ── Card top row ────────────────────────────────────────────────────────── */
+
+.edu-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.edu-card-name {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: 1.05em;
+  font-weight: 700;
+  color: #2A2320;
+  line-height: 1.2;
+}
+
+/* ── Access badge ────────────────────────────────────────────────────────── */
+
+.edu-badge {
+  flex-shrink: 0;
+  padding: 3px 11px;
+  font-size: 0.75em;
+  font-weight: 700;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.edu-badge-free {
+  background: rgba(59,191,206,0.12);
+  color: #1a9aaa;
+  border: 1.5px solid rgba(59,191,206,0.35);
+}
+
+.edu-badge-sub {
+  background: rgba(249,200,70,0.15);
+  color: #a07800;
+  border: 1.5px solid rgba(249,200,70,0.4);
+}
+
+/* ── Description ─────────────────────────────────────────────────────────── */
+
+.edu-card-desc {
+  font-size: 0.88em;
+  color: #5A4E47;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+
+.edu-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.edu-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.edu-platform {
+  font-size: 0.75em;
+  font-weight: 700;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  color: #7A6E68;
+  background: rgba(0,0,0,0.05);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.edu-ages {
+  font-size: 0.75em;
+  font-weight: 600;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  color: #7A6E68;
+}
+
+.edu-doi {
+  font-size: 0.72em;
+  font-weight: 700;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  color: #999;
+  text-decoration: none;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 5px;
+  padding: 1px 7px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.edu-doi:hover {
+  color: #555;
+  border-color: rgba(0,0,0,0.3);
+  text-decoration: none;
+}
+
+/* ── Visit button ────────────────────────────────────────────────────────── */
+
+.edu-visit-btn {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.82em;
+  font-weight: 700;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  color: #FF8C42;
+  border: 2px solid rgba(255,140,66,0.35);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.edu-visit-btn:hover {
+  background: #FF8C42;
+  color: #fff;
+  border-color: #FF8C42;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  #edu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>

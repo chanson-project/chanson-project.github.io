@@ -1,0 +1,327 @@
+<script>
+
+const EDU_TOOLS = [
+  {
+    id: "groove-pizza",
+    name: "Groove Pizza",
+    access: "free",
+    category: "music",
+    platform: ["web"],
+    ages: null,
+    url: "https://apps.musedlab.org/groovepizza",
+    doi: "https://doi.org/10.20897/ejsteme/12959",
+    desc_en: "A web app that lets users program drum rhythm patterns on a circular grid, using mathematical concepts such as shapes, angles, and patterns. Available for any age or skill level.",
+    desc_fr: "Une application web qui permet aux utilisateurs de programmer des patterns rythmiques sur une grille circulaire, en utilisant des concepts mathématiques comme les formes, les angles et les patterns."
+  },
+  {
+    id: "scratch-music",
+    name: "Scratch Music",
+    access: "free",
+    category: "music",
+    platform: ["web"],
+    ages: null,
+    url: "https://scratch.mit.edu/",
+    doi: "https://doi.org/10.20897/ejsteme/12959",
+    desc_en: "A programming website by MIT Media Lab for creating animated stories and games with sound. Available in 20+ languages including French. Scratch Jr is available on the App Store for ages 4+.",
+    desc_fr: "Un site de programmation du MIT Media Lab pour créer des histoires animées et des jeux avec du son. Disponible en 20+ langues dont le français. Scratch Jr est disponible sur l'App Store pour les 4 ans et plus."
+  },
+  {
+    id: "cml-songmaker",
+    name: "Chrome Music Lab: SongMaker",
+    access: "free",
+    category: "music",
+    platform: ["web"],
+    ages: null,
+    url: "https://musiclab.chromeexperiments.com/Song-Maker/",
+    doi: "https://doi.org/10.46843/jiecr.v4i3.632",
+    desc_en: "A free, browser-based sequencer (part of Chrome Music Lab) that lets anyone create and share music by drawing notes on a grid. No account needed.",
+    desc_fr: "Un séquenceur gratuit basé sur navigateur (faisant partie de Chrome Music Lab) qui permet à chacun de créer et partager de la musique en dessinant des notes sur une grille."
+  },
+  {
+    id: "cml-rhythm",
+    name: "Chrome Music Lab: Rhythm",
+    access: "free",
+    category: "music",
+    platform: ["web"],
+    ages: null,
+    url: "https://musiclab.chromeexperiments.com/Rhythm/",
+    doi: "https://journals.ncert.gov.in/IJET/article/view/547",
+    desc_en: "An interactive, browser-based tool (part of Chrome Music Lab) for creating musical beats using a visual grid with animated characters representing different percussion kits.",
+    desc_fr: "Un outil interactif basé sur navigateur (faisant partie de Chrome Music Lab) pour créer des rythmes musicaux à l'aide d'une grille visuelle avec des personnages animés représentant différentes batteries."
+  },
+  {
+    id: "garageband",
+    name: "GarageBand",
+    access: "free",
+    category: "music",
+    platform: ["ios", "mac"],
+    ages: null,
+    url: "https://www.apple.com/mac/garageband/",
+    doi: "https://doi.org/10.20897/ejsteme/12959",
+    desc_en: "A Digital Audio Workstation (DAW) by Apple with virtual instruments, sound effects, loops, and music editing tools suitable for all levels. The iPad version is recommended for elementary students.",
+    desc_fr: "Une station de travail audio numérique (STAN) d'Apple avec des instruments virtuels, des effets sonores, des boucles et des outils d'édition musicale adaptés à tous les niveaux. La version iPad est recommandée pour les élèves du primaire."
+  },
+  {
+    id: "octostudio",
+    name: "OctoStudio",
+    access: "free",
+    category: "music",
+    platform: ["ios", "android", "web"],
+    ages: null,
+    url: "https://octostudio.org/",
+    doi: "https://doi.org/10.1145/3628516.3659411",
+    desc_en: "A free mobile coding app by MIT Media Lab for creating animated, interactive projects with blocks of code. Available in 20+ languages including French.",
+    desc_fr: "Une application de codage mobile gratuite du MIT Media Lab pour créer des projets animés et interactifs avec des blocs de code. Disponible en 20+ langues dont le français."
+  },
+  {
+    id: "dr-musik",
+    name: "Dr. Musik",
+    access: "free",
+    category: "music",
+    platform: ["web"],
+    ages: null,
+    url: "https://www.doctormusik.com/apps-and-games/",
+    doi: null,
+    desc_en: "An educational website by Montréal music educator Thierry Simard featuring interactive apps and games for learning music fundamentals — virtual instruments, composition tools, note-reading games, and rhythm activities. Some apps available in French.",
+    desc_fr: "Un site éducatif de l'éducateur musical montréalais Thierry Simard proposant des applications et jeux interactifs pour apprendre les fondamentaux de la musique. Certaines applications sont disponibles en français."
+  },
+  {
+    id: "lyrics-training",
+    name: "LyricsTraining / LingoClip",
+    access: "free",
+    category: "language",
+    platform: ["web", "ios", "android"],
+    ages: null,
+    url: "https://lingoclip.app/fr",
+    doi: "https://doi.org/10.30964/auebfd.1651336",
+    desc_en: "An online platform and app for learning languages through music and song lyrics. Users listen to music videos and fill in missing words in Choice, Type, or Karaoke mode. Supports 20+ languages including French.",
+    desc_fr: "Une plateforme en ligne et une application pour apprendre les langues à travers la musique et les paroles. Les utilisateurs écoutent des clips vidéo et complètent les mots manquants en mode Choix, Frappe ou Karaoké. Supporte 20+ langues dont le français."
+  },
+  {
+    id: "lyroes",
+    name: "Lyroes",
+    access: "free",
+    category: "language",
+    platform: ["android"],
+    ages: null,
+    url: "https://www.lyroes.com/",
+    doi: null,
+    desc_en: "A French music trivia and guessing game for Android. Players are given clues (lyrics, era, instruments, mood) and must guess the song and artist before the timer runs out. Features 2000+ French songs.",
+    desc_fr: "Un jeu de devinettes et de culture musicale française pour Android. Les joueurs reçoivent des indices (paroles, époque, instruments, émotions) et doivent deviner la chanson et l'artiste avant la fin du compte à rebours. Contient 2000+ chansons françaises."
+  },
+  {
+    id: "mauril",
+    name: "Mauril",
+    access: "free",
+    category: "language",
+    platform: ["web", "ios", "android"],
+    ages: null,
+    url: "https://mauril.ca/en/",
+    doi: "https://doi.org/10.18653/v1/2023.bea-1.43",
+    desc_en: "A free Canadian language-learning app by CBC/Radio-Canada using authentic Canadian audio and video content — news, documentaries, TV shows — with interactive comprehension exercises. Focuses on English and French. Similar to Duolingo but Canada-specific.",
+    desc_fr: "Une application gratuite d'apprentissage des langues de CBC/Radio-Canada utilisant du contenu canadien authentique — nouvelles, documentaires, émissions TV — avec des exercices de compréhension interactifs. Axée sur l'anglais et le français."
+  },
+  {
+    id: "studycat",
+    name: "Studycat French",
+    access: "free",
+    category: "language",
+    platform: ["web", "ios", "android"],
+    ages: "3–8",
+    url: "https://studycat.com/french-for-kids/",
+    doi: "https://doi.org/10.22460/ts.v10i2.5295",
+    desc_en: "An educational app for teaching children ages 3–8 French through play, featuring bite-sized lessons, free illustrated stories, and printable worksheets. The iPad version offers additional interactive games.",
+    desc_fr: "Une application éducative pour enseigner le français aux enfants de 3 à 8 ans à travers le jeu, avec des leçons courtes, des histoires illustrées gratuites et des feuilles de travail imprimables. La version iPad offre des jeux interactifs supplémentaires."
+  },
+  {
+    id: "boukili",
+    name: "Boukili",
+    access: "free",
+    category: "language",
+    platform: ["web", "ios", "android"],
+    ages: "4+",
+    url: "https://app.boukili.ca/",
+    doi: null,
+    desc_en: "A free French reading app by TFO (Franco-Ontarian public broadcaster) featuring hundreds of illustrated books grouped by reading level, theme, and grade level. Includes classroom management tools for teachers.",
+    desc_fr: "Une application gratuite de lecture en français de TFO (diffuseur public franco-ontarien) proposant des centaines de livres illustrés regroupés par niveau de lecture, thème et niveau scolaire. Inclut des outils de gestion de classe pour les enseignants."
+  },
+  {
+    id: "gus-on-the-go",
+    name: "Gus on the Go",
+    access: "free",
+    category: "language",
+    platform: ["ios", "android"],
+    ages: "3–7",
+    url: "https://www.gusonthego.com/",
+    doi: null,
+    desc_en: "A French vocabulary app for ages 3–7 with interactive childhood stories in French. Teaches ~90 vocabulary words through stories with dialogue and vocabulary games. The free app is called \"French for Kids with Stories by Gus on the Go.\"",
+    desc_fr: "Une application de vocabulaire français pour les 3–7 ans avec des histoires interactives en français. Enseigne ~90 mots de vocabulaire à travers des histoires avec dialogues et jeux de vocabulaire."
+  },
+  {
+    id: "musicplay-online",
+    name: "MusicplayOnline",
+    access: "subscription",
+    price: "$22/mo",
+    category: "curriculum",
+    platform: ["web"],
+    ages: "Pre-K–8",
+    url: "https://musicplayonline.com/",
+    doi: "https://doi.org/10.1007/s10643-024-01678-w",
+    desc_en: "A digital curriculum platform for elementary and middle school music teachers with thousands of songs, interactive games, and ready-to-use weekly lesson modules. Includes French-language song content.",
+    desc_fr: "Une plateforme de curriculum numérique pour les enseignants en musique au primaire et au secondaire, avec des milliers de chansons, des jeux interactifs et des modules de cours hebdomadaires prêts à l'emploi. Comprend du contenu en langue française."
+  },
+  {
+    id: "roxxem",
+    name: "Roxxem",
+    access: "subscription",
+    price: "$9.99/mo",
+    category: "language",
+    platform: ["web"],
+    ages: null,
+    url: "https://www.roxxem.com/",
+    doi: null,
+    desc_en: "An AI-powered, customizable language-learning platform using popular music and pop culture. Teachers can generate structured lessons, flashcards, and arcade-style mini-games, with a student progress dashboard.",
+    desc_fr: "Une plateforme d'apprentissage des langues personnalisable basée sur l'IA, utilisant la musique populaire et la culture pop. Les enseignants peuvent générer des leçons structurées, des flashcards et des mini-jeux de type arcade."
+  },
+  {
+    id: "mondly",
+    name: "Mondly",
+    access: "subscription",
+    price: "$23.90/mo",
+    category: "language",
+    platform: ["web", "ios", "android"],
+    ages: null,
+    url: "https://www.mondly.com/",
+    doi: "https://doi.org/10.4995/eurocall.2023.15763",
+    desc_en: "A language app by Pearson with 40+ languages including French. Features a chatbot, hands-free learning, and voice recognition. Progresses through vocabulary and conversational lessons with interactive flashcard reviews.",
+    desc_fr: "Une application de langue par Pearson avec 40+ langues dont le français. Comprend un chatbot, l'apprentissage mains libres et la reconnaissance vocale. Progresse à travers des leçons de vocabulaire et de conversation."
+  },
+  {
+    id: "dinolingo",
+    name: "Dinolingo",
+    access: "subscription",
+    price: "$19/mo",
+    category: "language",
+    platform: ["web", "ios", "android"],
+    ages: "2–14",
+    url: "https://dinolingo.com",
+    doi: "http://dx.doi.org/10.30970/vpe.2018.33.9963",
+    desc_en: "A language learning app for ages 2–14 with 50+ languages including French. Each lesson includes a video, game, test, and worksheets. Courses are organized from beginner to advanced.",
+    desc_fr: "Une application d'apprentissage des langues pour les 2–14 ans avec 50+ langues dont le français. Chaque leçon comprend une vidéo, un jeu, un test et des feuilles de travail. Les cours sont organisés du niveau débutant à avancé."
+  },
+  {
+    id: "bayam",
+    name: "BayaM",
+    access: "subscription",
+    price: "$4/mo",
+    category: "language",
+    platform: ["web", "ios", "android"],
+    ages: "3+",
+    url: "https://www.bayam.fr/",
+    doi: "https://doi.org/10.4000/12w6z",
+    desc_en: "A French multimedia subscription site by Bayard and Milan (major French children's publishers) combining educational games, audio stories, podcasts, cartoons, e-books, and creative activities in a safe, ad-free environment for ages 3–10.",
+    desc_fr: "Un site multimédia français par abonnement de Bayard et Milan (grands éditeurs pour enfants) combinant jeux éducatifs, histoires audio, podcasts, dessins animés, livres numériques et activités créatives dans un environnement sûr et sans publicité."
+  }
+];
+
+// ── Filter state ──────────────────────────────────────────────────────────────
+
+let activeAccess = "all";
+let activeCat    = "all";
+
+function filteredTools() {
+  return EDU_TOOLS.filter(t => {
+    const accessOk = activeAccess === "all" || t.access === activeAccess;
+    const catOk    = activeCat === "all" || t.category === activeCat;
+    return accessOk && catOk;
+  });
+}
+
+// ── Platform icons ────────────────────────────────────────────────────────────
+
+const PLATFORM_LABELS = { web: "Web", ios: "iOS", android: "Android", mac: "Mac" };
+
+function platformPills(platforms) {
+  return platforms.map(p =>
+    `<span class="edu-platform">${PLATFORM_LABELS[p] || p}</span>`
+  ).join("");
+}
+
+// ── Render grid ───────────────────────────────────────────────────────────────
+
+function renderGrid() {
+  const lang  = window.LANG || "en";
+  const tools = filteredTools();
+  const grid  = document.getElementById("edu-grid");
+  const count = document.getElementById("edu-count");
+  if (!grid) return;
+
+  const one   = t("edu.one_result")  || "1 tool";
+  const many  = t("edu.results")     || "tools";
+  count.textContent = tools.length === 1 ? one : `${tools.length} ${many}`;
+
+  grid.innerHTML = tools.map(tool => {
+    const desc = lang === "fr" ? tool.desc_fr : tool.desc_en;
+
+    const accessLabel = tool.access === "free"
+      ? (t("edu.free") || "Free")
+      : (tool.price || t("edu.subscription") || "Subscription");
+
+    const accessClass = tool.access === "free" ? "edu-badge-free" : "edu-badge-sub";
+
+    const doiHtml = tool.doi
+      ? `<a href="${tool.doi}" target="_blank" rel="noopener noreferrer" class="edu-doi">DOI</a>`
+      : "";
+
+    const agesHtml = tool.ages
+      ? `<span class="edu-ages">${t("edu.ages") || "Ages"} ${tool.ages}</span>`
+      : "";
+
+    return `
+      <div class="edu-card" data-access="${tool.access}" data-cat="${tool.category}">
+        <div class="edu-card-top">
+          <div class="edu-card-name">${tool.name}</div>
+          <span class="edu-badge ${accessClass}">${accessLabel}</span>
+        </div>
+        <div class="edu-card-desc">${desc}</div>
+        <div class="edu-card-footer">
+          <div class="edu-card-meta">
+            ${platformPills(tool.platform)}
+            ${agesHtml}
+            ${doiHtml}
+          </div>
+          <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="edu-visit-btn"
+             data-i18n="edu.visit">${t("edu.visit") || "Visit"} →</a>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+// ── Filter button wiring ──────────────────────────────────────────────────────
+
+function initFilters() {
+  document.querySelectorAll(".edu-tab").forEach(btn => {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll(".edu-tab").forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+      activeAccess = this.dataset.filter;
+      renderGrid();
+    });
+  });
+
+  document.querySelectorAll(".edu-cat").forEach(btn => {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll(".edu-cat").forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+      activeCat = this.dataset.cat;
+      renderGrid();
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  initFilters();
+  renderGrid();
+});
+
+</script>
