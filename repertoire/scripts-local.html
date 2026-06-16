@@ -54,8 +54,8 @@ function buildSearchInterface(data) {
   optOnly.setAttribute("data-i18n", "rep.variants_only");
   optOnly.textContent = t("rep.variants_only");
 
-  variantsSelect.appendChild(optHide);
   variantsSelect.appendChild(optShow);
+  variantsSelect.appendChild(optHide);
   variantsSelect.appendChild(optOnly);
 
   const textedContainer = document.getElementById("texted-container");
@@ -586,16 +586,15 @@ function buildKeySelect(data) {
 
 //////////////////////////////
 //
-// buildTimeSelect -- Time-signature (meter) dropdown using the !!!AMT field.
+// buildTimeSelect -- Metric classification dropdown using the !!!AMT field.
 //
 
 function buildTimeSelect(data) {
 	let counter = {};
 	for (let i = 0; i < data.length; i++) {
-		let raw = (data[i][FIELD.time] || "").trim();
+		let raw = (data[i][FIELD.meter] || "").trim();
 		if (!raw) continue;
-		let primary = raw.split(";")[0].trim();
-		if (primary) counter[primary] = (counter[primary] || 0) + 1;
+		if (raw) counter[raw] = (counter[raw] || 0) + 1;
 	}
 	let times = Object.keys(counter).sort((a, b) => a.localeCompare(b));
 	let output = "<select class='time' onchange='doSearch()'>\n";
@@ -822,7 +821,7 @@ function doSearch(data) {
 	let timeQuery = timeField ? timeField.value : "";
 
 	let variantsSelect = document.querySelector("#variants-select");
-	let variantsValue  = variantsSelect ? variantsSelect.value : "hide";
+	let variantsValue  = variantsSelect ? variantsSelect.value : "show";
 
 	if (composerQuery) {
 		data = data.filter(entry => entry[INDEX_composer] === composerQuery);
@@ -864,10 +863,7 @@ function doSearch(data) {
 	}
 
 	if (timeQuery) {
-		data = data.filter(entry => {
-			const raw = (entry[FIELD.time] || "").trim();
-			return raw.split(";")[0].trim() === timeQuery;
-		});
+		data = data.filter(entry => (entry[FIELD.meter] || "").trim() === timeQuery);
 	}
 
 	if (variantsValue === "hide") {
@@ -1253,7 +1249,7 @@ function updateBrowseUrlDisplay() {
 	let keyEl         = document.querySelector("select.key");
 	let timeEl        = document.querySelector("select.time");
 	let variantsEl    = document.querySelector("#variants-select");
-	let variantsValue = variantsEl ? variantsEl.value : "hide";
+	let variantsValue = variantsEl ? variantsEl.value : "show";
 
 	let composer   = composerEl   ? composerEl.value.trim()   : "";
 	let origin     = originEl     ? originEl.value.trim()     : "";
@@ -1291,7 +1287,7 @@ function updateBrowseUrlDisplay() {
 		if (cgi) cgi += "&";
 		cgi += "tm=" + encodeURIComponent(time);
 	}
-	if (variantsValue === "show" || variantsValue === "only") {
+	if (variantsValue === "hide" || variantsValue === "only") {
 		if (cgi) cgi += "&";
 		cgi += "v=" + variantsValue;
 	}
@@ -1340,7 +1336,7 @@ function clearSearchFields() {
 	if (originElement)     originElement.value     = "";
 	if (collectionElement) collectionElement.value = "";
 	if (editorElement)     editorElement.value     = "";
-	if (variantsSelect)    variantsSelect.value = "hide";
+	if (variantsSelect)    variantsSelect.value = "show";
 	if (melodicElement)    melodicElement.value    = "";
 	MELODIC_MATCH_IDS = null;
 	MELODIC_QUERY     = null;

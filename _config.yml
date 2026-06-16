@@ -57,6 +57,7 @@ fields:
     url_youtube: "!!!URL-youtube"
     key:       "!!!AMD-key"
     time:      "!!!AMT-sig"
+    meter:     "!!!AMT"
     url_reference: "!!!URL-reference"
     performers: "Performers"
     rec_date:   "Date"

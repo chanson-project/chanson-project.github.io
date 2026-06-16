@@ -98,7 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		let variantsEl = document.querySelector("#variants-select");
 		if (variantsEl) {
 			if (cgi.v === "only") variantsEl.value = "only";
-			else variantsEl.value = "show"; // handles "show" and legacy "yes"
+			else if (cgi.v === "hide") variantsEl.value = "hide";
+			else variantsEl.value = "show";
 		}
 		runSearch = true;
 	}

@@ -404,12 +404,20 @@ function displayWorkInfo(id) {
 		  }).filter(Boolean).join(" · ") + `</div>`
 		: "";
 
-	// ── Right column: YouTube, encoders, and links ─────────────────────────────
+	// ── Right column: encoders, links, and YouTube embed ──────────────────────
 
 	const ytURL = workinfo[FIELD.url_youtube] || "";
-	const ytoutput = ytURL
-		? `<div class="work-item"><a href="${ytURL}" target="_blank" rel="noopener noreferrer" title="${t('work.watch_on_youtube')}"><svg width="36" height="26" viewBox="0 0 90 63" xmlns="http://www.w3.org/2000/svg"><rect width="90" height="63" rx="13" fill="#FF0000"/><polygon points="37,15 37,48 64,31" fill="white"/></svg></a></div>`
-		: "";
+	let ytoutput = "";
+	if (ytURL) {
+		let videoId = null;
+		try {
+			const u = new URL(ytURL);
+			videoId = u.hostname.includes("youtu.be") ? u.pathname.slice(1) : u.searchParams.get("v");
+		} catch {}
+		ytoutput = videoId
+			? `<div class="work-item yt-embed"><iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" title="${t('work.watch_on_youtube')}"></iframe></div>`
+			: `<div class="work-item"><a href="${ytURL}" target="_blank" rel="noopener noreferrer">${t('work.watch_on_youtube')}</a></div>`;
+	}
 
 	let encodersoutput = "";
 	const encoderList = [];
@@ -446,7 +454,7 @@ function displayWorkInfo(id) {
 	row.appendChild(middleCell);
 
 	const rightCell = document.createElement("td");
-	rightCell.innerHTML = ytoutput + encodersoutput + linksoutput + downloadoutput;
+	rightCell.innerHTML = encodersoutput + linksoutput + downloadoutput + ytoutput;
 	row.appendChild(rightCell);
 
 	tbody.appendChild(row);

@@ -30,7 +30,7 @@
 @home.search_placeholder: Find a song or composer…
 @home.melodic_placeholder: Hum a melody: G A F# E …
 @home.project_data: Project Data
-@home.works: Works
+@home.works: Songs
 @home.encoders: Encoders
 @home.mass_movements: Mass movements
 @home.motets: Motets
@@ -46,7 +46,7 @@
 @rep.search_placeholder: Search for a song or composer…
 @rep.melodic_placeholder: Hum a melody: G Bb G F# E …
 @rep.variants_hide: Do not show variants
-@rep.variants_show: Show variants
+@rep.variants_show: Show all versions
 @rep.variants_only: Show only variants
 @rep.col_id: ID
 @rep.col_title: Title
@@ -86,7 +86,7 @@
 @src.col_origin: Origin
 @src.editor: Editor
 @src.published: Published
-@src.works: Works
+@src.works: Songs
 @src.result: result
 @src.results: results
 
@@ -316,7 +316,7 @@
 @home.search_placeholder: Chercher une chanson ou un compositeur…
 @home.melodic_placeholder: Fredonner une mélodie : G A F# E …
 @home.project_data: Données du projet
-@home.works: Œuvres
+@home.works: Chansons
 @home.encoders: Encodeurs
 @home.mass_movements: Mouvements de messe
 @home.motets: Motets
@@ -332,7 +332,7 @@
 @rep.search_placeholder: Chercher une chanson ou un compositeur…
 @rep.melodic_placeholder: Fredonner une mélodie : G Bb G F# E …
 @rep.variants_hide: Ne pas afficher les variantes
-@rep.variants_show: Afficher les variantes
+@rep.variants_show: Afficher toutes les versions
 @rep.variants_only: Afficher uniquement les variantes
 @rep.col_id: ID
 @rep.col_title: Titre
@@ -372,7 +372,7 @@
 @src.col_origin: Origine
 @src.editor: Éditeur
 @src.published: Publié
-@src.works: Œuvres
+@src.works: Chansons
 @src.result: résultat
 @src.results: résultats
 
