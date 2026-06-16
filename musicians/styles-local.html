@@ -1,0 +1,128 @@
+<style>
+
+.wrapper { max-width: 1000px; }
+
+.mus-intro {
+  font-size: 1em;
+  color: #7A6E68;
+  margin-bottom: 28px;
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+
+#musicians-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+
+.mus-card {
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  background: rgba(255, 255, 255, 0.88);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.mus-card:hover {
+  box-shadow: 0 4px 20px rgba(255, 140, 66, 0.14);
+  border-color: rgba(255, 140, 66, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ── Photo / initials area ───────────────────────────────────────────────── */
+
+.mus-card-media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, rgba(255,140,66,0.12), rgba(249,200,70,0.18));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.mus-card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mus-card-initials {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: 2.8em;
+  font-weight: 700;
+  color: #FF8C42;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+
+.mus-card-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.mus-card-name {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: 1.15em;
+  font-weight: 700;
+  color: #2A2320;
+  line-height: 1.2;
+}
+
+.mus-card-bio {
+  font-size: 0.9em;
+  color: #5A4E47;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* ── Links ───────────────────────────────────────────────────────────────── */
+
+.mus-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.mus-link {
+  display: inline-block;
+  padding: 5px 14px;
+  font-size: 0.83em;
+  font-weight: 700;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  color: #FF8C42;
+  border: 2px solid rgba(255, 140, 66, 0.35);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.mus-link:hover {
+  background: #FF8C42;
+  color: #fff;
+  border-color: #FF8C42;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  #musicians-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>

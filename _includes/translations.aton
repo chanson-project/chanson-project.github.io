@@ -12,6 +12,7 @@
 @nav.about: About
 @nav.chansons: Chansons
 @nav.performances: Performances
+@nav.musicians: Musicians
 @nav.sources: Sources
 @nav.documentation: Documentation
 @nav.laforte: About Laforte
@@ -147,6 +148,10 @@
 @perf.col_place: Place
 @perf.one_result: 1 performance
 @perf.results: performances
+
+@ musicians page
+@mus.heading: Musicians
+@mus.intro: Contemporary performers of French-Canadian traditional music.
 
 @ documentation page
 @doc.heading: Documentation
@@ -298,6 +303,7 @@
 @nav.about: À propos
 @nav.repertoire: Répertoire
 @nav.performances: Interprétations
+@nav.musicians: Musiciens
 @nav.sources: Sources
 @nav.documentation: Documentation
 @nav.laforte: À propos de Laforte
@@ -433,6 +439,10 @@
 @perf.col_place: Lieu
 @perf.one_result: 1 interprétation
 @perf.results: interprétations
+
+@ page musiciens
+@mus.heading: Musiciens
+@mus.intro: Interprètes contemporains de musique traditionnelle franco-canadienne.
 
 @ page documentation
 @doc.heading: Documentation

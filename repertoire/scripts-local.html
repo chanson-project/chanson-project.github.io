@@ -731,9 +731,9 @@ function buildTextSelect(data) {
 	for (let i=tlist.length - 1; i>=0;  i--) {
 		let state = tlist[i];
 		let text = state;
-		if (state === "yes") {
+		if (state.startsWith("complete")) {
 			text = "has text";
-		} else if (state === "no") {
+		} else if (state === "no" || state === "n/a") {
 			text = "no text";
 		}
 		output += `<option value="${state}">${text} (${counter[state]})</option>`;
