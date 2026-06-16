@@ -84,13 +84,15 @@
 /* ── Works table ─────────────────────────────────────────────────────────── */
 
 table.source-table thead th {
-    background: linear-gradient(
-        to bottom,
-        rgba(0,122,255,0.14),
-        rgba(0,122,255,0.08)
-    );
-    color: #003a8f;
-    border-bottom: 1px solid rgba(0,122,255,0.25);
+    position: sticky;
+    top: var(--nav-height, 76px);
+    z-index: 1;
+    background: linear-gradient(135deg, #FF8C42, #ffaa5e);
+    color: #fff;
+    border-bottom: none;
+    font-family: "Fredoka", "Nunito", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 table.source-table thead th.sortable {
@@ -100,11 +102,7 @@ table.source-table thead th.sortable {
 }
 
 table.source-table thead th.sortable:hover {
-    background: linear-gradient(
-        to bottom,
-        rgba(0,122,255,0.22),
-        rgba(0,122,255,0.14)
-    );
+    background: linear-gradient(135deg, #e87a30, #ff9f50);
 }
 
 table.source-table td:nth-child(4) {
