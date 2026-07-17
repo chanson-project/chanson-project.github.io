@@ -450,6 +450,11 @@ function displayWorkInfo(id) {
 		? `<div class="work-item"><b>${t('work.download')}:</b> <a href="${rawURL}" download>${t('work.humdrum_file')}</a></div>`
 		: "";
 
+	const scanURL = (DATA1520.metadata.scans || {})[id] || "";
+	const scanoutput = scanURL
+		? `<div class="work-item"><b>${t('work.source_scan')}:</b> <a href="${scanURL}" target="_blank" rel="noopener noreferrer">${t('work.view_pdf')}</a></div>`
+		: "";
+
 	// ── Build table row ────────────────────────────────────────────────────────
 
 	const row = document.createElement("tr");
@@ -463,7 +468,7 @@ function displayWorkInfo(id) {
 	row.appendChild(middleCell);
 
 	const rightCell = document.createElement("td");
-	rightCell.innerHTML = encodersoutput + linksoutput + downloadoutput + ytoutput;
+	rightCell.innerHTML = encodersoutput + linksoutput + downloadoutput + scanoutput + ytoutput;
 	row.appendChild(rightCell);
 
 	tbody.appendChild(row);

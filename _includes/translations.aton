@@ -115,6 +115,8 @@
 @work.encoders: Encoders
 @work.view_on: View on
 @work.download: Download
+@work.source_scan: Source scan
+@work.view_pdf: View PDF
 @work.humdrum_file: Humdrum (.krn)
 @work.hide_accidentals: Hide Editorial Accidentals
 @work.show_accidentals: Show Editorial Accidentals
@@ -434,6 +436,8 @@
 @work.encoders: Encodeurs
 @work.view_on: Voir sur
 @work.download: Télécharger
+@work.source_scan: Scan source
+@work.view_pdf: Voir le PDF
 @work.humdrum_file: Humdrum (.krn)
 @work.hide_accidentals: Masquer les accidents éditoriaux
 @work.show_accidentals: Afficher les accidents éditoriaux
