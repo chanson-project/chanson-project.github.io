@@ -224,6 +224,10 @@ const EDU_TOOLS = [
   }
 ];
 
+// ── Tools that have documentation pages ──────────────────────────────────────
+
+const TOOLS_WITH_DOCS = new Set(["cml-songmaker", "garageband", "lyrics-training", "mauril", "mondly"]);
+
 // ── Filter state ──────────────────────────────────────────────────────────────
 
 let activeAccess = "all";
@@ -290,6 +294,7 @@ function renderGrid() {
             ${agesHtml}
             ${doiHtml}
           </div>
+          ${TOOLS_WITH_DOCS.has(tool.id) ? `<a href="/education/docs/#${tool.id}" class="edu-docs-btn" data-i18n="edu.docs">${t("edu.docs") || "Docs"}</a>` : ""}
           <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="edu-visit-btn"
              data-i18n="edu.visit">${t("edu.visit") || "Visit"} →</a>
         </div>

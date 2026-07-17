@@ -1,0 +1,244 @@
+<script>
+
+const LESSON_PLANS = [
+  {
+    id: "lyricstraining",
+    tool: "LyricsTraining / LingoClip",
+    toolId: "lyrics-training",
+    toolUrl: "https://lingoclip.app/fr",
+    song: "Frère Jacques",
+    ages: "10–13",
+    grade: "Grade 3 / 3e année",
+    objectives: [
+      "Train the ear to recognize conversational French",
+      "Accelerate vocabulary memorization through song lyrics",
+      "Master the rhythm of spoken French"
+    ],
+    objectives_fr: [
+      "Entraîner l'oreille à reconnaître le langage conversationnel français",
+      "Accélérer la mémorisation du vocabulaire grâce aux paroles de chansons",
+      "Maîtriser le rythme du français parlé"
+    ],
+    steps: [
+      "Download the app from the App Store or Google Play, or go to <a href=\"https://lingoclip.app/fr\" target=\"_blank\" rel=\"noopener\">lingoclip.app/fr</a>",
+      "Search for <em>Frère Jacques</em> in the app",
+      "Choose a game mode: <strong>Choice</strong> (select a word before time runs out), <strong>Write</strong> (type the missing word), or <strong>Karaoke</strong> (sing along with the whole class)",
+      "Select a difficulty level: Beginner, Intermediate, Advanced, or Expert",
+      "Students earn badges as they reach language, lyric, and word milestones"
+    ],
+    materials: [
+      "App (App Store / Google Play) or web browser",
+      "iPad or computer per student (or shared)",
+      "Headphones or earbuds"
+    ],
+    docs: [
+      { label: "LyricsTraining App Review (Garib, 2021)", url: "/assets/education/docs/lyricstraining-review.pdf" },
+      { label: "Training Manual for LyricsTraining", url: "/assets/education/docs/lyricstraining-training-manual.pdf" }
+    ]
+  },
+  {
+    id: "drmusik",
+    tool: "Dr. Musik",
+    toolId: "dr-musik",
+    toolUrl: "https://www.doctormusik.com/apps-and-games/",
+    song: "Ah! Si mon moine voulait danser",
+    ages: "5–13",
+    grade: "Grades 1–7 / 1re–7e année",
+    objectives: [
+      "Creative music composition through interactive games",
+      "Learn the sounds of virtual instruments",
+      "Identify different rhythms by listening"
+    ],
+    objectives_fr: [
+      "Composition musicale créative par le biais de jeux interactifs",
+      "Apprendre les sons des instruments virtuels",
+      "Identifier différents rythmes par l'écoute"
+    ],
+    steps: [
+      "Listen to the song <em>Ah! Si mon moine voulait danser</em> together as a class",
+      "Go to <a href=\"https://www.doctormusik.com/apps-and-games/\" target=\"_blank\" rel=\"noopener\">doctormusik.com</a> → <strong>Composition tools</strong> → <strong>Staff Writer</strong>; select French as the language",
+      "Have students try to reproduce the song's notes by dragging note blocks, rests, and accidentals onto the staff",
+      "Use the green button to play, orange arrows to navigate, and the eraser to correct notes",
+      "Then go to <strong>Staff reading games</strong> → <strong>The Robot Factory</strong>; configure the notes from the song and have students guess which note is shown"
+    ],
+    materials: [
+      "Web browser at doctormusik.com",
+      "iPad or computer per student (or shared)",
+      "Headphones or earbuds"
+    ],
+    docs: []
+  },
+  {
+    id: "scratchmusic",
+    tool: "Scratch Music / ScratchJr",
+    toolId: "scratch-music",
+    toolUrl: "https://scratch.mit.edu/",
+    song: "A short French-Canadian folk song",
+    ages: "4–12",
+    grade: "Grade 3+ / ScratchJr for ages 4–7",
+    objectives: [
+      "Encode musical sequences using block programming",
+      "Apply algorithms to create sound controllers and interactive projects",
+      "Explore musical concepts such as rhythm, tempo, and melody"
+    ],
+    objectives_fr: [
+      "Encoder des séquences musicales à l'aide de la programmation par blocs",
+      "Appliquer des algorithmes pour créer des contrôleurs sonores et des projets interactifs",
+      "Explorer des concepts musicaux tels que le rythme, le tempo et la mélodie"
+    ],
+    steps: [
+      "Go to <a href=\"https://scratch.mit.edu/\" target=\"_blank\" rel=\"noopener\">scratch.mit.edu</a> and create an account; set language to French via Settings → Language",
+      "Click <strong>Create</strong>, then <strong>Choose a Sprite</strong> → <strong>Music</strong>; select an instrument sprite",
+      "From <strong>Events</strong>, drag <em>when this sprite is clicked</em> into the script area",
+      "From <strong>Sound</strong>, drag <em>play sound [instrument] until done</em> into the script area",
+      "Combine sprites and sounds to recreate a folk melody; save via File → Save to your computer",
+      "<strong>For ages 4–7 (ScratchJr):</strong> Download from <a href=\"https://www.scratchjr.org/\" target=\"_blank\" rel=\"noopener\">scratchjr.org</a>; use the green volume button to add sound blocks to a sprite's script"
+    ],
+    materials: [
+      "Web browser at scratch.mit.edu (or ScratchJr app for younger students)",
+      "iPad or computer per student (or shared)",
+      "Headphones or earbuds"
+    ],
+    docs: []
+  },
+  {
+    id: "octostudio",
+    tool: "OctoStudio",
+    toolId: "octostudio",
+    toolUrl: "https://octostudio.org/",
+    song: "An enumerative French-Canadian folk song",
+    ages: "7–12",
+    grade: "Grades 2–6 / 2e–6e année",
+    objectives: [
+      "Creative music composition through interactive block programming",
+      "Learn the sounds of virtual instruments",
+      "Students gain hands-on experience programming music"
+    ],
+    objectives_fr: [
+      "Composition musicale créative par le biais de jeux interactifs",
+      "Apprendre les sons des instruments virtuels",
+      "Les élèves acquièrent une expérience pratique en programmant de la musique"
+    ],
+    steps: [
+      "Download OctoStudio from the App Store (iPhone/iPad), Google Play, or Chromebook",
+      "Open the app and choose <strong>Create a new project</strong>; select a sprite or background",
+      "Drag the core blocks into the sprite's script area: <em>when</em> (trigger), <em>move</em>, <em>play</em> (sound), and <em>say</em>",
+      "In the <strong>Play</strong> block, open the dropdown to choose a pre-recorded sound or tap the microphone to record your own voice singing a folk song verse",
+      "Tap the green Play button to run the animation",
+      "Your project is automatically saved to <em>My Projects</em>"
+    ],
+    materials: [
+      "OctoStudio app (App Store, Google Play, or Chromebook)",
+      "iPad, iPhone, Android tablet, or Chromebook",
+      "Headphones or earbuds (optional)"
+    ],
+    docs: []
+  },
+  {
+    id: "garageband",
+    tool: "GarageBand",
+    toolId: "garageband",
+    toolUrl: "https://www.apple.com/mac/garageband/",
+    song: "An enumerative French-Canadian folk song",
+    ages: "8+",
+    grade: "Grades 3+ / 3e année et plus",
+    objectives: [
+      "Use a professional Digital Audio Workstation (DAW) to record and arrange music",
+      "Explore virtual instruments and loops",
+      "Create a multi-track arrangement of a French folk song"
+    ],
+    objectives_fr: [
+      "Utiliser une station de travail audio numérique (STAN) pour enregistrer et arranger de la musique",
+      "Explorer les instruments virtuels et les boucles",
+      "Créer un arrangement multi-piste d'une chanson folklorique française"
+    ],
+    steps: [
+      "Open GarageBand on iPad or Mac (pre-installed on Apple devices); the iPad version is recommended for elementary students",
+      "Create a new project; tap <strong>+</strong> to add a new track",
+      "Choose <strong>Software Instrument</strong> to access virtual keyboards, drums, and other instruments",
+      "Use the on-screen keyboard or drum pads to play and record the melody of the folk song",
+      "Add additional tracks for accompaniment using <strong>Loops</strong> (pre-recorded instrument patterns)",
+      "Use the mixing controls to balance the tracks, then export or share the project"
+    ],
+    materials: [
+      "iPad (recommended) or Mac with GarageBand installed (free)",
+      "Apple Pencil or stylus (optional but helpful on iPad)",
+      "Headphones or earbuds"
+    ],
+    docs: [
+      { label: "GarageBand User Guide for iPad (Apple)", url: "/assets/education/docs/garageband-ipad-guide.pdf" },
+      { label: "GarageBand User Guide for iPhone (Apple)", url: "/assets/education/docs/garageband-iphone-guide.pdf" },
+      { label: "GarageBand User Guide for Mac (Apple)", url: "/assets/education/docs/garageband-mac-guide.pdf" }
+    ]
+  }
+];
+
+function buildLessonPlansGrid() {
+  const grid = document.getElementById("lp-grid");
+  if (!grid) return;
+
+  grid.innerHTML = LESSON_PLANS.map(plan => {
+    const stepsHtml = plan.steps.map((s, i) =>
+      `<li><span class="lp-step-num">${i + 1}</span>${s}</li>`
+    ).join("");
+
+    const materialsHtml = plan.materials.map(m => `<li>${m}</li>`).join("");
+
+    const objectivesHtml = plan.objectives.map(o => `<li>${o}</li>`).join("");
+
+    const docsHtml = plan.docs.length
+      ? `<div class="lp-docs"><span class="lp-docs-label">Documentation:</span>` +
+        plan.docs.map(d => `<a href="${d.url}" target="_blank" rel="noopener noreferrer" class="lp-doc-link">⬇ ${d.label}</a>`).join("") +
+        `</div>`
+      : "";
+
+    const eduLink = plan.toolId
+      ? `<a href="/education/#${plan.toolId}" class="lp-tool-link">View tool →</a>`
+      : `<a href="${plan.toolUrl}" target="_blank" rel="noopener noreferrer" class="lp-tool-link">Visit tool →</a>`;
+
+    return `
+      <div class="lp-card" id="lp-${plan.id}">
+        <div class="lp-card-header" onclick="toggleLesson('${plan.id}')">
+          <div class="lp-card-left">
+            <div class="lp-card-tool">${plan.tool}</div>
+            <div class="lp-card-song">🎵 <em>${plan.song}</em></div>
+          </div>
+          <div class="lp-card-right">
+            <span class="lp-age-badge">Ages ${plan.ages}</span>
+            <span class="lp-grade-badge">${plan.grade}</span>
+            <span class="lp-chevron">▼</span>
+          </div>
+        </div>
+        <div class="lp-detail">
+          <div class="lp-detail-inner">
+            <div class="lp-detail-body">
+              <div class="lp-section">
+                <div class="lp-section-label">Learning Objectives</div>
+                <ul class="lp-objectives">${objectivesHtml}</ul>
+              </div>
+              <div class="lp-section">
+                <div class="lp-section-label">Materials</div>
+                <ul class="lp-materials">${materialsHtml}</ul>
+              </div>
+              <div class="lp-section">
+                <div class="lp-section-label">Steps</div>
+                <ol class="lp-steps">${stepsHtml}</ol>
+              </div>
+              ${docsHtml}
+              <div class="lp-footer">${eduLink}</div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+function toggleLesson(id) {
+  const card = document.getElementById("lp-" + id);
+  if (!card) return;
+  card.classList.toggle("is-open");
+}
+
+document.addEventListener("DOMContentLoaded", buildLessonPlansGrid);
+
+</script>

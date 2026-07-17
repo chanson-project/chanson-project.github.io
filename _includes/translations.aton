@@ -15,6 +15,8 @@
 @nav.musicians: Musicians
 @nav.resources: Resources
 @nav.education: Educational Resources
+@nav.lesson_plans: Lesson Plans
+@nav.tool_docs: Tool Documentation
 @nav.sources: Sources
 @nav.documentation: Documentation
 @nav.laforte: About Laforte
@@ -174,6 +176,7 @@
 @edu.subscription: Subscription
 @edu.ages: Ages
 @edu.visit: Visit
+@edu.docs: Docs
 @edu.one_result: 1 tool
 @edu.results: tools
 
@@ -330,6 +333,8 @@
 @nav.musicians: Musiciens
 @nav.resources: Ressources
 @nav.education: Ressources pédagogiques
+@nav.lesson_plans: Plans de cours
+@nav.tool_docs: Documentation des outils
 @nav.sources: Sources
 @nav.documentation: Documentation
 @nav.laforte: À propos de Laforte
@@ -489,6 +494,7 @@
 @edu.subscription: Abonnement
 @edu.ages: Âges
 @edu.visit: Visiter
+@edu.docs: Docs
 @edu.one_result: 1 outil
 @edu.results: outils
 
