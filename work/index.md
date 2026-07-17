@@ -59,5 +59,5 @@ layout: work
 {% include_relative listeners.html %}
 {% include_relative scripts-local.html %}
 {% include_relative cadence-analysis.js %}
-{% include_relative scripts-player.html %}
+{% include scripts/kern-player.html %}
 {% include styles/svgdefs.html %}

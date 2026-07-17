@@ -17,6 +17,7 @@
 @nav.education: Educational Resources
 @nav.lesson_plans: Lesson Plans
 @nav.tool_docs: Tool Documentation
+@nav.sing_along: Sing Along!
 @nav.sources: Sources
 @nav.documentation: Documentation
 @nav.laforte: About Laforte
@@ -335,6 +336,7 @@
 @nav.education: Ressources pédagogiques
 @nav.lesson_plans: Plans de cours
 @nav.tool_docs: Documentation des outils
+@nav.sing_along: Chantons!
 @nav.sources: Sources
 @nav.documentation: Documentation
 @nav.laforte: À propos de Laforte

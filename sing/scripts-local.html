@@ -1,0 +1,291 @@
+<script>
+
+// ── Palette & icons ───────────────────────────────────────────────────────────
+
+const CARD_PALETTE = [
+  { bg: '#fff3e4', border: '#ffb87a', text: '#8a4400' },
+  { bg: '#e4f5f7', border: '#7dd0d8', text: '#1a6a75' },
+  { bg: '#e8f5ee', border: '#7dc4a0', text: '#1a5a35' },
+  { bg: '#fef8e0', border: '#e8d060', text: '#7a5800' },
+  { bg: '#fce8e4', border: '#f0a090', text: '#903020' },
+  { bg: '#ede8f5', border: '#c0a8e0', text: '#503880' },
+];
+
+const CARD_EMOJIS = ['🎵', '🎶', '🎼', '🪗', '🎸', '🎺', '🥁', '🎻', '🪕', '🎙'];
+
+// ── Works data ────────────────────────────────────────────────────────────────
+
+const _ALL_WORKS = {% include metadata/works.json %};
+
+const SING_WORKS = _ALL_WORKS.filter(function(w) {
+  const id = (w[FIELD.id] || '');
+  const prefix = id.substring(0, 2);
+  return (prefix === 'BC' || prefix === 'EG') && w['!!!EST-text'];
+}).sort(function(a, b) {
+  const ta = (a[FIELD.title] || '').replace(/^\s+/, '');
+  const tb = (b[FIELD.title] || '').replace(/^\s+/, '');
+  return ta.localeCompare(tb, 'fr', { sensitivity: 'base' });
+});
+
+// ── State ─────────────────────────────────────────────────────────────────────
+
+let CURRENT_IDX     = 0;
+let FILTERED_WORKS  = SING_WORKS.slice();
+let DEFAULT_TEMPO   = 120;
+
+// ── Grid ──────────────────────────────────────────────────────────────────────
+
+function buildSingGrid(works) {
+  const grid  = document.getElementById('sing-grid');
+  const count = document.getElementById('sing-count');
+  if (!grid) return;
+
+  count.textContent = works.length + ' songs';
+
+  if (!works.length) {
+    grid.innerHTML = '<p class="sing-no-results">No songs found — Aucune chanson trouvée</p>';
+    return;
+  }
+
+  grid.innerHTML = works.map(function(w) {
+    const realIdx = SING_WORKS.indexOf(w);
+    const col     = CARD_PALETTE[realIdx % CARD_PALETTE.length];
+    const emoji   = CARD_EMOJIS[realIdx % CARD_EMOJIS.length];
+    const title   = (w[FIELD.title] || '—').trim();
+    const comp    = (w[FIELD.composer] || '').trim();
+    return `
+      <div class="sing-card" onclick="selectSong(${realIdx})"
+           style="background:${col.bg}; border-color:${col.border};"
+           role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter'||event.key===' ')selectSong(${realIdx})">
+        <div class="sing-card-emoji">${emoji}</div>
+        <div class="sing-card-title" style="color:${col.text}">${title}</div>
+        ${comp ? `<div class="sing-card-comp">${comp}</div>` : ''}
+        <div class="sing-card-play" style="background:${col.border}; color:${col.text}">▶</div>
+      </div>`;
+  }).join('');
+}
+
+function filterSongs() {
+  const q = (document.getElementById('sing-search').value || '').toLowerCase().trim();
+  FILTERED_WORKS = q
+    ? SING_WORKS.filter(function(w) {
+        return (w[FIELD.title] || '').toLowerCase().includes(q) ||
+               (w[FIELD.composer] || '').toLowerCase().includes(q);
+      })
+    : SING_WORKS.slice();
+  buildSingGrid(FILTERED_WORKS);
+}
+
+function pickRandom() {
+  selectSong(Math.floor(Math.random() * SING_WORKS.length));
+}
+
+// ── View switching ────────────────────────────────────────────────────────────
+
+function showGrid() {
+  KernPlayer.stop();
+  document.getElementById('sing-grid-view').classList.remove('hidden');
+  document.getElementById('sing-stage').classList.add('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showStage() {
+  document.getElementById('sing-grid-view').classList.add('hidden');
+  document.getElementById('sing-stage').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Song selection ────────────────────────────────────────────────────────────
+
+function selectSong(idx) {
+  CURRENT_IDX = idx;
+  KernPlayer.stop();
+
+  const w        = SING_WORKS[idx];
+  const title    = (w[FIELD.title] || '—').trim();
+  const comp     = (w[FIELD.composer] || '').trim();
+  const id       = (w[FIELD.id] || '');
+  const filename = (w[FIELD.filename] || '');
+  const prefix   = id.substring(0, 2);
+  const col      = CARD_PALETTE[idx % CARD_PALETTE.length];
+
+  document.getElementById('stage-title').textContent = title;
+  document.getElementById('stage-comp').textContent  = comp;
+  document.getElementById('stage-lyrics').innerHTML  = '<div class="lyrics-loading">🎵 Loading…</div>';
+
+  document.getElementById('stage-prev').disabled = (idx === 0);
+  document.getElementById('stage-next').disabled = (idx === SING_WORKS.length - 1);
+
+  const btn = document.getElementById('stage-play-btn');
+  btn.disabled = true;
+  btn.style.background   = col.border;
+  btn.style.borderColor  = col.border;
+  btn.style.color        = col.text;
+  btn.textContent        = '⏳';
+
+  setTempoScale(1, true);
+  showStage();
+
+  const dir = prefix === 'BC' ? 'bc100' : 'eg104';
+  const url = 'https://raw.githubusercontent.com/chanson-project/chanson-encoding/refs/heads/main/' + dir + '/kern/' + filename;
+
+  fetch(url)
+    .then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function(kern) {
+      KernPlayer.load(kern);
+
+      const mmMatch = kern.match(/\*MM([\d.]+)/);
+      DEFAULT_TEMPO = mmMatch ? parseFloat(mmMatch[1]) : 120;
+      setTempoScale(1, true);
+
+      const words = extractLyrics(kern);
+      renderLyrics(words, col.text);
+
+      btn.disabled = false;
+      btn.textContent = '▶';
+    })
+    .catch(function() {
+      document.getElementById('stage-lyrics').innerHTML = '<p class="lyrics-error">Could not load song — Impossible de charger la chanson.</p>';
+      btn.textContent = '—';
+    });
+}
+
+function prevSong() { if (CURRENT_IDX > 0) selectSong(CURRENT_IDX - 1); }
+function nextSong() { if (CURRENT_IDX < SING_WORKS.length - 1) selectSong(CURRENT_IDX + 1); }
+
+// ── Playback ──────────────────────────────────────────────────────────────────
+
+function togglePlay() {
+  // Delegate to the hidden KernPlayer button
+  const kpBtn = document.getElementById('audiobutton-play');
+  if (kpBtn) kpBtn.click();
+}
+
+// Mirror KernPlayer's play state onto our visible play button
+(function() {
+  function syncPlayBtn() {
+    const kpBtn  = document.getElementById('audiobutton-play');
+    const myBtn  = document.getElementById('stage-play-btn');
+    if (!kpBtn || !myBtn || myBtn.disabled) return;
+    const playing = kpBtn.classList.contains('is-playing');
+    myBtn.textContent = playing ? '⏸' : '▶';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const kpBtn = document.getElementById('audiobutton-play');
+    if (!kpBtn) return;
+    new MutationObserver(syncPlayBtn).observe(kpBtn, { attributes: true, attributeFilter: ['class'] });
+  });
+})();
+
+// ── Tempo ─────────────────────────────────────────────────────────────────────
+
+function setTempoScale(scale, silent) {
+  if (!silent) KernPlayer.setTempo(Math.round(DEFAULT_TEMPO * scale));
+  document.querySelectorAll('.tempo-btn').forEach(function(btn) {
+    btn.classList.toggle('active', parseFloat(btn.dataset.scale) === scale);
+  });
+}
+
+// ── Lyrics extraction ─────────────────────────────────────────────────────────
+
+function extractLyrics(kernText) {
+  const rows = kernText.split('\n');
+
+  // Find **text spine column indices
+  let textCols = [];
+  for (var ri = 0; ri < rows.length; ri++) {
+    if (/^\*\*/.test(rows[ri])) {
+      rows[ri].split('\t').forEach(function(f, i) {
+        if (f.trim() === '**text') textCols.push(i);
+      });
+      break;
+    }
+  }
+  if (!textCols.length) return [];
+
+  const syllables = [];
+  for (var i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    if (!row || row.startsWith('!') || row.startsWith('*') || row.startsWith('=')) continue;
+    const fields = row.split('\t');
+    for (var c = 0; c < textCols.length; c++) {
+      const tok = (fields[textCols[c]] || '').trim();
+      if (!tok || tok === '.' || tok === '_') continue;
+      syllables.push(tok);
+    }
+  }
+
+  // Reconstruct words from hyphenated syllables
+  const words = [];
+  let cur = '';
+
+  for (var s = 0; s < syllables.length; s++) {
+    // Strip verse prefixes like "1|word" and brace notations
+    const clean = syllables[s].replace(/^\d+\|/, '').replace(/[{}\\\/]/g, '').trim();
+    if (!clean) continue;
+
+    const startsHyph = clean.charAt(0) === '-';
+    const endsHyph   = clean.charAt(clean.length - 1) === '-';
+
+    if (startsHyph && endsHyph) {
+      cur += clean.slice(1, -1);
+    } else if (startsHyph) {
+      cur += clean.slice(1);
+      if (cur) words.push(cur);
+      cur = '';
+    } else if (endsHyph) {
+      if (cur) { words.push(cur); cur = ''; }
+      cur = clean.slice(0, -1);
+    } else {
+      if (cur) { words.push(cur); cur = ''; }
+      if (clean) words.push(clean);
+    }
+  }
+  if (cur) words.push(cur);
+
+  return words;
+}
+
+function renderLyrics(words, accentColor) {
+  const el = document.getElementById('stage-lyrics');
+  if (!el) return;
+  if (!words.length) {
+    el.innerHTML = '<p class="lyrics-none">No lyrics found — Paroles non disponibles</p>';
+    return;
+  }
+
+  // Group into lines of ~7 words (verse-like chunks)
+  const PER_LINE = 7;
+  let html = '';
+  for (var i = 0; i < words.length; i += PER_LINE) {
+    const line = words.slice(i, i + PER_LINE).join(' ');
+    html += '<div class="lyrics-line">' + line + '</div>';
+    // Add a visual stanza break every ~4 lines (28 words)
+    if ((i / PER_LINE + 1) % 4 === 0 && i + PER_LINE < words.length) {
+      html += '<div class="lyrics-stanza-break"></div>';
+    }
+  }
+  el.innerHTML = html;
+}
+
+// ── Keyboard shortcuts ────────────────────────────────────────────────────────
+
+document.addEventListener('keydown', function(e) {
+  const stage = document.getElementById('sing-stage');
+  if (!stage || stage.classList.contains('hidden')) return;
+  if (e.target.tagName === 'INPUT') return;
+  if (e.key === ' ' || e.key === 'k') { e.preventDefault(); togglePlay(); }
+  if (e.key === 'ArrowLeft')  { e.preventDefault(); prevSong(); }
+  if (e.key === 'ArrowRight') { e.preventDefault(); nextSong(); }
+  if (e.key === 'Escape')     { showGrid(); }
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', function() {
+  buildSingGrid(SING_WORKS);
+});
+
+</script>

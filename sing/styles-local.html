@@ -1,0 +1,379 @@
+<style>
+
+/* ── Page wrapper ─────────────────────────────────────────────────────────── */
+
+.wrapper { max-width: 1000px; }
+
+/* Hide the Jekyll page title — we use our own hero */
+.post-title, .page-title { display: none; }
+
+/* ── Shared button base ───────────────────────────────────────────────────── */
+
+.sing-btn {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  border-radius: 999px;
+  border: 2px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.9);
+  color: #5A4E47;
+  cursor: pointer;
+  padding: 8px 20px;
+  transition: background 0.15s, transform 0.1s, border-color 0.15s;
+}
+
+.sing-btn:hover {
+  background: rgba(249,200,70,0.18);
+  border-color: rgba(249,200,70,0.45);
+  transform: translateY(-1px);
+}
+
+.sing-btn:active { transform: scale(0.97); }
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+
+.sing-hero {
+  text-align: center;
+  padding: 28px 0 20px;
+}
+
+.sing-hero-icon {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.sing-hero-title {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: clamp(1.6em, 4vw, 2.2em);
+  font-weight: 700;
+  color: #2A2320;
+  margin: 0 0 8px;
+}
+
+.sing-hero-sub {
+  font-size: 1em;
+  color: #7A6E68;
+  margin: 0;
+}
+
+/* ── Toolbar ──────────────────────────────────────────────────────────────── */
+
+.sing-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 18px 0 10px;
+  flex-wrap: wrap;
+}
+
+.sing-search {
+  flex: 1;
+  min-width: 180px;
+  padding: 10px 18px;
+  font-size: 1em;
+  font-family: "Nunito", sans-serif;
+  border: 2px solid rgba(0,0,0,0.12);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.sing-search:focus {
+  border-color: rgba(249,200,70,0.6);
+  box-shadow: 0 0 0 3px rgba(249,200,70,0.15);
+}
+
+.surprise-btn {
+  white-space: nowrap;
+  background: linear-gradient(135deg, #FF8C42, #ffaa5e);
+  color: #fff;
+  border-color: #FF8C42;
+}
+
+.surprise-btn:hover {
+  background: linear-gradient(135deg, #e07030, #FF8C42);
+  border-color: #e07030;
+}
+
+/* ── Count ────────────────────────────────────────────────────────────────── */
+
+.sing-count {
+  font-size: 0.82em;
+  color: #aaa;
+  margin-bottom: 14px;
+  font-family: "Fredoka", "Nunito", sans-serif;
+}
+
+.sing-no-results {
+  color: #7A6E68;
+  text-align: center;
+  padding: 32px 0;
+}
+
+/* ── Card grid ────────────────────────────────────────────────────────────── */
+
+.sing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+/* ── Individual card ──────────────────────────────────────────────────────── */
+
+.sing-card {
+  border-radius: 20px;
+  border: 2px solid;
+  padding: 16px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sing-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+.sing-card:active { transform: scale(0.97); }
+
+.sing-card-emoji {
+  font-size: 2em;
+  line-height: 1;
+}
+
+.sing-card-title {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: 0.95em;
+  font-weight: 700;
+  line-height: 1.3;
+  max-height: 2.7em;
+  overflow: hidden;
+}
+
+.sing-card-comp {
+  font-size: 0.73em;
+  color: #9A8E88;
+  line-height: 1.2;
+}
+
+.sing-card-play {
+  font-size: 0.85em;
+  font-weight: 700;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+  opacity: 0.85;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.sing-card:hover .sing-card-play {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ── Stage view ───────────────────────────────────────────────────────────── */
+
+#sing-stage {
+  padding-bottom: 48px;
+}
+
+/* ── Stage nav ────────────────────────────────────────────────────────────── */
+
+.stage-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.back-btn {
+  font-size: 0.9em;
+}
+
+.stage-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow-btn {
+  font-size: 1.2em;
+  padding: 6px 18px;
+  font-weight: 700;
+}
+
+.arrow-btn:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ── Stage info ───────────────────────────────────────────────────────────── */
+
+.stage-info {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.stage-title {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: clamp(1.5em, 5vw, 2.4em);
+  font-weight: 700;
+  color: #2A2320;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.stage-comp {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: 1em;
+  color: #FF8C42;
+  font-weight: 600;
+}
+
+/* ── Player ───────────────────────────────────────────────────────────────── */
+
+.stage-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.play-btn {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: none;
+  font-size: 2em;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  transition: transform 0.12s, box-shadow 0.12s, opacity 0.15s;
+}
+
+.play-btn:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+}
+
+.play-btn:active:not(:disabled) { transform: scale(0.95); }
+
+.play-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ── Progress bar (used by KernPlayer) ───────────────────────────────────── */
+
+.kp-progress {
+  width: 100%;
+  max-width: 480px;
+  height: 10px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.kp-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #FF8C42, #ffaa5e);
+  border-radius: 999px;
+  transition: width 0.1s linear;
+}
+
+/* ── Tempo buttons ────────────────────────────────────────────────────────── */
+
+.tempo-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tempo-btn {
+  font-size: 1.3em;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.9);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  line-height: 1;
+  padding: 0;
+}
+
+.tempo-btn:hover { background: rgba(249,200,70,0.2); border-color: rgba(249,200,70,0.5); transform: scale(1.08); }
+.tempo-btn:active { transform: scale(0.93); }
+
+.tempo-btn.active {
+  background: rgba(255,140,66,0.15);
+  border-color: rgba(255,140,66,0.5);
+  box-shadow: 0 0 0 3px rgba(255,140,66,0.15);
+}
+
+/* ── Lyrics ───────────────────────────────────────────────────────────────── */
+
+.stage-lyrics {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 28px;
+  background: rgba(255,255,255,0.75);
+  border-radius: 20px;
+  border: 2px solid rgba(0,0,0,0.07);
+  min-height: 80px;
+}
+
+.lyrics-line {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: clamp(1.05em, 2.5vw, 1.25em);
+  color: #2A2320;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+.lyrics-stanza-break {
+  height: 1em;
+}
+
+.lyrics-loading, .lyrics-none, .lyrics-error {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: 1em;
+  color: #9A8E88;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.lyrics-error { color: #c03030; }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .sing-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .sing-card { padding: 12px 8px 10px; }
+  .play-btn  { width: 80px; height: 80px; font-size: 1.7em; }
+  .stage-lyrics { padding: 16px 16px; }
+}
+
+</style>
