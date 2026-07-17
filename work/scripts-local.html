@@ -440,19 +440,17 @@ function displayWorkInfo(id) {
 		encodersoutput = `<div class="work-item"><b>${label}:</b> ${encoderList.join(", ")}</div>`;
 	}
 
+	const scanURL = (DATA1520.metadata.scans || {})[id] || "";
+
 	let linksoutput = "";
 	if (rawURL) {
 		const vhvURL = `https://verovio.humdrum.org/?k=e&file=${encodeURIComponent(rawURL)}`;
-		linksoutput = `<div class="work-item"><b>${t('work.view_on')}:</b> <a target="_blank" href="${vhvURL}">VHV</a> | <a target="_blank" href="${githubURL}">GitHub</a></div>`;
+		const scanLink = scanURL ? ` | <a target="_blank" rel="noopener noreferrer" href="${scanURL}">${t('work.view_pdf')}</a>` : "";
+		linksoutput = `<div class="work-item"><b>${t('work.view_on')}:</b> <a target="_blank" href="${vhvURL}">VHV</a> | <a target="_blank" href="${githubURL}">GitHub</a>${scanLink}</div>`;
 	}
 
 	const downloadoutput = rawURL
 		? `<div class="work-item"><b>${t('work.download')}:</b> <a href="${rawURL}" download>${t('work.humdrum_file')}</a></div>`
-		: "";
-
-	const scanURL = (DATA1520.metadata.scans || {})[id] || "";
-	const scanoutput = scanURL
-		? `<div class="work-item"><b>${t('work.source_scan')}:</b> <a href="${scanURL}" target="_blank" rel="noopener noreferrer">${t('work.view_pdf')}</a></div>`
 		: "";
 
 	// ── Build table row ────────────────────────────────────────────────────────
@@ -468,7 +466,7 @@ function displayWorkInfo(id) {
 	row.appendChild(middleCell);
 
 	const rightCell = document.createElement("td");
-	rightCell.innerHTML = encodersoutput + linksoutput + downloadoutput + scanoutput + ytoutput;
+	rightCell.innerHTML = encodersoutput + linksoutput + downloadoutput + ytoutput;
 	row.appendChild(rightCell);
 
 	tbody.appendChild(row);
