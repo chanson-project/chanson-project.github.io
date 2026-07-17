@@ -37,30 +37,33 @@ nav_exclude: true
 <!-- ── Stage view ──────────────────────────────────────────────────────── -->
 <div id="sing-stage" class="hidden">
 
-  <div class="stage-nav">
-    <button class="sing-btn back-btn" onclick="showGrid()">← All songs</button>
-    <div class="stage-arrows">
-      <button id="stage-prev" class="sing-btn arrow-btn" onclick="prevSong()" aria-label="Previous song">‹</button>
-      <button id="stage-next" class="sing-btn arrow-btn" onclick="nextSong()" aria-label="Next song">›</button>
-    </div>
-  </div>
-
+  <!-- Song title — first thing kids see -->
   <div class="stage-info">
     <div id="stage-title" class="stage-title"></div>
     <div id="stage-comp" class="stage-comp"></div>
   </div>
 
+  <!-- Player: prev · play/pause · next in one row -->
   <div class="stage-player">
+    <button id="stage-prev" class="sing-btn arrow-btn" onclick="prevSong()" aria-label="Previous song">‹</button>
     <button id="stage-play-btn" class="play-btn" onclick="togglePlay()" disabled aria-label="Play">▶</button>
-    <div id="kp-progress" class="kp-progress"><div id="kp-progress-fill" class="kp-progress-fill"></div></div>
-    <div class="tempo-row">
-      <button class="tempo-btn" data-scale="0.5"  onclick="setTempoScale(0.5)"  title="Slow">🐢</button>
-      <button class="tempo-btn active" data-scale="1"  onclick="setTempoScale(1)"    title="Normal">♩</button>
-      <button class="tempo-btn" data-scale="1.5"  onclick="setTempoScale(1.5)"  title="Fast">🐇</button>
-    </div>
+    <button id="stage-next" class="sing-btn arrow-btn" onclick="nextSong()" aria-label="Next song">›</button>
+  </div>
+
+  <div id="kp-progress" class="kp-progress"><div id="kp-progress-fill" class="kp-progress-fill"></div></div>
+
+  <div class="tempo-row">
+    <button class="tempo-btn" data-scale="0.5"  onclick="setTempoScale(0.5)"  title="Slow">🐢</button>
+    <button class="tempo-btn active" data-scale="1"  onclick="setTempoScale(1)"    title="Normal">♩</button>
+    <button class="tempo-btn" data-scale="1.5"  onclick="setTempoScale(1.5)"  title="Fast">🐇</button>
   </div>
 
   <div id="stage-lyrics" class="stage-lyrics"></div>
+
+  <!-- Back link at the bottom so it doesn't interrupt the song view -->
+  <div class="stage-back-wrap">
+    <button class="sing-btn back-btn" onclick="showGrid()">← All songs</button>
+  </div>
 
   <!-- Hidden KernPlayer DOM hooks -->
   <div id="audiobutton-container" style="position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none;">
