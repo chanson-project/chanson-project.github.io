@@ -4,7 +4,7 @@ const MUSICIANS = [
   {
     id: "charbonniers",
     name: "Les Charbonniers de l'Enfer",
-    photo: "",
+    hometown: "Québec City, QC",
     bio_en: "An a cappella ensemble from Quebec specializing in traditional French-Canadian vocal polyphony. Known for their tight contrapuntal arrangements of folk songs with no instrumental accompaniment.",
     bio_fr: "Ensemble vocal a cappella du Québec spécialisé dans la polyphonie vocale traditionnelle franco-canadienne. Reconnus pour leurs arrangements contrapuntiques serrés de chansons folkloriques sans accompagnement instrumental.",
     links: [
@@ -15,7 +15,7 @@ const MUSICIANS = [
   {
     id: "bottine",
     name: "La Bottine Souriante",
-    photo: "",
+    hometown: "Joliette, QC",
     bio_en: "One of Quebec's most celebrated traditional music ensembles, founded in the mid-1970s in Joliette. Their sound blends French-Canadian folk repertoire with jazz and brass influences.",
     bio_fr: "L'un des ensembles de musique traditionnelle les plus célèbres du Québec, fondé au milieu des années 1970 à Joliette. Leur son mêle le répertoire folklorique franco-canadien à des influences jazz et cuivres.",
     links: [
@@ -26,7 +26,7 @@ const MUSICIANS = [
   {
     id: "genticorum",
     name: "Genticorum",
-    photo: "",
+    hometown: "Montréal, QC",
     bio_en: "A Quebec trio performing traditional French-Canadian and Celtic music on fiddle, guitar, mandocello, and voice. Known for their energetic stage presence and virtuosic instrumental interplay.",
     bio_fr: "Trio québécois interprétant de la musique traditionnelle franco-canadienne et celtique au violon, à la guitare, au mandocello et à la voix. Reconnus pour leur présence scénique énergique et leur jeu instrumental virtuose.",
     links: [
@@ -37,7 +37,7 @@ const MUSICIANS = [
   {
     id: "detempsantan",
     name: "De Temps Antan",
-    photo: "",
+    hometown: "Montréal, QC",
     bio_en: "A Quebec trio featuring Éric Beaudry, Éric Desranleau, and Pierre-Luc Dupuis. They draw from the deep roots of French-Canadian folk tradition, performing songs, reels, and jigs with voice and strings.",
     bio_fr: "Trio québécois composé d'Éric Beaudry, d'Éric Desranleau et de Pierre-Luc Dupuis. Ils puisent dans les racines profondes de la tradition folklorique franco-canadienne, interprétant chansons, reels et gigues avec voix et cordes.",
     links: [
@@ -55,25 +55,34 @@ function buildMusiciansGrid() {
   grid.innerHTML = MUSICIANS.map(m => {
     const bio = lang === 'fr' ? m.bio_fr : m.bio_en;
 
-    const photoHtml = m.photo
-      ? `<img src="${m.photo}" alt="${m.name}" class="mus-card-photo">`
-      : `<div class="mus-card-initials">${m.name.split(" ").filter(w => /^[A-ZÀ-Ö]/.test(w)).slice(0,2).map(w=>w[0]).join("")}</div>`;
-
     const linksHtml = m.links.map(l => {
       const label = (lang === 'fr' && l.label_fr) ? l.label_fr : l.label;
       return `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="mus-link">${label}</a>`;
     }).join("");
 
     return `
-      <div class="mus-card">
-        <div class="mus-card-media">${photoHtml}</div>
-        <div class="mus-card-body">
-          <div class="mus-card-name">${m.name}</div>
-          <div class="mus-card-bio">${bio}</div>
-          <div class="mus-card-links">${linksHtml}</div>
+      <div class="mus-row" id="mus-${m.id}">
+        <div class="mus-row-header" onclick="toggleMusician('${m.id}')">
+          <div class="mus-row-name">${m.name}</div>
+          <div class="mus-row-hometown">${m.hometown}</div>
+          <div class="mus-row-chevron">▼</div>
+        </div>
+        <div class="mus-row-detail">
+          <div class="mus-row-detail-inner">
+            <div class="mus-row-detail-body">
+              <div class="mus-card-bio">${bio}</div>
+              <div class="mus-card-links">${linksHtml}</div>
+            </div>
+          </div>
         </div>
       </div>`;
   }).join("");
+}
+
+function toggleMusician(id) {
+  const row = document.getElementById("mus-" + id);
+  if (!row) return;
+  row.classList.toggle("is-open");
 }
 
 document.addEventListener("DOMContentLoaded", function () {
