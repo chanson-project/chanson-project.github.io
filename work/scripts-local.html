@@ -114,7 +114,16 @@ function displayWork(id) {
 					prepareQEvents(id);
 				};
 				const melodyParam = DATA1520.cgi.melody || "";
-				const displayKern = melodyParam ? markMelodicMatches(kern, melodyParam) : kern;
+				let displayKern = melodyParam ? markMelodicMatches(kern, melodyParam) : kern;
+				if (CADENCE_FILTER_ACTIVE) {
+					const result = markCadences(displayKern);
+					displayKern = result.markedKern;
+					LAST_CADENCE_LIST = result.cadences;
+					renderCadencePanel(LAST_CADENCE_LIST);
+				} else {
+					const panel = document.getElementById('cadence-panel');
+					if (panel) panel.classList.add('hidden');
+				}
 				document.getElementById("my-score").textContent = displayKern;
 				displayHumdrum(hnpOptions);
 				KernPlayer.load(kern);  // player uses original (unmarked) kern
@@ -627,6 +636,55 @@ function displayScaleDegrees() {
 		btn.setAttribute("data-i18n", DEG_FILTER_ACTIVE ? "work.hide_deg" : "work.show_deg");
 		btn.textContent = DEG_FILTER_ACTIVE ? t("work.hide_deg") : t("work.show_deg");
 	}
+}
+
+
+
+//////////////////////////////
+//
+// displayCadences -- Toggle cadence analysis mode.
+//
+
+let CADENCE_FILTER_ACTIVE = false;
+let LAST_CADENCE_LIST = [];
+
+function displayCadences() {
+	CADENCE_FILTER_ACTIVE = !CADENCE_FILTER_ACTIVE;
+	window.localStorage.CadenceFilterState = CADENCE_FILTER_ACTIVE ? "show" : "hide";
+
+	displayWork(DATA1520.workid);
+
+	const btn = document.querySelector(".show-cadences");
+	if (btn) {
+		btn.setAttribute("data-i18n", CADENCE_FILTER_ACTIVE ? "work.hide_cadences" : "work.show_cadences");
+		btn.textContent = CADENCE_FILTER_ACTIVE ? t("work.hide_cadences") : t("work.show_cadences");
+	}
+}
+
+
+//////////////////////////////
+//
+// renderCadencePanel -- Build the inline cadence list below the score.
+//
+
+function renderCadencePanel(cadences) {
+	const panel = document.getElementById("cadence-panel");
+	if (!panel) return;
+
+	if (!cadences || cadences.length === 0) {
+		panel.innerHTML = `<div class="cadence-panel-heading">Cadences</div><p class="cadence-none">${t("work.cadence_none")}</p>`;
+		panel.classList.remove("hidden");
+		return;
+	}
+
+	const rows = cadences.map(function(cad) {
+		const typeClass = cad.type === "authentic" ? "cadence-type-authentic" : "cadence-type-phrygian";
+		const typeLabel = t("work.cadence_" + cad.type);
+		return `<tr><td>m. ${cad.measure}</td><td class="${typeClass}">${typeLabel}</td><td class="cadence-pitch">→ ${cad.pitchCenter}</td></tr>`;
+	}).join("");
+
+	panel.innerHTML = `<div class="cadence-panel-heading">Cadences</div><table class="cadence-table"><tbody>${rows}</tbody></table>`;
+	panel.classList.remove("hidden");
 }
 
 

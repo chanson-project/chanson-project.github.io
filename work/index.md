@@ -43,8 +43,11 @@ layout: work
     <div id="textSelect">
        <div class="button show-text" onclick="displayText()" data-i18n="work.show_text">Show Text</div>
        <div class="button show-deg" onclick="displayScaleDegrees()" data-i18n="work.show_deg">Show Scale Degrees</div>
+       <div class="button show-cadences" onclick="displayCadences()" data-i18n="work.show_cadences">Show Cadences</div>
     </div>
 </div>
+
+<div id="cadence-panel" class="hidden"></div>
 
 <div class="PREHTML" style="display:none"></div>
 <div class="POSTHTML" style="display:none"></div>
@@ -55,5 +58,6 @@ layout: work
 
 {% include_relative listeners.html %}
 {% include_relative scripts-local.html %}
+{% include_relative cadence-analysis.js %}
 {% include_relative scripts-player.html %}
 {% include styles/svgdefs.html %}
