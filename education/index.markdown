@@ -1,6 +1,6 @@
 ---
 layout: page
-title: educational resources
+title: tools
 order: 6
 nav_exclude: true
 ---
@@ -30,9 +30,20 @@ nav_exclude: true
     <button class="edu-cat active" data-cat="all" data-i18n="edu.cat_all">All categories</button>
     <button class="edu-cat" data-cat="music" data-i18n="edu.cat_music">Music creation</button>
     <button class="edu-cat" data-cat="language" data-i18n="edu.cat_language">Language learning</button>
-    <button class="edu-cat" data-cat="curriculum" data-i18n="edu.cat_curriculum">Curriculum</button>
+    <button class="edu-cat" data-cat="literacy" data-i18n="edu.cat_curriculum">Music literacy</button>
   </div>
 </div>
 
 <div id="edu-count"></div>
 <div id="edu-grid"></div>
+
+<!-- Suggestion modal -->
+<div id="edu-suggestion-modal" class="edu-suggestion-overlay hidden" onclick="closeSuggestionIfOverlay(event)">
+  <div class="edu-suggestion-box">
+    <div class="edu-suggestion-header">
+      <span id="edu-suggestion-tool" class="edu-suggestion-tool"></span>
+      <button class="edu-suggestion-close" onclick="closeSuggestion()" aria-label="Close">✕</button>
+    </div>
+    <div id="edu-suggestion-content" class="edu-suggestion-content"></div>
+  </div>
+</div>

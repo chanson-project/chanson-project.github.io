@@ -77,7 +77,7 @@ const EDU_TOOLS = [
     id: "dr-musik",
     name: "Dr. Musik",
     access: "free",
-    category: "music",
+    category: "literacy",
     platform: ["web"],
     ages: null,
     url: "https://www.doctormusik.com/apps-and-games/",
@@ -119,7 +119,14 @@ const EDU_TOOLS = [
     url: "https://mauril.ca/en/",
     doi: "https://doi.org/10.18653/v1/2023.bea-1.43",
     desc_en: "A free Canadian language-learning app by CBC/Radio-Canada using authentic Canadian audio and video content — news, documentaries, TV shows — with interactive comprehension exercises. Focuses on English and French. Similar to Duolingo but Canada-specific.",
-    desc_fr: "Une application gratuite d'apprentissage des langues de CBC/Radio-Canada utilisant du contenu canadien authentique — nouvelles, documentaires, émissions TV — avec des exercices de compréhension interactifs. Axée sur l'anglais et le français."
+    desc_fr: "Une application gratuite d'apprentissage des langues de CBC/Radio-Canada utilisant du contenu canadien authentique — nouvelles, documentaires, émissions TV — avec des exercices de compréhension interactifs. Axée sur l'anglais et le français.",
+    suggestions: [
+      {
+        text: "Explorer les « Arts et culture » en regardant le vidéo « Inscrire la gigue dans le patrimoine immatériel » (2m37s)",
+        url: "https://app.mauril.ca/explore/activity/68794d2e99be7727d6129eec",
+        note: "Le vidéo est suivi d’un quiz qui peut être fait avec l’aide d’un enseignant ou parent."
+      }
+    ]
   },
   {
     id: "studycat",
@@ -162,7 +169,7 @@ const EDU_TOOLS = [
     name: "MusicplayOnline",
     access: "subscription",
     price: "$22/mo",
-    category: "curriculum",
+    category: "literacy",
     platform: ["web"],
     ages: "Pre-K–8",
     url: "https://musicplayonline.com/",
@@ -228,6 +235,60 @@ const EDU_TOOLS = [
 
 const TOOLS_WITH_DOCS = new Set(["cml-songmaker", "garageband", "lyrics-training", "mauril", "mondly"]);
 
+// ── Lookup by ID ──────────────────────────────────────────────────────────────
+
+const EDU_TOOLS_BY_ID = {};
+EDU_TOOLS.forEach(function(t) { EDU_TOOLS_BY_ID[t.id] = t; });
+
+// ── Favourites (localStorage) ─────────────────────────────────────────────────
+
+function loadFavourites() {
+  try { return new Set(JSON.parse(localStorage.getItem('edu_fav') || '[]')); }
+  catch { return new Set(); }
+}
+
+function saveFavourites(favs) {
+  try { localStorage.setItem('edu_fav', JSON.stringify([...favs])); } catch {}
+}
+
+function toggleFavourite(id, event) {
+  event.stopPropagation();
+  const favs = loadFavourites();
+  if (favs.has(id)) favs.delete(id); else favs.add(id);
+  saveFavourites(favs);
+  const btn = document.querySelector(`.edu-star[data-id="${id}"]`);
+  if (btn) btn.classList.toggle('is-fav', favs.has(id));
+}
+
+// ── Suggestions ───────────────────────────────────────────────────────────────
+
+function openSuggestion(toolId, event) {
+  event.stopPropagation();
+  const tool = EDU_TOOLS_BY_ID[toolId];
+  if (!tool || !tool.suggestions || !tool.suggestions.length) return;
+  document.getElementById('edu-suggestion-tool').textContent = tool.name;
+  document.getElementById('edu-suggestion-content').innerHTML = tool.suggestions.map(function(s) {
+    return `<div class="edu-sug-item">
+      <p class="edu-sug-text">${s.text}</p>
+      <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="edu-sug-link">${s.url}</a>
+      ${s.note ? `<p class="edu-sug-note">${s.note}</p>` : ''}
+    </div>`;
+  }).join('');
+  document.getElementById('edu-suggestion-modal').classList.remove('hidden');
+}
+
+function closeSuggestion() {
+  document.getElementById('edu-suggestion-modal').classList.add('hidden');
+}
+
+function closeSuggestionIfOverlay(e) {
+  if (e.target === document.getElementById('edu-suggestion-modal')) closeSuggestion();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeSuggestion();
+});
+
 // ── Filter state ──────────────────────────────────────────────────────────────
 
 let activeAccess = "all";
@@ -260,12 +321,14 @@ function renderGrid() {
   const count = document.getElementById("edu-count");
   if (!grid) return;
 
+  const favs  = loadFavourites();
   const one   = t("edu.one_result")  || "1 tool";
   const many  = t("edu.results")     || "tools";
   count.textContent = tools.length === 1 ? one : `${tools.length} ${many}`;
 
   grid.innerHTML = tools.map(tool => {
     const desc = lang === "fr" ? tool.desc_fr : tool.desc_en;
+    const isFav = favs.has(tool.id);
 
     const accessLabel = tool.access === "free"
       ? (t("edu.free") || "Free")
@@ -281,8 +344,14 @@ function renderGrid() {
       ? `<span class="edu-ages">${t("edu.ages") || "Ages"} ${tool.ages}</span>`
       : "";
 
+    const ideaBtn = (tool.suggestions && tool.suggestions.length)
+      ? `<button class="edu-idea-btn" onclick="openSuggestion('${tool.id}',event)" title="Idée / Suggestion" aria-label="Suggestion">💡</button>`
+      : "";
+
     return `
       <div class="edu-card" data-access="${tool.access}" data-cat="${tool.category}">
+        <button class="edu-star${isFav ? ' is-fav' : ''}" data-id="${tool.id}"
+          onclick="toggleFavourite('${tool.id}',event)" aria-label="Favourite" title="Favori">★</button>
         <div class="edu-card-top">
           <div class="edu-card-name">${tool.name}</div>
           <span class="edu-badge ${accessClass}">${accessLabel}</span>
@@ -294,9 +363,12 @@ function renderGrid() {
             ${agesHtml}
             ${doiHtml}
           </div>
-          ${TOOLS_WITH_DOCS.has(tool.id) ? `<a href="/education/docs/#${tool.id}" class="edu-docs-btn" data-i18n="edu.docs">${t("edu.docs") || "Docs"}</a>` : ""}
-          <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="edu-visit-btn"
-             data-i18n="edu.visit">${t("edu.visit") || "Visit"} →</a>
+          <div class="edu-card-actions">
+            ${ideaBtn}
+            ${TOOLS_WITH_DOCS.has(tool.id) ? `<a href="/education/docs/#${tool.id}" class="edu-docs-btn" data-i18n="edu.docs">${t("edu.docs") || "Docs"}</a>` : ""}
+            <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="edu-visit-btn"
+               data-i18n="edu.visit">${t("edu.visit") || "Visit"} →</a>
+          </div>
         </div>
       </div>`;
   }).join("");

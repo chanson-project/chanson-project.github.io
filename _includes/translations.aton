@@ -14,7 +14,7 @@
 @nav.performances: Performances
 @nav.musicians: Musicians
 @nav.resources: Resources
-@nav.education: Educational Resources
+@nav.education: Tools
 @nav.lesson_plans: Lesson Plans
 @nav.tool_docs: Tool Documentation
 @nav.sing_along: Sing Along!
@@ -166,15 +166,15 @@
 @mus.intro: Contemporary performers of French-Canadian traditional music.
 
 @ educational resources page
-@edu.heading: Educational Resources
+@edu.heading: Tools
 @edu.intro: Digital tools for Francophone music and language education in K–12 schools.
 @edu.filter_all: All
 @edu.filter_free: Free
 @edu.filter_sub: Subscription
 @edu.cat_all: All categories
 @edu.cat_music: Music creation
-@edu.cat_language: Language learning
-@edu.cat_curriculum: Curriculum
+@edu.cat_language: French learning
+@edu.cat_curriculum: Music literacy
 @edu.free: Free
 @edu.subscription: Subscription
 @edu.ages: Ages
@@ -335,7 +335,7 @@
 @nav.performances: Interprétations
 @nav.musicians: Musiciens
 @nav.resources: Ressources
-@nav.education: Ressources pédagogiques
+@nav.education: Outils
 @nav.lesson_plans: Plans de cours
 @nav.tool_docs: Documentation des outils
 @nav.sing_along: Chantons!
@@ -487,15 +487,15 @@
 @mus.intro: Interprètes contemporains de musique traditionnelle franco-canadienne.
 
 @ page ressources pédagogiques
-@edu.heading: Ressources pédagogiques
+@edu.heading: Outils
 @edu.intro: Outils numériques pour l'éducation musicale et linguistique en milieu francophone, de la maternelle à la 12e année.
 @edu.filter_all: Tout
 @edu.filter_free: Gratuit
 @edu.filter_sub: Abonnement
 @edu.cat_all: Toutes les catégories
 @edu.cat_music: Création musicale
-@edu.cat_language: Apprentissage des langues
-@edu.cat_curriculum: Curriculum
+@edu.cat_language: Apprentissage du français
+@edu.cat_curriculum: Alphabet musical
 @edu.free: Gratuit
 @edu.subscription: Abonnement
 @edu.ages: Âges

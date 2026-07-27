@@ -75,9 +75,14 @@
   gap: 20px;
 }
 
+/* ── Visibility ──────────────────────────────────────────────────────────── */
+
+.hidden { display: none !important; }
+
 /* ── Card ────────────────────────────────────────────────────────────────── */
 
 .edu-card {
+  position: relative;
   border-radius: 16px;
   border: 1px solid rgba(0,0,0,0.09);
   background: rgba(255,255,255,0.9);
@@ -144,6 +149,25 @@
   flex: 1;
 }
 
+/* ── Favourite star ──────────────────────────────────────────────────────── */
+
+.edu-star {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.15em;
+  line-height: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  padding: 2px 4px;
+  transition: color 0.15s, transform 0.12s;
+}
+
+.edu-star:hover { color: #ffaa00; transform: scale(1.2); }
+.edu-star.is-fav { color: #ffaa00; }
+
 /* ── Footer ──────────────────────────────────────────────────────────────── */
 
 .edu-card-footer {
@@ -153,6 +177,14 @@
   gap: 8px;
   margin-top: 4px;
   flex-wrap: wrap;
+}
+
+.edu-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 .edu-card-meta {
@@ -243,6 +275,112 @@
   border-color: #FF8C42;
   text-decoration: none;
   transform: translateY(-1px);
+}
+
+/* ── Idea / suggestion button ────────────────────────────────────────────── */
+
+.edu-idea-btn {
+  font-size: 1em;
+  line-height: 1;
+  background: none;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 999px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.edu-idea-btn:hover {
+  background: rgba(249,200,70,0.18);
+  border-color: rgba(249,200,70,0.5);
+  transform: scale(1.1);
+}
+
+/* ── Suggestion modal ────────────────────────────────────────────────────── */
+
+.edu-suggestion-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.edu-suggestion-box {
+  background: #fff;
+  border-radius: 18px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.22);
+  padding: 24px 28px;
+}
+
+.edu-suggestion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.edu-suggestion-tool {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #2A2320;
+}
+
+.edu-suggestion-close {
+  background: none;
+  border: none;
+  font-size: 1.1em;
+  cursor: pointer;
+  color: #999;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.edu-suggestion-close:hover { background: rgba(0,0,0,0.07); color: #333; }
+
+.edu-suggestion-content {}
+
+.edu-sug-item {
+  padding: 14px 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.edu-sug-item:first-child { border-top: none; padding-top: 0; }
+
+.edu-sug-text {
+  font-size: 0.92em;
+  color: #3A3330;
+  line-height: 1.55;
+  margin: 0 0 8px;
+}
+
+.edu-sug-link {
+  display: inline-block;
+  font-size: 0.82em;
+  color: #FF8C42;
+  word-break: break-all;
+  text-decoration: underline;
+  margin-bottom: 6px;
+}
+
+.edu-sug-link:hover { color: #c06010; }
+
+.edu-sug-note {
+  font-size: 0.82em;
+  color: #7A6E68;
+  font-style: italic;
+  margin: 6px 0 0;
+  line-height: 1.5;
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
