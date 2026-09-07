@@ -22,7 +22,7 @@ end
 # and associated library.
 # mingw will be deprecated
 #platforms :mingw, :x64_mingw, :mswin, :jruby do
-#platforms :mswin, :jruby do
+platforms :mswin, :jruby do
   gem "tzinfo", ">= 1", "< 3"
   gem "tzinfo-data"
 end
